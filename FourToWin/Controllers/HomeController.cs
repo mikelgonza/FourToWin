@@ -23,7 +23,7 @@ namespace FourToWin.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Game()
         {
             return View();
         }
