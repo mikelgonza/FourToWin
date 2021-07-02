@@ -28,6 +28,17 @@ namespace FourToWin.Controllers
             return View();
         }
 
+        public IActionResult CreateMatch()
+        {
+
+            return View();
+        }
+
+        public IActionResult JoinMatch()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

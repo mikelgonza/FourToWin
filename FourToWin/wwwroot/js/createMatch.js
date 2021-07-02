@@ -5,22 +5,33 @@ var connection = new signalR.HubConnectionBuilder()
 var lobby;
 var player;
 
+// Create connection
 connection.start().then(function () {
-    // Este bloque se ejecuta cuando se establece la conexion con el servidor
+
     console.log("SignalR Connected successfully");
+
+    connection.invoke("CreateGame").catch(err => console.error(err.toString()));
+
 }).catch(function (err) {
     return console.error(err.toString());
 });
 
 connection.on("GetPlayerNum", function (playerNum) {
     player = playerNum;
+    console.log("player: " + player);
+    document.getElementById("player").textContent = player;
 });
 
-connection.on("GetRandomLobbyId", function (lobbyId) {
+connection.on("GetLobbyId", function (lobbyId) {
     lobby = lobbyId;
+    console.log("lobbyId: " + lobby);
+    document.getElementById("lobbyid").textContent = lobby;
+    document.getElementById("status").textContent = "Waiting...";
+
 });
 
 connection.on("Ready", function () {
+    document.getElementById("status").textContent = "Ready";
     // llamar al juego
 });
 
@@ -28,12 +39,4 @@ connection.on("ReceiveMessage", function (userName, message) {
     // mensajes chat
 });
 
-document.getElementById("sendButton").addEventListener("click", function (event) {
-    // mandar mensaje al chat
-    var message = document.getElementById("messageInput").value;
-    connection.invoke("SendMessageToGroup", message, lobby).catch(function (err) {
-        return console.error(err.toString());
-    });
 
-    event.preventDefault();
-});
