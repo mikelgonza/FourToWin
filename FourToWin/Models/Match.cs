@@ -11,14 +11,18 @@ namespace FourToWin.Models
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Player 1")]
         public string User1Id { get; set; }
+        [Display(Name = "Player 2")]
         public string User2Id { get; set; }
         public string Winner { get; set; }
         public int NumRounds { get; set; }
 
         [ForeignKey("User1Id")]
+        [Display(Name = "Player 1")]
         public AppUser User1 { get; set; }
         [ForeignKey("User2Id")]
+        [Display(Name = "Player 2")]
         public AppUser User2 { get; set; }
 
 

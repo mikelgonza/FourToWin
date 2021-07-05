@@ -14,5 +14,21 @@ namespace FourToWin.Data
             : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<Match>()
+                .HasOne<AppUser>(a => a.User1)
+                .WithMany(d => d.MatchesU1)
+                .HasForeignKey(d => d.User1Id);
+
+            builder.Entity<Match>()
+                .HasOne<AppUser>(a => a.User2)
+                .WithMany(d => d.MatchesU2)
+                .HasForeignKey(d => d.User2Id);
+        }
+
+        public DbSet<FourToWin.Models.Match> Match { get; set; }
     }
 }
