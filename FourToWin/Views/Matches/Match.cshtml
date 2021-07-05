@@ -1,0 +1,44 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Match";
+}
+
+@if (Model == "create")
+{
+    <h1>Create Match</h1>
+
+    <div class="container">
+        <div class="row">&nbsp;</div>
+        <div>
+            <p>LobbyId: <span id="lobbyid"></span></p>
+            <p>Player: <span id="player"></span></p>
+            <p>Estado: <span id="status"></span></p>
+        </div>
+    </div>
+}
+else if (Model == "join")
+{
+    <h1>Join Match</h1>
+
+    <div class="container">
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <input type="text" id="groupInput" />
+            <input type="button" id="joinButton" value="Join Match" />
+        </div>
+        <div class="row">&nbsp;</div>
+        <div>
+            <p>LobbyId: <span id="lobbyid"></span></p>
+            <p>Player: <span id="player"></span></p>
+            <p>Estado: <span id="status"></span></p>
+
+        </div>
+    </div>
+}
+
+<script>
+    var lobbyAction = "@Model";
+</script>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/match.js"></script>
+

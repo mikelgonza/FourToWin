@@ -19,6 +19,11 @@ namespace FourToWin.Controllers
             _context = context;
         }
 
+        public IActionResult Match(string lobbyAction)
+        {
+            return View("Match", lobbyAction);
+        }
+
         // GET: Matches
         public async Task<IActionResult> Index()
         {
