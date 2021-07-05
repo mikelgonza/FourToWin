@@ -12,18 +12,24 @@ var allSquares = document.querySelectorAll(".sq")
 var columns = document.querySelectorAll(".col")
 
 columns.forEach(c => {
+    //var numColumn
     var squares = c.querySelectorAll(".sq")
-    c.addEventListener("click", function () { play(squares) })
+    c.addEventListener("click", function () { play(squares /*numColumn*/) })
 })
 
 var time = 20
 var countdownDiv = document.getElementById('Countdown')
 countdownDiv.innerHTML = "GO!"
 
+var winner
+
 countdown()
 
-function play(squares) {
+function play(squares/*numColumn*/) {
     let ocupadas = 0;
+
+    //var squares = document.getElementById("column" + numColumn).querySelectorAll("sq")
+
     squares.forEach(square => {
         if (square.classList.contains("played")) { ocupadas += 1; }
     });
@@ -54,7 +60,12 @@ function checkVictory() {
             square2.classList.contains(player) &&
             square3.classList.contains(player) &&
             square4.classList.contains(player)) {
-            victory()
+            square1.style.backgroundColor = "goldenrod"
+            square2.style.backgroundColor = "goldenrod"
+            square3.style.backgroundColor = "goldenrod"
+            square4.style.backgroundColor = "goldenrod"
+            winner = player
+            setTimeout(function () { victory(winner) }, 400)
         }
     }
 
@@ -65,7 +76,7 @@ function checkVictory() {
         }
     })
     if (playedSquares > 41) {
-        draw()
+        victory("none")
     }
 }
 
@@ -73,7 +84,7 @@ function changeTurn() {
     if (player == "p1") {
         player = "p2"
         playerSpan.innerHTML = "2"
-        playerSpan.style.color = "black"
+        playerSpan.style.color = "blue"
         countdown()
     }
     else {
@@ -103,13 +114,22 @@ function countdown() {
     }
 }
 
-
 function changeCount() {
     if (time >= 0) {
         if (time == 20) {
+            countdownDiv.style.color="green"
             countdownDiv.innerHTML = "GO!"
-        } else {
+        }
+        else if (time == 0) {
+            countdownDiv.innerHTML = "TIME OUT!"
+        }
+        else {
             countdownDiv.innerHTML = time;
+            if (time >= 5 && time < 10) {
+                countdownDiv.style.color = "darkorange"
+            } else if (time < 5){
+                countdownDiv.style.color = "red"
+            }
         }
         time -= 1
     } else {
@@ -118,33 +138,26 @@ function changeCount() {
     }
 }
 
-/*
-function changeCount() {
-    time -= 1
-    if (time >= 0) {
-        countdown(time)
+function victory(winner) {
+    document.getElementById("Scene").style.filter = "blur(5px)";
+    document.getElementById("VictoryPopUp").style.display = "block";
+    if (winner == "p1") {
+        document.getElementById("WinnerMsg").style.color = "red"
+        document.getElementById("WinnerMsg").innerHTML = "Player 1 WINS!"
+    } else if (winner == "p2") {
+        document.getElementById("WinnerMsg").style.color = "blue"
+        document.getElementById("WinnerMsg").innerHTML = "Player 2 WINS!"
     }
-    else {
-        changeTurn()
+    else if(winner == "none") {
+        document.getElementById("WinnerMsg").innerHTML = "It's a DRAW!"
     }
 }
 
-function countdown(time) {
-    countdownDiv.innerHTML = time;
-    setTimeout(function () {
-        time - 1
-        countdown(time)
-    }, 1000)
-}
-*/
-
-function victory() {
-    alert(player + " WINS!")
+function CloseResultPopUp() {
+    document.getElementById("Scene").style.filter = "none";
+    document.getElementById("VictoryPopUp").style.display = "none";
 }
 
-function draw() {
-    alert("DRAW!")
-}
 
 const winningPositions = [
     [0, 1, 2, 3], [1, 2, 3, 4], [2, 3, 4, 5],

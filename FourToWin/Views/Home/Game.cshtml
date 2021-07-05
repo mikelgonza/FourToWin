@@ -2,80 +2,90 @@
     ViewData["Title"] = "Privacy Policy";
 }
 
-<br />
-<h1 id="GameTitle">4 to Win</h1>
-<hr/>
-<br/>
+<div id="Scene">
+    <br />
+    <h1 id="GameTitle">4 to Win</h1>
+    <hr />
+    <br />
 
-<div id="GameInfo">
-    <h4>Player: <span id="player"></span></h4>
-    <h3 id="Countdown"></h3>
-    <h5>Round: <span id="Round"></span></h5>
+    <div id="GameInfo">
+        <h4>Player: <span id="player"></span></h4>
+        <h3 id="Countdown"></h3>
+        <h5>Round: <span id="Round"></span></h5>
+    </div>
+
+    <div class="board">
+
+        <div class="col" id="column1">
+            <div class="sq fila5"></div>
+            <div class="sq fila4"></div>
+            <div class="sq fila3"></div>
+            <div class="sq fila2"></div>
+            <div class="sq fila1"></div>
+            <div class="sq fila0"></div>
+        </div>
+
+        <div class="col" id="column2">
+            <div class="sq fila1"></div>
+            <div class="sq fila2"></div>
+            <div class="sq fila3"></div>
+            <div class="sq fila4"></div>
+            <div class="sq fila5"></div>
+            <div class="sq fila6"></div>
+        </div>
+
+        <div class="col" id="column3">
+            <div class="sq fila1"></div>
+            <div class="sq fila2"></div>
+            <div class="sq fila3"></div>
+            <div class="sq fila4"></div>
+            <div class="sq fila5"></div>
+            <div class="sq fila6"></div>
+        </div>
+
+        <div class="col" id="column4">
+            <div class="sq fila1"></div>
+            <div class="sq fila2"></div>
+            <div class="sq fila2"></div>
+            <div class="sq fila2"></div>
+            <div class="sq fila2"></div>
+            <div class="sq fila2"></div>
+        </div>
+
+        <div class="col" id="column5">
+            <div class="sq fila1"></div>
+            <div class="sq fila2"></div>
+            <div class="sq fila3"></div>
+            <div class="sq fila4"></div>
+            <div class="sq fila5"></div>
+            <div class="sq fila6"></div>
+        </div>
+
+        <div class="col" id="column6">
+            <div class="sq fila1"></div>
+            <div class="sq fila2"></div>
+            <div class="sq fila3"></div>
+            <div class="sq fila4"></div>
+            <div class="sq fila5"></div>
+            <div class="sq fila6"></div>
+        </div>
+
+        <div class="col" id="column7">
+            <div class="sq fila1"></div>
+            <div class="sq fila2"></div>
+            <div class="sq fila3"></div>
+            <div class="sq fila4"></div>
+            <div class="sq fila5"></div>
+            <div class="sq fila6"></div>
+        </div>
+
+    </div>
+
 </div>
 
-<div class="board">
-
-    <div class="col" id="column1">
-        <div class="sq fila5"></div>
-        <div class="sq fila4"></div>
-        <div class="sq fila3"></div>
-        <div class="sq fila2"></div>
-        <div class="sq fila1"></div>
-        <div class="sq fila0"></div>
-    </div>
-
-    <div class="col" id="column2">
-        <div class="sq fila1"></div>
-        <div class="sq fila2"></div>
-        <div class="sq fila3"></div>
-        <div class="sq fila4"></div>
-        <div class="sq fila5"></div>
-        <div class="sq fila6"></div>
-    </div>
-
-    <div class="col" id="column3">
-        <div class="sq fila1"></div>
-        <div class="sq fila2"></div>
-        <div class="sq fila3"></div>
-        <div class="sq fila4"></div>
-        <div class="sq fila5"></div>
-        <div class="sq fila6"></div>
-    </div>
-
-    <div class="col" id="column4">
-        <div class="sq fila1"></div>
-        <div class="sq fila2"></div>
-        <div class="sq fila2"></div>
-        <div class="sq fila2"></div>
-        <div class="sq fila2"></div>
-        <div class="sq fila2"></div>
-    </div>
-
-    <div class="col" id="column5">
-        <div class="sq fila1"></div>
-        <div class="sq fila2"></div>
-        <div class="sq fila3"></div>
-        <div class="sq fila4"></div>
-        <div class="sq fila5"></div>
-        <div class="sq fila6"></div>
-    </div>
-
-    <div class="col" id="column6">
-        <div class="sq fila1"></div>
-        <div class="sq fila2"></div>
-        <div class="sq fila3"></div>
-        <div class="sq fila4"></div>
-        <div class="sq fila5"></div>
-        <div class="sq fila6"></div>
-    </div>
-
-    <div class="col" id="column7">
-        <div class="sq fila1"></div>
-        <div class="sq fila2"></div>
-        <div class="sq fila3"></div>
-        <div class="sq fila4"></div>
-        <div class="sq fila5"></div>
-        <div class="sq fila6"></div>
-    </div>
-
+<div id="VictoryPopUp">
+    <h4 id="WinnerMsg"></h4>
+    <button type="button" class="btnRematch" onclick="">Rematch</button>
+    <button type="button" class="btnClose" onclick="CloseResultPopUp()">Close</button>
 </div>
+
