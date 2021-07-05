@@ -1,3 +1,7 @@
+#Scene{
+    
+}
+
 #GameTitle{
     text-align:center;
 }
@@ -15,30 +19,70 @@
     color:darkorange;
 }
 
-.board{
-    height: 295px;
-    width: 350px;
-    border: 3px solid;
+.board {
+    height: auto;
+    width: 29rem;
     display: flex;
     margin: 2rem auto 2rem auto;
+    background-color: #444444;
+    box-shadow: 10px 10px 5px darkgrey;
 }
 .board .col {
     padding:0px;
     margin:0px;
 }
 
-.sq{
+.sq {
     height: 48px;
     width: 48px;
     border: 1px solid;
-    border-radius:50%;
+    border-radius: 50%;
+    margin: 0.7rem 0.4rem 0.7rem 0.4rem;
+    background-color:white;
 }
 
-.p1{
+.p1 {
+    background-color: #ED2020;
+}
+
+.p2 {
+    background-color: #3652EA;
+}
+
+#VictoryPopUp {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #f1f1f1;
+    max-width: 300px;
+    padding: 2rem;
+    background-color: white;
+    text-align:center;
+}
+
+#VictoryPopUp h3{
+     
+}
+
+.btnRematch {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.btnClose {
     background-color: red;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
 }
-
-.p2{
-    background-color: black;
-}
-
