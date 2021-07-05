@@ -14,6 +14,5 @@ namespace FourToWin.Data
             : base(options)
         {
         }
-        public DbSet<FourToWin.Models.Match> Match { get; set; }
     }
 }

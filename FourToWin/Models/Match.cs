@@ -16,10 +16,8 @@ namespace FourToWin.Models
         public string Winner { get; set; }
         public int NumRounds { get; set; }
 
-        [NotMapped]
         [ForeignKey("User1Id")]
         public AppUser User1 { get; set; }
-        [NotMapped]
         [ForeignKey("User2Id")]
         public AppUser User2 { get; set; }
 
