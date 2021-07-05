@@ -59,6 +59,11 @@ namespace FourToWin.Hubs
             await Clients.Group(group).SendAsync("ReceiveMessage", message);
         }
 
+        public async Task SendColumn(int column, string group)
+        {
+            await Clients.Group(group).SendAsync("ReceiveColumn", column);
+        }
+
         public async Task AddToGroup(string group)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, group);
