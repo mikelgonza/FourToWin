@@ -5,7 +5,7 @@ var connection = new signalR.HubConnectionBuilder()
 var lobby;
 var userPlayer;
 
-// JUEGO
+// GAME
 var player = "p1";
 
 var playerSpan = document.getElementById("CurPlayer")
@@ -228,67 +228,58 @@ connection.on("GetLobbyId", function (lobbyId) {
 
     document.getElementById("lobbyid").textContent = lobby;
     document.getElementById("status").textContent = "Waiting...";
-});
 
-connection.on("ReceiveColumn", function (column) {
+    connection.on("ReceiveColumn", function (column) {
 
-    play(column);
-});
+        play(column);
+    });
 
-connection.on("Ready", function () {
-    document.getElementById("status").textContent = "Ready";
+    connection.on("Ready", function () {
+        document.getElementById("status").textContent = "Ready";
 
-    // Arranca el juego
+        // Start game
 
-    countdown();
+        countdown();
 
-    columns[0].addEventListener("click", function () {
+        columns[0].addEventListener("click", function () {
+            if (player == userPlayer)
+                connection.invoke("SendColumn", 0, lobby).catch(err => console.error(err.toString()));
+        })
 
-            connection.invoke("SendColumn", 0, lobby).catch(err => console.error(err.toString()));
-    })
+        columns[1].addEventListener("click", function () {
+            if (player == userPlayer)
+                connection.invoke("SendColumn", 1, lobby).catch(err => console.error(err.toString()));
+        })
 
-    columns[1].addEventListener("click", function () {
+        columns[2].addEventListener("click", function () {
+            if (player == userPlayer)
+                connection.invoke("SendColumn", 2, lobby).catch(err => console.error(err.toString()));
+        })
 
-        connection.invoke("SendColumn", 1, lobby).catch(err => console.error(err.toString()));
-    })
+        columns[3].addEventListener("click", function () {
+            if (player == userPlayer)
+                connection.invoke("SendColumn", 3, lobby).catch(err => console.error(err.toString()));
+        })
 
-    columns[2].addEventListener("click", function () {
+        columns[4].addEventListener("click", function () {
+            if (player == userPlayer)
+                connection.invoke("SendColumn", 4, lobby).catch(err => console.error(err.toString()));
+        })
 
-        connection.invoke("SendColumn", 2, lobby).catch(err => console.error(err.toString()));
-    })
+        columns[5].addEventListener("click", function () {
+            if (player == userPlayer)
+                connection.invoke("SendColumn", 5, lobby).catch(err => console.error(err.toString()));
+        })
 
-    columns[3].addEventListener("click", function () {
+        columns[6].addEventListener("click", function () {
+            if (player == userPlayer)
+                connection.invoke("SendColumn", 6, lobby).catch(err => console.error(err.toString()));
+        })
+    });
 
-        connection.invoke("SendColumn", 3, lobby).catch(err => console.error(err.toString()));
-    })
-
-    columns[4].addEventListener("click", function () {
-
-        connection.invoke("SendColumn", 4, lobby).catch(err => console.error(err.toString()));
-    })
-
-    columns[5].addEventListener("click", function () {
-
-        connection.invoke("SendColumn", 5, lobby).catch(err => console.error(err.toString()));
-    })
-
-    columns[6].addEventListener("click", function () {
-
-        connection.invoke("SendColumn", 6, lobby).catch(err => console.error(err.toString()));
-    })
-
-    //for (i = 0; i < columns.length; i++) {
-    //    columns[i].addEventListener("click", function () {
-
-    //        console.log("SendColumn: " + i + " lobby:" + lobby)
-    //        connection.invoke("SendColumn", i, lobby).catch(err => console.error(err.toString()));
-    //    })
-    //}
-});
-
-connection.on("ReceiveMessage", function (userName, message) {
-    // mensajes chat
-});
+    connection.on("ReceiveMessage", function (userName, message) {
+        // mensajes chat
+    });
 
 
 
