@@ -1,7 +1,7 @@
 var player = "p1";
 
-var playerSpan = document.getElementById("player")
-playerSpan.innerHTML = "1"
+var playerSpan = document.getElementById("CurPlayer")
+playerSpan.innerHTML = "&nbsp1"
 playerSpan.style.color = "red"
 
 var round = 0
@@ -17,6 +17,25 @@ columns.forEach(c => {
     c.addEventListener("click", function () { play(squares /*numColumn*/) })
 })
 
+columns[0].addEventListener("mouseenter", function () { IluminateColumn(0) })
+columns[1].addEventListener("mouseenter", function () { IluminateColumn(1) })
+columns[2].addEventListener("mouseenter", function () { IluminateColumn(2) })
+columns[3].addEventListener("mouseenter", function () { IluminateColumn(3) })
+columns[4].addEventListener("mouseenter", function () { IluminateColumn(4) })
+columns[5].addEventListener("mouseenter", function () { IluminateColumn(5) })
+columns[6].addEventListener("mouseenter", function () { IluminateColumn(6) })
+
+columns[0].addEventListener("mouseleave", function () { RestoreColumn(0) })
+columns[1].addEventListener("mouseleave", function () { RestoreColumn(1) })
+columns[2].addEventListener("mouseleave", function () { RestoreColumn(2) })
+columns[3].addEventListener("mouseleave", function () { RestoreColumn(3) })
+columns[4].addEventListener("mouseleave", function () { RestoreColumn(4) })
+columns[5].addEventListener("mouseleave", function () { RestoreColumn(5) })
+columns[6].addEventListener("mouseleave", function () { RestoreColumn(6) })
+
+
+
+
 var time = 20
 var countdownDiv = document.getElementById('Countdown')
 countdownDiv.innerHTML = "GO!"
@@ -31,6 +50,10 @@ function play(squares/*numColumn*/) {
     //var squares = document.getElementById("column" + numColumn).querySelectorAll("sq")
 
     squares.forEach(square => {
+        if (square.classList.contains("iluminate" + player)) {
+            square.classList.remove("iluminate" + player)
+        }
+
         if (square.classList.contains("played")) { ocupadas += 1; }
     });
 
@@ -47,6 +70,34 @@ function play(squares/*numColumn*/) {
     }
 }
 
+function IluminateColumn(numColumn) {
+    let ocupadas = 0;
+    var squares = document.querySelectorAll(".col" + numColumn)
+    
+    squares.forEach(square => {
+        if (square.classList.contains("played")) { ocupadas += 1; }
+        else { square.classList.add("iluminate"+player) }
+    });
+
+    if (ocupadas < 6) {
+        squares[5 - ocupadas].classList.add("provisional"+player) 
+    }
+}
+
+function RestoreColumn(numColumn) {
+    let ocupadas = 0;
+    var squares = document.querySelectorAll(".col" + numColumn)
+
+    squares.forEach(square => {
+        if (square.classList.contains("iluminate" + player)) {
+            square.classList.remove("iluminate"+player)
+        }
+        if (square.classList.contains("provisional"+player)) {
+            square.classList.remove("provisional"+player)
+        }
+    });
+}
+
 
 function checkVictory() {
 
@@ -60,10 +111,10 @@ function checkVictory() {
             square2.classList.contains(player) &&
             square3.classList.contains(player) &&
             square4.classList.contains(player)) {
-            square1.style.backgroundColor = "goldenrod"
-            square2.style.backgroundColor = "goldenrod"
-            square3.style.backgroundColor = "goldenrod"
-            square4.style.backgroundColor = "goldenrod"
+            square1.classList.add("winnerSq")
+            square2.classList.add("winnerSq")
+            square3.classList.add("winnerSq")
+            square4.classList.add("winnerSq")
             winner = player
             setTimeout(function () { victory(winner) }, 400)
         }
@@ -81,20 +132,23 @@ function checkVictory() {
 }
 
 function changeTurn() {
+    
+    for (i = 0; i < columns.length; i++) {
+        RestoreColumn(i);
+    }
     if (player == "p1") {
         player = "p2"
-        playerSpan.innerHTML = "2"
+        playerSpan.innerHTML = "&nbsp2"
         playerSpan.style.color = "blue"
         countdown()
     }
     else {
         player = "p1"
-        playerSpan.innerHTML = "1"
+        playerSpan.innerHTML = "&nbsp1"
         playerSpan.style.color = "red"
         round += 1
         roundDiv.innerHTML = round
         countdown()
-
     }
 }
 
@@ -117,7 +171,7 @@ function countdown() {
 function changeCount() {
     if (time >= 0) {
         if (time == 20) {
-            countdownDiv.style.color="green"
+            countdownDiv.style.color = "#0EDF00"
             countdownDiv.innerHTML = "GO!"
         }
         else if (time == 0) {
@@ -143,9 +197,11 @@ function victory(winner) {
     document.getElementById("VictoryPopUp").style.display = "block";
     if (winner == "p1") {
         document.getElementById("WinnerMsg").style.color = "red"
+        document.getElementById("VictoryPopUp").style.borderColor = "red"
         document.getElementById("WinnerMsg").innerHTML = "Player 1 WINS!"
     } else if (winner == "p2") {
         document.getElementById("WinnerMsg").style.color = "blue"
+        document.getElementById("VictoryPopUp").style.borderColor = "blue"
         document.getElementById("WinnerMsg").innerHTML = "Player 2 WINS!"
     }
     else if(winner == "none") {

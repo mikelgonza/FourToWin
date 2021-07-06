@@ -8,8 +8,8 @@ var userPlayer;
 // JUEGO
 var player = "p1";
 
-var playerSpan = document.getElementById("player")
-playerSpan.innerHTML = "1"
+var playerSpan = document.getElementById("CurPlayer")
+playerSpan.innerHTML = "&nbsp1"
 playerSpan.style.color = "red"
 
 var round = 0
@@ -60,10 +60,10 @@ function checkVictory() {
             square2.classList.contains(player) &&
             square3.classList.contains(player) &&
             square4.classList.contains(player)) {
-            square1.style.backgroundColor = "goldenrod"
-            square2.style.backgroundColor = "goldenrod"
-            square3.style.backgroundColor = "goldenrod"
-            square4.style.backgroundColor = "goldenrod"
+            square1.classList.add("winnerSq")
+            square2.classList.add("winnerSq")
+            square3.classList.add("winnerSq")
+            square4.classList.add("winnerSq")
             winner = player
             setTimeout(function () { victory(winner) }, 400)
         }
@@ -83,13 +83,13 @@ function checkVictory() {
 function changeTurn() {
     if (player == "p1") {
         player = "p2"
-        playerSpan.innerHTML = "2"
+        playerSpan.innerHTML = "&nbsp2"
         playerSpan.style.color = "blue"
         countdown()
     }
     else {
         player = "p1"
-        playerSpan.innerHTML = "1"
+        playerSpan.innerHTML = "&nbsp1"
         playerSpan.style.color = "red"
         round += 1
         roundDiv.innerHTML = round
@@ -117,7 +117,7 @@ function countdown() {
 function changeCount() {
     if (time >= 0) {
         if (time == 20) {
-            countdownDiv.style.color = "green"
+            countdownDiv.style.color = "#0EDF00"
             countdownDiv.innerHTML = "GO!"
         }
         else if (time == 0) {
@@ -143,9 +143,11 @@ function victory(winner) {
     document.getElementById("VictoryPopUp").style.display = "block";
     if (winner == "p1") {
         document.getElementById("WinnerMsg").style.color = "red"
+        document.getElementById("VictoryPopUp").style.borderColor = "red"
         document.getElementById("WinnerMsg").innerHTML = "Player 1 WINS!"
     } else if (winner == "p2") {
         document.getElementById("WinnerMsg").style.color = "blue"
+        document.getElementById("VictoryPopUp").style.borderColor = "blue"
         document.getElementById("WinnerMsg").innerHTML = "Player 2 WINS!"
     }
     else if (winner == "none") {
