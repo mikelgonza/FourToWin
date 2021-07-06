@@ -8,6 +8,7 @@ namespace FourToWin.Models
 {
     public class AppUser : IdentityUser
     {
+        public string Nickname { get; set; }
         public string UserImage { get; set; }
         public List<Match> MatchesU1 { get; set; }
         public List<Match> MatchesU2 { get; set; }
