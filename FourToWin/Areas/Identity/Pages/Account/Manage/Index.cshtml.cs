@@ -33,8 +33,9 @@ namespace FourToWin.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
-            [Display(Name = "User Name")]
-            public string UserName { get; set; }
+            [PersonalData]
+            [Display(Name = "Nickname")]
+            public string Nickname { get; set; }
 
             [Phone]
             [Display(Name = "Phone number")]
@@ -46,9 +47,11 @@ namespace FourToWin.Areas.Identity.Pages.Account.Manage
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
+            Username = userName;
+
             Input = new InputModel
             {
-                UserName = userName,
+                Nickname = user.Nickname,
                 PhoneNumber = phoneNumber
             };
         }
@@ -79,13 +82,13 @@ namespace FourToWin.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
-            var userName = await _userManager.GetUserNameAsync(user);
-            if (Input.UserName != userName)
+            if (Input.Nickname != user.Nickname)
             {
-                var setNameResult = await _userManager.SetUserNameAsync(user, Input.UserName);
-                if (!setNameResult.Succeeded)
+                user.Nickname = Input.Nickname;
+                var setNicknameResult = await _userManager.UpdateAsync(user);
+                if (!setNicknameResult.Succeeded)
                 {
-                    StatusMessage = "Unexpected error when trying to set user name.";
+                    StatusMessage = "Unexpected error when trying to set Nickname.";
                     return RedirectToPage();
                 }
             }

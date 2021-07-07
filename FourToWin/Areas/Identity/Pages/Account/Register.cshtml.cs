@@ -47,14 +47,14 @@ namespace FourToWin.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [PersonalData]
-            [Display(Name = "User Name")]
-            public string UserName { get; set; }
-
-            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+
+            [Required]
+            [PersonalData]
+            [Display(Name = "Nickname")]
+            public string Nickname { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -80,7 +80,10 @@ namespace FourToWin.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new AppUser { UserName = Input.UserName, Email = Input.Email };
+                var user = new AppUser { 
+                    UserName = Input.Email,
+                    Nickname = Input.Nickname,
+                    Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
