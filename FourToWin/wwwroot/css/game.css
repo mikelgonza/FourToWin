@@ -163,7 +163,7 @@ body {
 .btnRematch {
     background: none;
     border: 0.3rem solid transparent;
-    color: forestgreen;
+    color: forest#2BE019;
     padding: 12px 16px;
     cursor: pointer;
     width: 80%;
@@ -173,9 +173,9 @@ body {
 }
 
     .btnRematch:hover {
-        border: 0.3rem solid forestgreen;
+        border: 0.3rem solid forest#2BE019;
         border-radius: 5%;
-        box-shadow: 0 0 .20rem #fff, inset 0 0 .20rem #fff, 0 0 0.16rem forestgreen, 0 0 1.2rem forestgreen, inset 0 0 0.4rem forestgreen;
+        box-shadow: 0 0 .20rem #fff, inset 0 0 .20rem #fff, 0 0 0.16rem forest#2BE019, 0 0 1.2rem forest#2BE019, inset 0 0 0.4rem forest#2BE019;
     }
 
 .btnClose {
@@ -195,4 +195,130 @@ body {
         border: 0.3rem solid red;
         border-radius: 5%;
         box-shadow: 0 0 .20rem #fff, inset 0 0 .20rem #fff, 0 0 0.16rem red, 0 0 1.2rem red, inset 0 0 0.4rem red;
+    }
+
+#Menu {
+    position: fixed;
+    display: flex;
+    flex-flow: column;
+    align-content: space-between;
+    top: 50%;
+    left: 50%;
+    background: none;
+    transform: translate(-50%, -50%);
+    height: fit-content;
+    max-width: 500px;
+    padding: 3rem 4rem 3rem 4rem;
+    text-align: center;
+    box-sizing: content-box;
+    border-radius: 10%; 
+}
+
+.MenuBlue {
+    border: 0.4rem solid #006ad1;
+    box-shadow: 0 0 0.1rem #fff, inset 0 0 0.1rem #fff, 0 0 0.08rem darkturquoise, 0 0 0.8rem darkturquoise, inset 0 0 0.2rem darkturquoise;
+    animation: flicker2 4s infinite alternate;
+}
+
+@keyframes flicker2 {
+
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        box-shadow: 0 0 .17rem #fff, inset 0 0 .17rem #fff, 0 0 0.6rem aqua, 0 0 2.5rem aqua, inset 0 0 1rem aqua
+    }
+
+    20%, 24%, 55% {
+        box-shadow: none;
+    }
+}
+
+    #Menu h3 {
+        font-size: 3rem;
+    }
+
+#MenuLocal {
+    margin: 1rem 0 1rem 0;
+    color: darkmagenta;
+}
+
+    #MenuLocal:hover {
+        color: deeppink;
+        text-shadow: 0.1rem 0.1rem 0.3rem #ff8cda, 0.2rem 0.2rem 1rem #ff8cda, 0 0 2rem, 0 0 4rem deeppink, 0 0 6rem deeppink, 0 0 8rem deeppink, 0 0 10rem;
+    }
+
+#MenuOnline {
+    margin: 1rem 0 1rem 0;
+    color: #1a9e0c;
+}
+
+    #MenuOnline:hover {
+        color: #2BE019;
+        text-shadow: 0.1rem 0.1rem 0.3rem #8aff77, 0.2rem 0.2rem 1rem #8aff77, 0 0 2rem, 0 0 4rem #2be019, 0 0 6rem #2be019, 0 0 8rem #2be019, 0 0 10rem;
+    }
+
+#MenuStats {
+    margin: 1rem 0 1rem 0;
+    color: #bea100;
+}
+
+    #MenuStats:hover {
+        color: yellow;
+        text-shadow: 0.1rem 0.1rem 0.3rem #fffb00, 0.2rem 0.2rem 0.8rem #fffb00, 0 0 2rem, 0 0 4rem gold, 0 0 6rem gold, 0 0 8rem gold, 0 0 10rem;
+    }
+
+#OnlineMenu {
+    display: none;
+}
+
+.MenuGreen {
+    border: 0.4rem solid #33d823;
+    box-shadow: 0 0 0.1rem #fff, inset 0 0 0.1rem #fff, 0 0 0.08rem #2BE019, 0 0 0.8rem #2BE019, inset 0 0 0.2rem #2BE019;
+    animation: flicker3 4s infinite alternate;
+}
+
+@keyframes flicker3 {
+
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        box-shadow: 0 0 .17rem #fff, inset 0 0 .17rem #fff, 0 0 0.6rem #2BE019, 0 0 2.5rem #2BE019, inset 0 0 1rem #2BE019
+    }
+
+    20%, 24%, 55% {
+        box-shadow: none;
+    }
+}
+
+#MenuQuick {
+    color: #008083;
+}
+
+    #MenuQuick:hover {
+        color: #00d6db;
+        text-shadow: 0.1rem 0.1rem 0.3rem #91fcff, 0.2rem 0.2rem 0.8rem #91fcff, 0 0 2rem, 0 0 4rem #37faff, 0 0 6rem #37faff, 0 0 8rem #37faff, 0 0 10rem;
+    }
+
+#MenuCreate {
+    color: #b26200;
+}
+
+    #MenuCreate:hover {
+        color: #ff9000;
+        text-shadow: 0.1rem 0.1rem 0.3rem #ffce90, 0.2rem 0.2rem 0.8rem #ffce90, 0 0 2rem, 0 0 4rem #ffaf4c, 0 0 6rem #ffaf4c, 0 0 8rem #ffaf4c, 0 0 10rem;
+    }
+
+#MenuJoin {
+    color: #7f0060;
+}
+
+    #MenuJoin:hover {
+        color: #e100aa;
+        text-shadow: 0.1rem 0.1rem 0.3rem #ff8ce3, 0.2rem 0.2rem 0.8rem #ff8ce3, 0 0 2rem, 0 0 4rem #ff30cc, 0 0 6rem #ff30cc, 0 0 8rem #ff30cc, 0 0 10rem;
+    }
+
+#BackToMenu {
+    margin: 2rem 0 1rem 0;
+    color: #dd0000;
+}
+
+    #BackToMenu:hover {
+        color: #ff2121;
+        text-shadow: 0.1rem 0.1rem 0.3rem #ff9a9a, 0.2rem 0.2rem 1rem #ff9a9a, 0 0 2rem, 0 0 4rem #ff6969, 0 0 6rem #ff6969, 0 0 8rem #ff6969, 0 0 10rem;
     }
