@@ -13,6 +13,10 @@ body {
     
 }
 
+#lobbyid{
+    color:white;
+}
+
 #GameTitle {
     text-align: center;
     color: white;
