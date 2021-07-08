@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using FourToWin.Data;
 using FourToWin.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace FourToWin.Controllers
 {
@@ -15,10 +16,12 @@ namespace FourToWin.Controllers
     public class MatchesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<AppUser> _userManager;
 
-        public MatchesController(ApplicationDbContext context)
+        public MatchesController(ApplicationDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public IActionResult Match(string lobbyAction)
@@ -36,6 +39,67 @@ namespace FourToWin.Controllers
             }
 
             return View(match);
+        }
+
+        public async Task<IActionResult> Statistics(string id)
+        {
+            // Won
+            List<Match> wonU1 = await _context.Match.Where(x => x.User1Id == id && x.Winner == "1").ToListAsync();
+            List<Match> wonU2 = await _context.Match.Where(x => x.User2Id == id && x.Winner == "2").ToListAsync();
+            ViewData["won"] = wonU1.Count + wonU2.Count;
+
+            // Lost
+            List<Match> lostU1 = await _context.Match.Where(x => x.User1Id == id && x.Winner == "2").ToListAsync();
+            List<Match> lostU2 = await _context.Match.Where(x => x.User2Id == id && x.Winner == "1").ToListAsync();
+            ViewData["lost"] = lostU1.Count + lostU2.Count;
+
+            // Draw
+            List<Match> drawU1 = await _context.Match.Where(x => x.User1Id == id && x.Winner == "x").ToListAsync();
+            List<Match> drawU2 = await _context.Match.Where(x => x.User2Id == id && x.Winner == "x").ToListAsync();
+            ViewData["draw"] = drawU1.Count + drawU2.Count;
+
+            // Total
+            List<Match> totalU1 = await _context.Match.Where(x => x.User1Id == id).ToListAsync();
+            List<Match> totalU2 = await _context.Match.Where(x => x.User2Id == id).ToListAsync();
+            ViewData["total"] = totalU1.Count + totalU2.Count;
+
+            // Record of movements
+            int nU1 = 21;
+            int nU2 = 21;
+            int n;
+
+            foreach (var item in wonU1)
+            {
+                if (item.NumRounds < nU1) nU1 = item.NumRounds;
+            }
+
+            foreach (var item in wonU2)
+            {
+                if (item.NumRounds < nU2) nU2 = item.NumRounds;
+            }
+
+            if (nU1 < nU2)
+                n = nU1;
+            else
+                n = nU2;
+
+            ViewData["record"] = n;
+
+            return View();
+        }
+
+        public async Task<IActionResult> Historical()
+        {
+            string id = _userManager.GetUserId(User);
+
+            // Matches played
+            List<Match> playedU1 = await _context.Match.Where(x => x.User1Id == id).ToListAsync();
+            List<Match> playedU2 = await _context.Match.Where(x => x.User2Id == id).ToListAsync();
+
+            ViewData["playedU1"] = playedU1;
+            ViewData["playedU2"] = playedU2;
+
+            return View();
         }
 
         // GET: Matches
