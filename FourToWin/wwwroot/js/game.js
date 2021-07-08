@@ -86,7 +86,7 @@ function animateFall(squares, ocupadas) {
         squares[5 - ocupadas].classList.remove("provisional" + player);
     }
     let libres = 5 - ocupadas;
-    for (let i = 0, x = 100, y = 300; i < libres; i++, x+=100, y += 100) {
+    for (let i = 0, x = 100, y = 250; i < libres; i++, x+=100, y += 100) {
         setTimeout(function () { squares[i].classList.add("provisional" + player) }, x);
         setTimeout(function () { squares[i].classList.remove("provisional" + player) }, y);
     }
