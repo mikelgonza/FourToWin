@@ -281,8 +281,36 @@ connection.on("Ready", function () {
 
 });
 
-connection.on("ReceiveMessage", function (userName, message) {
-    // mensajes chat
+connection.on("ReceiveMessage", function (message, user) {
+
+    //var hora = new Date().toLocaleTimeString();
+    let p = document.createElement("p");
+    let chat = document.getElementById("chatbox");
+    chat.appendChild(p);
+
+    if (user === userNickname) {
+        p.className = "chatp1";
+        p.textContent = `${message}`;
+    }
+    else {
+        p.className = "chatp2";
+        p.innerHTML = `<b>${user}:</b><br>${message}`
+        //p.textContent = `<b>${user}:</b><br>${message}`;
+    }
+
+    // autoscroll
+    chat.scrollTop = chat.scrollHeight;
+});
+
+document.getElementById("submitmsg").addEventListener("click", function (event) {
+
+    let message = document.getElementById("usermsg").value;
+    if (message != "") {
+        connection.invoke("SendMessageToGroup", message, lobby, userNickname).catch(err => console.error(err.toString()));
+        document.getElementById("usermsg").value = "";
+    }
+
+    event.preventDefault();
 });
 
 

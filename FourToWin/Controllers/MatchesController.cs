@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FourToWin.Data;
 using FourToWin.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FourToWin.Controllers
 {
+    [Authorize]
     public class MatchesController : Controller
     {
         private readonly ApplicationDbContext _context;

@@ -54,9 +54,9 @@ namespace FourToWin.Hubs
             }
         }
 
-        public async Task SendMessageToGroup(string message, string group)
+        public async Task SendMessageToGroup(string message, string group, string user)
         {
-            await Clients.Group(group).SendAsync("ReceiveMessage", message);
+            await Clients.Group(group).SendAsync("ReceiveMessage", message, user);
         }
 
         public async Task SendColumn(int column, string group)
