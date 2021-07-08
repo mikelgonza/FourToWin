@@ -35,7 +35,6 @@ columns[6].addEventListener("mouseleave", function () { RestoreColumn(6) })
 
 
 
-
 var time = 20
 var countdownDiv = document.getElementById('Countdown')
 countdownDiv.innerHTML = "GO!"
@@ -58,17 +57,36 @@ function play(squares/*numColumn*/) {
     });
 
     if (ocupadas < 6) {
-        selectedRow = 5 - ocupadas
-        selectedSquare = squares[selectedRow]
 
-        selectedSquare.classList.add("played")
-        selectedSquare.classList.add(player)
+        animateFall(squares, ocupadas)
 
-        checkVictory()
+        var secs = (5-ocupadas) * 175
 
-        changeTurn()
+        setTimeout(function () {
+            squares[5 - ocupadas].classList.add("played")
+            squares[5 - ocupadas].classList.add(player)
+            squares[5 - ocupadas].classList.add("glow-"+player)
+
+            checkVictory()
+
+            changeTurn()
+        }, secs)
+        
     }
 }
+
+
+function animateFall(squares, ocupadas) {
+    if (squares[5 - ocupadas].classList.contains(("provisional" + player))) {
+        squares[5 - ocupadas].classList.remove("provisional" + player);
+    }
+    let libres = 5 - ocupadas;
+    for (let i = 0, x = 100, y = 320; i < libres; i++, x+=150, y += 150) {
+        setTimeout(function () { squares[i].classList.add("provisional" + player) }, x);
+        setTimeout(function () { squares[i].classList.remove("provisional" + player) }, y);
+    }
+}
+
 
 function IluminateColumn(numColumn) {
     let ocupadas = 0;
@@ -116,7 +134,7 @@ function checkVictory() {
             square3.classList.add("winnerSq")
             square4.classList.add("winnerSq")
             winner = player
-            setTimeout(function () { victory(winner) }, 400)
+            setTimeout(function () { victory(winner) }, 1500)
         }
     }
 
@@ -193,7 +211,7 @@ function changeCount() {
 }
 
 function victory(winner) {
-    document.getElementById("Scene").style.filter = "blur(5px)";
+    document.getElementById("Scene").style.filter = "blur(7px)";
     document.getElementById("VictoryPopUp").style.display = "block";
     if (winner == "p1") {
         document.getElementById("WinnerMsg").style.color = "red"
@@ -213,7 +231,6 @@ function CloseResultPopUp() {
     document.getElementById("Scene").style.filter = "none";
     document.getElementById("VictoryPopUp").style.display = "none";
 }
-
 
 const winningPositions = [
     [0, 1, 2, 3], [1, 2, 3, 4], [2, 3, 4, 5],

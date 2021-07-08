@@ -163,7 +163,7 @@ body {
 .btnRematch {
     background: none;
     border: 0.3rem solid transparent;
-    color: forest#2BE019;
+    color: #219d15;
     padding: 12px 16px;
     cursor: pointer;
     width: 80%;
@@ -173,9 +173,9 @@ body {
 }
 
     .btnRematch:hover {
-        border: 0.3rem solid forest#2BE019;
+        border: 0.3rem solid #1ca50f;
         border-radius: 5%;
-        box-shadow: 0 0 .20rem #fff, inset 0 0 .20rem #fff, 0 0 0.16rem forest#2BE019, 0 0 1.2rem forest#2BE019, inset 0 0 0.4rem forest#2BE019;
+        box-shadow: 0 0 .20rem #fff, inset 0 0 .20rem #fff, 0 0 0.16rem #2BE019, 0 0 1.2rem #2BE019, inset 0 0 0.4rem #2BE019;
     }
 
 .btnClose {
@@ -192,9 +192,9 @@ body {
 }
 
     .btnClose:hover {
-        border: 0.3rem solid red;
+        border: 0.3rem solid #ff1111;
         border-radius: 5%;
-        box-shadow: 0 0 .20rem #fff, inset 0 0 .20rem #fff, 0 0 0.16rem red, 0 0 1.2rem red, inset 0 0 0.4rem red;
+        box-shadow: 0 0 .20rem #fff, inset 0 0 .20rem #fff, 0 0 0.16rem #ff1111, 0 0 1.2rem #ff1111, inset 0 0 0.4rem #ff1111;
     }
 
 #Menu {
@@ -322,3 +322,34 @@ body {
         color: #ff2121;
         text-shadow: 0.1rem 0.1rem 0.3rem #ff9a9a, 0.2rem 0.2rem 1rem #ff9a9a, 0 0 2rem, 0 0 4rem #ff6969, 0 0 6rem #ff6969, 0 0 8rem #ff6969, 0 0 10rem;
     }
+
+.glow-p1 {
+    animation: glowRed 0.9s ease-in-out;
+}
+
+.glow-p2 {
+    animation: glowBlue 0.9s ease-in-out;
+}
+
+
+@keyframes glowRed {
+
+    0%, 100% {
+        box-shadow: 0 0 0.1rem #fff, inset 0 0 0.1rem #fff, 0 0 0.08rem #ff2d2d, 0 0 0.6rem #ff2d2d, inset 0 0 0.2rem #ff2d2d;
+    }
+
+    70% {
+        box-shadow: 0 0 .17rem #fff, inset 0 0 .17rem #fff, 0 0 0.6rem #ff8b8b, 0 0 2.5rem #ff8b8b, inset 0 0 1rem #ff8b8b;
+    }
+}
+
+@keyframes glowBlue {
+
+    0%, 100% {
+        box-shadow: 0 0 0.1rem #fff, inset 0 0 0.1rem #fff, 0 0 0.08rem #c3c3c3, 0 0 0.6rem #c3c3c3, inset 0 0 0.2rem #c3c3c3;
+    }
+
+    70% {
+        box-shadow: 0 0 .17rem #fff, inset 0 0 .17rem #fff, 0 0 0.6rem #ffffff, 0 0 2.5rem #ffffff, inset 0 0 1rem #ffffff;
+    }
+}
