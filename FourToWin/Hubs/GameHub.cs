@@ -10,21 +10,23 @@ namespace FourToWin.Hubs
     {
         string lobby = string.Empty;
 
-        public async void CreateGame()
+        public async void CreateGame(string userId, string userNickname)
         {
             string lobbyId = GenerateLobbyId();
             string player = "p1";
             await AddToGroup(lobbyId);
             await Clients.Caller.SendAsync("GetPlayerNum", player);
             await Clients.Caller.SendAsync("GetLobbyId", lobbyId);
+            await Clients.All.SendAsync("GetUser1", userId, userNickname);
         }
 
-        public async void JoinGame(string lobbyId)
+        public async void JoinGame(string lobbyId, string userId, string userNickname)
         {
             string player = "p2";
             await AddToGroup(lobbyId);
             await Clients.Caller.SendAsync("GetPlayerNum", player);
             await Clients.Caller.SendAsync("GetLobbyId", lobbyId);
+            await Clients.All.SendAsync("GetUser2", userId, userNickname);
             await Clients.Group(lobbyId).SendAsync("Ready");
         }
 

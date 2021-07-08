@@ -143,22 +143,29 @@ else if (Model == "join")
 </div>
 
 
-
-<script>
-    var input = document.getElementById("usermsg");
-    input.addEventListener("keyup", function (event) {
-        if (event.keyCode === 13) {
-            event.preventDefault();
-            document.getElementById("submitmsg").click();
-        }
-    });
-</script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 
 <script>
     var lobbyAction = "@Model";
     var userNickname = "@user.Nickname";
     var userId = "@user.Id";
+
+    function SendToDatabase() {
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("SaveMatchData", "Matches")',
+            data: {
+                User1Id: user1Id,
+                User2Id: user2Id,
+                Winner: matchWinner,
+                NumRounds: round
+            },
+            ajaxasync: true,
+        });
+    }
 </script>
+
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/match.js"></script>
 

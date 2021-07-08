@@ -26,6 +26,18 @@ namespace FourToWin.Controllers
             return View("Match", lobbyAction);
         }
 
+        public async Task<IActionResult> SaveMatchData([Bind("Id,User1Id,User2Id,Winner,NumRounds")] Match match)
+        {
+
+            if (ModelState.IsValid)
+            {
+                _context.Add(match);
+                await _context.SaveChangesAsync();
+            }
+
+            return View(match);
+        }
+
         // GET: Matches
         public async Task<IActionResult> Index()
         {
