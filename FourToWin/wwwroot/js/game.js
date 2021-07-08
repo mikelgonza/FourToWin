@@ -65,7 +65,7 @@ function play(squares/*numColumn*/) {
 
         animateFall(squares, ocupadas)
 
-        var secs = (5-ocupadas) * 175
+        var secs = (5-ocupadas) * 125
 
         setTimeout(function () {
             squares[5 - ocupadas].classList.add("played")
@@ -86,7 +86,7 @@ function animateFall(squares, ocupadas) {
         squares[5 - ocupadas].classList.remove("provisional" + player);
     }
     let libres = 5 - ocupadas;
-    for (let i = 0, x = 100, y = 320; i < libres; i++, x+=150, y += 150) {
+    for (let i = 0, x = 100, y = 300; i < libres; i++, x+=100, y += 100) {
         setTimeout(function () { squares[i].classList.add("provisional" + player) }, x);
         setTimeout(function () { squares[i].classList.remove("provisional" + player) }, y);
     }
@@ -404,9 +404,6 @@ function comprobarIzquierda(cuadrosCol, selectedRow) {
         }
     }
 } */
-
-
-
 
 /* function MapSquares(cuadrosCol, selectedRow) {
     identifyCols(cuadrosCol)
