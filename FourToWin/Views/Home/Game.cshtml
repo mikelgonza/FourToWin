@@ -79,14 +79,15 @@
             <div class="sq col6"></div>
             <div class="sq col6"></div>
         </div>
+
     </div>
 
 </div>
 
 <div id="VictoryPopUp">
     <h4 id="WinnerMsg"></h4>
-    <button type="button" class="btnRematch" onclick="">Rematch</button>
-    <button type="button" class="btnClose" onclick="CloseResultPopUp()">Close</button>
+    <button class="btnRematch"><a asp-area="" asp-controller="Home" asp-action="Game">Rematch</a></button>
+    <button class="btnClose"><a asp-area="" asp-controller="Home" asp-action="Index">Close</a></button>
 </div>
 
 <script src="~/js/game.js"></script>

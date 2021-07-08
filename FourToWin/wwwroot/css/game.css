@@ -162,36 +162,48 @@ body {
 
 .btnRematch {
     background: none;
-    border: 0.3rem solid transparent;
-    color: #219d15;
-    padding: 12px 16px;
-    cursor: pointer;
-    width: 80%;
+    border: none;
+    box-sizing: border-box;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    box-sizing: border-box;
 }
 
-    .btnRematch:hover {
-        border: 0.3rem solid #1ca50f;
-        border-radius: 5%;
-        box-shadow: 0 0 .20rem #fff, inset 0 0 .20rem #fff, 0 0 0.16rem #2BE019, 0 0 1.2rem #2BE019, inset 0 0 0.4rem #2BE019;
+    .btnRematch a {
+        border: 0.3rem solid transparent;
+        padding: 12px 16px;
+        cursor: pointer;
+        width: 80%;
+        text-decoration: none;
+        color: #219d15;
     }
 
+        .btnRematch a:hover {
+            text-decoration: none;
+            border: 0.3rem solid #1ca50f;
+            border-radius: 5%;
+            box-shadow: 0 0 .20rem #fff, inset 0 0 .20rem #fff, 0 0 0.16rem #2BE019, 0 0 1.2rem #2BE019, inset 0 0 0.4rem #2BE019;
+        }
+
 .btnClose {
-    font-style: normal;
-    color: red;
-    padding: 12px 16px;
     background: none;
-    border: 0.3rem solid transparent;
-    cursor: pointer;
-    width: 80%;
-    margin-bottom: 10px;
-    opacity: 0.8;
+    border: none;
     box-sizing: border-box;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
-    .btnClose:hover {
+    .btnClose a {
+        border: 0.3rem solid transparent;
+        padding: 12px 16px;
+
+        cursor: pointer;
+        width: 80%;
+        text-decoration: none;
+        color: red;
+    }
+
+    .btnClose a:hover {
+        text-decoration: none;
         border: 0.3rem solid #ff1111;
         border-radius: 5%;
         box-shadow: 0 0 .20rem #fff, inset 0 0 .20rem #fff, 0 0 0.16rem #ff1111, 0 0 1.2rem #ff1111, inset 0 0 0.4rem #ff1111;
@@ -351,5 +363,21 @@ body {
 
     70% {
         box-shadow: 0 0 .17rem #fff, inset 0 0 .17rem #fff, 0 0 0.6rem #ffffff, 0 0 2.5rem #ffffff, inset 0 0 1rem #ffffff;
+    }
+}
+
+.glowWinner {
+    animation: glowWinner 0.9s ease-in-out;
+}
+
+
+@keyframes glowWinner {
+
+    0%, 100% {
+        box-shadow: 0 0 0.1rem #fff, inset 0 0 0.1rem #fff, 0 0 0.08rem gold, 0 0 0.6rem gold, inset 0 0 0.2rem gold;
+    }
+
+    70% {
+        box-shadow: 0 0 .37rem #fff, inset 0 0 .37rem #fff, 0 0 3.6rem white, 0 0 6.5rem white, inset 0 0 4rem white;
     }
 }

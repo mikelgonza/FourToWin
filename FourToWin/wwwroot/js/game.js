@@ -1,12 +1,16 @@
 var player = "p1";
 
 var playerSpan = document.getElementById("CurPlayer")
-playerSpan.innerHTML = "&nbsp1"
-playerSpan.style.color = "red"
+if (document.getElementById("CurPlayer")) {
+    playerSpan.innerHTML = "&nbsp1"
+    playerSpan.style.color = "red"
+}
 
 var round = 0
 var roundDiv = document.getElementById("Round")
-roundDiv.innerHTML = 0
+if (roundDiv = document.getElementById("Round")) {
+    roundDiv.innerHTML = 0
+}
 
 var allSquares = document.querySelectorAll(".sq")
 var columns = document.querySelectorAll(".col")
@@ -37,7 +41,9 @@ columns[6].addEventListener("mouseleave", function () { RestoreColumn(6) })
 
 var time = 20
 var countdownDiv = document.getElementById('Countdown')
-countdownDiv.innerHTML = "GO!"
+if (countdownDiv = document.getElementById('Countdown')) {
+    countdownDiv.innerHTML = "GO!"
+}
 
 var winner
 
@@ -45,7 +51,6 @@ countdown()
 
 function play(squares/*numColumn*/) {
     let ocupadas = 0;
-
     //var squares = document.getElementById("column" + numColumn).querySelectorAll("sq")
 
     squares.forEach(square => {
@@ -87,7 +92,6 @@ function animateFall(squares, ocupadas) {
     }
 }
 
-
 function IluminateColumn(numColumn) {
     let ocupadas = 0;
     var squares = document.querySelectorAll(".col" + numColumn)
@@ -116,7 +120,6 @@ function RestoreColumn(numColumn) {
     });
 }
 
-
 function checkVictory() {
 
     for (i = 0; i < winningPositions.length; i++) {
@@ -129,12 +132,17 @@ function checkVictory() {
             square2.classList.contains(player) &&
             square3.classList.contains(player) &&
             square4.classList.contains(player)) {
-            square1.classList.add("winnerSq")
-            square2.classList.add("winnerSq")
-            square3.classList.add("winnerSq")
-            square4.classList.add("winnerSq")
+            setTimeout(function () { square4.classList.add("winnerSq") }, 100)
+            setTimeout(function () { square4.classList.add("glowWinner") }, 100)
+            setTimeout(function () { square3.classList.add("winnerSq") }, 290)
+            setTimeout(function () { square3.classList.add("glowWinner") }, 290)
+            setTimeout(function () { square2.classList.add("winnerSq") }, 370)
+            setTimeout(function () { square2.classList.add("glowWinner") }, 370)
+            setTimeout(function () { square1.classList.add("winnerSq") }, 450)
+            setTimeout(function () { square1.classList.add("glowWinner") }, 450)
             winner = player
             setTimeout(function () { victory(winner) }, 1500)
+            return
         }
     }
 
@@ -150,7 +158,6 @@ function checkVictory() {
 }
 
 function changeTurn() {
-    
     for (i = 0; i < columns.length; i++) {
         RestoreColumn(i);
     }
@@ -228,8 +235,8 @@ function victory(winner) {
 }
 
 function CloseResultPopUp() {
-    document.getElementById("Scene").style.filter = "none";
-    document.getElementById("VictoryPopUp").style.display = "none";
+    //document.getElementById("Scene").style.filter = "none";
+    //document.getElementById("VictoryPopUp").style.display = "none";
 }
 
 const winningPositions = [
@@ -262,7 +269,6 @@ const winningPositions = [
     [17, 22, 27, 32], [22, 27, 32, 37],
     [23, 28, 33, 38]
 ];
-
 
 
 /* var leftCol
