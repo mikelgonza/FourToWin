@@ -132,14 +132,14 @@ function checkVictory() {
             square2.classList.contains(player) &&
             square3.classList.contains(player) &&
             square4.classList.contains(player)) {
-            setTimeout(function () { square4.classList.add("winnerSq") }, 100)
-            setTimeout(function () { square4.classList.add("glowWinner") }, 100)
-            setTimeout(function () { square3.classList.add("winnerSq") }, 290)
-            setTimeout(function () { square3.classList.add("glowWinner") }, 290)
-            setTimeout(function () { square2.classList.add("winnerSq") }, 370)
-            setTimeout(function () { square2.classList.add("glowWinner") }, 370)
-            setTimeout(function () { square1.classList.add("winnerSq") }, 450)
-            setTimeout(function () { square1.classList.add("glowWinner") }, 450)
+            setTimeout(function () { square1.classList.add("winnerSq") }, 100)
+            setTimeout(function () { square1.classList.add("glowWinner") }, 100)
+            setTimeout(function () { square2.classList.add("winnerSq") }, 290)
+            setTimeout(function () { square2.classList.add("glowWinner") }, 290)
+            setTimeout(function () { square3.classList.add("winnerSq") }, 370)
+            setTimeout(function () { square3.classList.add("glowWinner") }, 370)
+            setTimeout(function () { square4.classList.add("winnerSq") }, 450)
+            setTimeout(function () { square4.classList.add("glowWinner") }, 450)
             winner = player
             setTimeout(function () { victory(winner) }, 1500)
             return
