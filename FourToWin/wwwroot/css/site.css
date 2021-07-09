@@ -64,6 +64,25 @@ body {
 }
 
 /*for tab control*/
+
+div.login-logout-tab {
+    background-color: #282828;
+    color: white;
+}
+
+.card-header .nav-item .nav-link {
+    background-color: #101010;
+}
+
+.card-header a.nav-link.active {
+    background-color: #262626;
+    border:none;
+}
+
+.card-header a.nav-link:hover {
+    border:none;
+}
+
 div.login-logout-tab div.card-header {
     padding: 0px 0px 12px 0px;
 }
@@ -91,10 +110,42 @@ div.login-form-icon {
     text-align: center;
 }
 
+.btnLogIn {
+    color: #1d7cdb;
+    font-weight: bolder;
+    background-color: #262626;
+    border: 0.2rem solid white;
+}
+
+.btnRegister {
+    color:darkorange;
+    font-weight: bolder;
+    background-color: #262626;
+    border: 0.2rem solid white;
+}
+
+#btnLogin:hover {
+    color: #1d7cdb;
+    font-style: normal;
+    font-weight: normal;
+    background-color: #262626;
+    border-color: blue;
+    box-shadow: 0 0 0.1rem #fff, inset 0 0 0.1rem #fff, 0 0 0.16rem #7e7eff, 0 0 1.2rem #7e7eff, inset 0 0 0.4rem #7e7eff
+}
+
+#btnRegister:hover {
+    color: #ff7200;
+    font-style: normal;
+    font-weight: normal;
+    background-color: #262626;
+    border-color: #ee6100;
+    box-shadow: 0 0 0.1rem #fff, inset 0 0 0.1rem #fff, 0 0 0.16rem #f7b02e, 0 0 1.2rem orange, inset 0 0 0.4rem orange;
+}
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
 }
