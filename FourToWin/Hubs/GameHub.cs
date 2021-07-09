@@ -8,55 +8,69 @@ namespace FourToWin.Hubs
 {
     public class GameHub : Hub
     {
-        string lobby = string.Empty;
+        public static List<string> lobbies = new List<string>();
+        public static List<string> customLobbies = new List<string>();
 
-        public async void CreateGame()
+        public async void CreateGame(string userId, string userNickname)
         {
             string lobbyId = GenerateLobbyId();
             string player = "p1";
+            customLobbies.Add(lobbyId);
             await AddToGroup(lobbyId);
             await Clients.Caller.SendAsync("GetPlayerNum", player);
             await Clients.Caller.SendAsync("GetLobbyId", lobbyId);
+            await Clients.All.SendAsync("GetUser1", userId, userNickname);
         }
 
-        public async void JoinGame(string lobbyId)
+        public async void JoinGame(string lobbyId, string userId, string userNickname)
         {
-            string player = "p2";
-            await AddToGroup(lobbyId);
-            await Clients.Caller.SendAsync("GetPlayerNum", player);
-            await Clients.Caller.SendAsync("GetLobbyId", lobbyId);
-            await Clients.Group(lobbyId).SendAsync("Ready");
+            if (customLobbies.Contains(lobbyId))
+            {
+                customLobbies.Remove(lobbyId);
+                string player = "p2";
+                await AddToGroup(lobbyId);
+                await Clients.Caller.SendAsync("GetPlayerNum", player);
+                await Clients.Caller.SendAsync("GetLobbyId", lobbyId);
+                await Clients.All.SendAsync("GetUser2", userId, userNickname);
+                await Clients.Group(lobbyId).SendAsync("Ready");
+            }
+            else
+            {
+                await Clients.Caller.SendAsync("LobbyNotExist");
+            }
         }
 
-        public async void QuickGame()
+        public async void QuickGame(string userId, string userNickname)
         {
             string lobbyId;
             string player;
 
-            if (lobby == string.Empty)
+            if (lobbies.Count == 0)
             {
                 player = "p1";
                 lobbyId = GenerateLobbyId();
+                lobbies.Add(lobbyId);
                 await AddToGroup(lobbyId);
                 await Clients.Caller.SendAsync("GetPlayerNum", player);
-                await Clients.Caller.SendAsync("GetRandomLobbyId", lobbyId);
-                lobby = lobbyId;
+                await Clients.Caller.SendAsync("GetLobbyId", lobbyId);
+                await Clients.All.SendAsync("GetUser1", userId, userNickname);
             }
             else
             {
                 player = "p2";
-                lobbyId = lobby;
-                lobby = string.Empty;
+                lobbyId = lobbies[0];
+                lobbies.Remove(lobbyId);
                 await AddToGroup(lobbyId);
                 await Clients.Caller.SendAsync("GetPlayerNum", player);
-                await Clients.Caller.SendAsync("GetRandomLobbyId", lobbyId);
+                await Clients.Caller.SendAsync("GetLobbyId", lobbyId);
+                await Clients.All.SendAsync("GetUser2", userId, userNickname);
                 await Clients.Group(lobbyId).SendAsync("Ready");
             }
         }
 
-        public async Task SendMessageToGroup(string message, string group)
+        public async Task SendMessageToGroup(string message, string group, string user)
         {
-            await Clients.Group(group).SendAsync("ReceiveMessage", message);
+            await Clients.Group(group).SendAsync("ReceiveMessage", message, user);
         }
 
         public async Task SendColumn(int column, string group)

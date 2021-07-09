@@ -4,6 +4,10 @@ var connection = new signalR.HubConnectionBuilder()
 
 var lobby;
 var userPlayer;
+var user1Id, user1Nickname;
+var user2Id, user2Nickname;
+var matchWinner;
+
 
 // GAME
 var player = "p1";
@@ -200,14 +204,20 @@ function victory(winner) {
         document.getElementById("WinnerMsg").style.color = "red"
         document.getElementById("VictoryPopUp").style.borderColor = "red"
         document.getElementById("WinnerMsg").innerHTML = "Player 1 WINS!"
+        matchWinner = "1";
     } else if (winner == "p2") {
         document.getElementById("WinnerMsg").style.color = "blue"
         document.getElementById("VictoryPopUp").style.borderColor = "blue"
         document.getElementById("WinnerMsg").innerHTML = "Player 2 WINS!"
+        matchWinner = "2";
     }
     else if (winner == "none") {
         document.getElementById("WinnerMsg").innerHTML = "It's a DRAW!"
+        matchWinner = "x";
     }
+
+    if (userNickname === user1Nickname)
+        SendToDatabase();
 }
 
 function CloseResultPopUp() {
@@ -253,7 +263,11 @@ connection.start().then(function () {
     console.log("SignalR Connected successfully");
 
     if (lobbyAction === "create") {
-        connection.invoke("CreateGame").catch(err => console.error(err.toString()));
+        connection.invoke("CreateGame", userId, userNickname).catch(err => console.error(err.toString()));
+    }
+
+    if (lobbyAction === "quick") {
+        connection.invoke("QuickGame", userId, userNickname).catch(err => console.error(err.toString()));
     }
 
 }).catch(function (err) {
@@ -265,11 +279,25 @@ if (lobbyAction === "join") {
 
         lobby = document.getElementById('groupInput').value;
 
-        connection.invoke("JoinGame", lobby).catch(err => console.error(err.toString()));
+        connection.invoke("JoinGame", lobby, userId, userNickname).catch(err => console.error(err.toString()));
 
         event.preventDefault();
     });
 }
+
+connection.on("GetUser1", function (userId, nickname) {
+    user1Id = userId;
+    user1Nickname = nickname;
+    console.log("User1Id: " + user1Id)
+    console.log("User1Nickname: " + user1Nickname)
+});
+
+connection.on("GetUser2", function (userId, nickname) {
+    user2Id = userId;
+    user2Nickname = nickname;
+    console.log("User2Id: " + user2Id)
+    console.log("User2Nickname: " + user2Nickname)
+});
 
 connection.on("GetPlayerNum", function (playerNum) {
     userPlayer = playerNum;
@@ -290,24 +318,48 @@ connection.on("ReceiveColumn", function (column) {
     play(column);
 });
 
-
 connection.on("Ready", function () {
     document.getElementById("status").textContent = "Ready";
 
     // Start game
-
     countdown();
-
     addEventListeners();
-
-
 });
 
-connection.on("ReceiveMessage", function (userName, message) {
-    // mensajes chat
+InputAutoKey("usermsg", "submitmsg", 13);
+
+connection.on("ReceiveMessage", function (message, user) {
+
+    //var hora = new Date().toLocaleTimeString();
+    let p = document.createElement("p");
+    let chat = document.getElementById("chatbox");
+    chat.appendChild(p);
+
+    if (user === userNickname) {
+        p.className = "chatp1";
+        p.textContent = `${message}`;
+    }
+    else {
+        p.className = "chatp2";
+        p.innerHTML = `<b>${user}:</b><br>${message}`
+    }
+
+    // autoscroll
+    chat.scrollTop = chat.scrollHeight;
+
+    // Enter to send message
 });
 
+document.getElementById("submitmsg").addEventListener("click", function (event) {
 
+    let message = document.getElementById("usermsg").value;
+    if (message != "") {
+        connection.invoke("SendMessageToGroup", message, lobby, userNickname).catch(err => console.error(err.toString()));
+        document.getElementById("usermsg").value = "";
+    }
+
+    event.preventDefault();
+});
 
 function addEventListeners() {
     columns[0].addEventListener("click", function () {
@@ -420,4 +472,13 @@ function addEventListeners() {
         if (player == userPlayer)
             RestoreColumn(6)
     })
+}
+
+function InputAutoKey(inputId, buttonId, key) {
+    document.getElementById(inputId).addEventListener("keyup", function (event) {
+        if (event.keyCode === key) {
+            event.preventDefault();
+            document.getElementById(buttonId).click();
+        }
+    });
 }

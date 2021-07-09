@@ -1,6 +1,12 @@
-﻿@model string
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@model string
 @{
     ViewData["Title"] = "Match";
+
+    AppUser user = await UserManager.GetUserAsync(User);
 }
 
 @if (Model == "create")
@@ -32,6 +38,19 @@ else if (Model == "join")
             <p>Player: <span id="userPlayer"></span></p>
             <p>Estado: <span id="status"></span></p>
 
+        </div>
+    </div>
+}
+else if (Model == "quick")
+{
+    <h1>Quick Game</h1>
+
+    <div class="container">
+        <div class="row">&nbsp;</div>
+        <div>
+            <p>LobbyId: <span id="lobbyid"></span></p>
+            <p>Player: <span id="userPlayer"></span></p>
+            <p>Estado: <span id="status"></span></p>
         </div>
     </div>
 }
@@ -118,15 +137,48 @@ else if (Model == "join")
 
 </div>
 
+<div id="wrapper">
+
+    <div id="chatbox">
+        <div class="fix"></div>
+    </div>
+    <div id="sendbox">
+        <input type="text" id="usermsg" size="63" />
+        <input type="image" id="submitmsg" alt="Send" src="~/img/send_button.png">
+    </div>
+
+</div>
+
 <div id="VictoryPopUp">
     <h4 id="WinnerMsg"></h4>
     <button type="button" class="btnRematch" onclick="">Rematch</button>
     <button type="button" class="btnClose" onclick="CloseResultPopUp()">Close</button>
 </div>
 
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
 <script>
     var lobbyAction = "@Model";
+    var userNickname = "@user.Nickname";
+    var userId = "@user.Id";
+
+    function SendToDatabase() {
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("SaveMatchData", "Matches")',
+            data: {
+                User1Id: user1Id,
+                User2Id: user2Id,
+                Winner: matchWinner,
+                NumRounds: round
+            },
+            ajaxasync: true,
+        });
+    }
 </script>
+
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/match.js"></script>
 

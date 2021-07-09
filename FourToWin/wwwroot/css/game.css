@@ -160,6 +160,30 @@ body {
         margin-bottom: 2rem;
     }
 
+#JoinError {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 0.5rem solid #f1f1f1;
+    border-radius: 10%;
+    height: fit-content;
+    max-width: 300px;
+    padding: 2rem;
+    background-color: #2C2C2C;
+    text-align: center;
+    box-sizing: content-box;
+    font-weight: 400;
+    box-shadow: 0 0 .20rem #fff, inset 0 0 .20rem #fff, 0 0 0.16rem gold, 0 0 1.2rem gold, inset 0 0 0.4rem gold;
+}
+
+    #JoinError h4 {
+        font-weight: 800;
+        font-style: italic;
+        margin-bottom: 2rem;
+    }
+
 .btnRematch {
     background: none;
     border: none;
