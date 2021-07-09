@@ -41,8 +41,19 @@ namespace FourToWin.Controllers
             return View(match);
         }
 
-        public async Task<IActionResult> Statistics(string id)
+        public async Task<IActionResult> Statistics()
         {
+            string id = _userManager.GetUserId(User);
+
+            ViewData["UsersList"] = _context.Users;
+
+            // Matches played
+            List<Match> playedU1 = await _context.Match.Where(x => x.User1Id == id).ToListAsync();
+            List<Match> playedU2 = await _context.Match.Where(x => x.User2Id == id).ToListAsync();
+
+            ViewData["playedU1"] = playedU1;
+            ViewData["playedU2"] = playedU2;
+
             // Won
             List<Match> wonU1 = await _context.Match.Where(x => x.User1Id == id && x.Winner == "1").ToListAsync();
             List<Match> wonU2 = await _context.Match.Where(x => x.User2Id == id && x.Winner == "2").ToListAsync();
@@ -84,20 +95,6 @@ namespace FourToWin.Controllers
                 n = nU2;
 
             ViewData["record"] = n;
-
-            return View();
-        }
-
-        public async Task<IActionResult> Historical()
-        {
-            string id = _userManager.GetUserId(User);
-
-            // Matches played
-            List<Match> playedU1 = await _context.Match.Where(x => x.User1Id == id).ToListAsync();
-            List<Match> playedU2 = await _context.Match.Where(x => x.User2Id == id).ToListAsync();
-
-            ViewData["playedU1"] = playedU1;
-            ViewData["playedU2"] = playedU2;
 
             return View();
         }
