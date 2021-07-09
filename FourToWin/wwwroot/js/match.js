@@ -244,6 +244,10 @@ connection.start().then(function () {
         connection.invoke("CreateGame", userId, userNickname).catch(err => console.error(err.toString()));
     }
 
+    if (lobbyAction === "quick") {
+        connection.invoke("QuickGame", userId, userNickname).catch(err => console.error(err.toString()));
+    }
+
 }).catch(function (err) {
     return console.error(err.toString());
 });
