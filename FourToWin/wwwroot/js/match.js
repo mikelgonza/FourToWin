@@ -42,7 +42,7 @@ function play(numColumn) {
         if (square.classList.contains("played")) { ocupadas += 1; }
     });
 
-    if (ocupadas < 6) {
+    if (ocupadas < 6 && countdownDiv.innerHTML !== "TIME OUT!") {
 
         animateFall(squares, ocupadas)
 
@@ -74,10 +74,12 @@ function IluminateColumn(numColumn) {
 
     squares.forEach(square => {
         if (square.classList.contains("played")) { ocupadas += 1; }
-        else { square.classList.add("iluminate" + player) }
+        else if (countdownDiv.innerHTML !== "TIME OUT!") {
+            square.classList.add("iluminate" + player)
+        }
     });
 
-    if (ocupadas < 6) {
+    if (ocupadas < 6 && countdownDiv.innerHTML !== "TIME OUT!") {
         squares[5 - ocupadas].classList.add("provisional" + player)
     }
 }
