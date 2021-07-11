@@ -17,10 +17,13 @@ namespace FourToWin.Models
         public string User2Id { get; set; }
         public string Winner { get; set; }
         public int NumRounds { get; set; }
+        [Display(Name = "Date and Time")]
+        public DateTime DateTime { get; set; }
 
         [ForeignKey("User1Id")]
         [Display(Name = "Player 1")]
         public AppUser User1 { get; set; }
+
         [ForeignKey("User2Id")]
         [Display(Name = "Player 2")]
         public AppUser User2 { get; set; }

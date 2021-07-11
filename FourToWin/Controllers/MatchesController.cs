@@ -34,6 +34,8 @@ namespace FourToWin.Controllers
 
             if (ModelState.IsValid)
             {
+                match.DateTime = DateTime.Now;
+
                 _context.Add(match);
                 await _context.SaveChangesAsync();
             }
