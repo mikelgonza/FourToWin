@@ -2,12 +2,12 @@
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
 @{
-    ViewData["Title"] = "Statistics";
+    ViewData["Title"] = "Stats";
 
     AppUser user = await UserManager.GetUserAsync(User);
 }
 
-<h1>Statistics</h1>
+<h1>Stats</h1>
 <h4>@user.Nickname</h4>
 
 <div>

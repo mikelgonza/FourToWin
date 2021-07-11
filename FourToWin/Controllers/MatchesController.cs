@@ -41,7 +41,7 @@ namespace FourToWin.Controllers
             return View(match);
         }
 
-        public async Task<IActionResult> Statistics()
+        public async Task<IActionResult> Stats()
         {
             string id = _userManager.GetUserId(User);
 
