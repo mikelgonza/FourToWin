@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using FourToWin.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -14,19 +17,24 @@ namespace FourToWin.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly IWebHostEnvironment _environment;
 
         public IndexModel(
             UserManager<AppUser> userManager,
-            SignInManager<AppUser> signInManager)
+            SignInManager<AppUser> signInManager,
+            IWebHostEnvironment environment)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _environment = environment;
         }
 
         public string Username { get; set; }
 
         [TempData]
         public string StatusMessage { get; set; }
+        public string UserImage { get; set; }
+
 
         [BindProperty]
         public InputModel Input { get; set; }
@@ -48,6 +56,7 @@ namespace FourToWin.Areas.Identity.Pages.Account.Manage
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
             Username = userName;
+            UserImage = user.UserImage;
 
             Input = new InputModel
             {
@@ -68,7 +77,7 @@ namespace FourToWin.Areas.Identity.Pages.Account.Manage
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(IFormFile imageFile)
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
@@ -80,6 +89,29 @@ namespace FourToWin.Areas.Identity.Pages.Account.Manage
             {
                 await LoadAsync(user);
                 return Page();
+            }
+
+            if (imageFile != null)
+            {
+                // If img folder not exist, create it
+                string path = Path.Combine(_environment.WebRootPath, "img");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                // get the file name and upload to img folder
+                string fileName = Path.GetFileName(imageFile.FileName);
+                using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+                    imageFile.CopyTo(stream);
+
+                user.UserImage = fileName;
+                var setImageResult = await _userManager.UpdateAsync(user);
+                if (!setImageResult.Succeeded)
+                {
+                    StatusMessage = "Unexpected error when trying to set Image.";
+                    return RedirectToPage();
+                }
             }
 
             if (Input.Nickname != user.Nickname)

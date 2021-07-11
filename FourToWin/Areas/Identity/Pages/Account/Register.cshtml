@@ -5,8 +5,15 @@
     Layout = "~/Areas/Identity/Pages/_AuthLayout.cshtml";
 }
 
-<form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+<form asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
     <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <img src="~/img/default-profile.png" id="photoFile" class="user-image-edit">
+    </div>
+    <div class="div_file">
+        <p class="texto">Select photo</p>
+        <input type="file" name="imageFile" id="inputFile" class="upload-image" />
+    </div>
     <div class="form-group">
         <label asp-for="Input.Email"></label>
         <input asp-for="Input.Email" class="form-control" />
@@ -38,4 +45,16 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        inputFile.onchange = evt => {
+            const [file] = inputFile.files
+            if (file) {
+                photoFile.src = URL.createObjectURL(file)
+            }
+        }
+
+    </script>
+
 }

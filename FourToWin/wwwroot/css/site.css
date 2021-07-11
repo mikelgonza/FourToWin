@@ -252,6 +252,56 @@ div.login-form-icon {
     background: #b30000;
 }
 
+/**** APPUSER IMAGE ****/
+
+.user-image-edit {
+    border: 1px solid #ddd;
+    border-radius: 5%;
+    padding: 10px;
+    width: 200px;
+    margin-bottom: 10px
+}
+
+a .user-image-edit:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+input.upload-image {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+p.texto {
+    text-align: center;
+    color: white;
+    background-color: #0069d9;
+    border-radius: 5px;
+    padding: 5px;
+    width: 200px;
+}
+
+    p.texto:hover {
+        cursor: pointer;
+    }
+
+div.div_file {
+    position: relative;
+    width: 150px;
+}
+
+.mini-avatar {
+    width: 30px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    padding: 2px
+}
+
 .footer {
     position: absolute;
     bottom: 0;
