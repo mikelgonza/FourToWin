@@ -6,136 +6,142 @@
 
     AppUser user = await UserManager.GetUserAsync(User);
 }
-
-<h1>Statistics</h1>
-<h4>@user.Nickname</h4>
-
-<div>
+<div id="StatsScene">
+    <br />
+    <h1 id="StatsTitle">Stats</h1>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            Matches Won:
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.won
-        </dd>
-        <dt class="col-sm-2">
-            Matches Lost:
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.lost
-        </dd>
-        <dt class="col-sm-2">
-            Matches Draw:
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.draw
-        </dd>
-        <dt class="col-sm-2">
-            Matches Played:
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.total
-        </dd>
-        <dt class="col-sm-2">
-            Record:
-        </dt>
-        <dd class="col-sm-10">
-            @ViewBag.record
-        </dd>
-    </dl>
+    <br />
+
+    <h4 class="StatsPlayer">Player <span id="StatsName">@user.Nickname</span></h4>
+
+    <div>
+        <hr />
+        <dl class="row StatsResume">
+            <dt class="col-sm-2">
+                Games:
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.total
+            </dd>
+            <dt class="col-sm-2">
+                Wins:
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.won
+            </dd>
+            <dt class="col-sm-2">
+                Defeats:
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.lost
+            </dd>
+            <dt class="col-sm-2">
+                Draws:
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.draw
+            </dd>
+            <dt class="col-sm-2">
+                Best play:
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.record
+            </dd>
+        </dl>
+    </div>
+
+
+    @* LIST HISTORICAL *@
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Rival
+                </th>
+                <th>
+                    Result
+                </th>
+                <th>
+                    Rounds
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.playedU1)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @foreach (var item2 in ViewBag.UsersList)
+                        {
+                            if (item2.Id == item.User2Id)
+                            {
+                                @Html.Raw(item2.Nickname)
+                            }
+
+                        }
+                    </td>
+                    <td>
+                        @if (item.Winner == "1")
+                        {
+                            @Html.Raw("<p style='color:green'> Victory </p>")
+                        }
+                        else if (item.Winner == "2")
+                        {
+                            @Html.Raw("<p style='color:red'> Defeat </p>")
+                        }
+                        else
+                        {
+                            @Html.Raw("<p style='color:yellow'> Draw </p>")
+                        }
+                    </td>
+                    <td>
+                        @item.NumRounds
+                    </td>
+                </tr>
+            }
+            @foreach (var item in ViewBag.playedU2)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @foreach (var item2 in ViewBag.UsersList)
+                        {
+                            if (item2.Id == item.User1Id)
+                            {
+                                @Html.Raw(item2.Nickname)
+                            }
+
+                        }
+                    </td>
+                    <td>
+                        @if (item.Winner == "2")
+                        {
+                            @Html.Raw("<p style='color:green'> Victory </p>")
+                        }
+                        else if (item.Winner == "1")
+                        {
+                            @Html.Raw("<p style='color:red'> Defeat </p>")
+                        }
+                        else
+                        {
+                            @Html.Raw("<p style='color:yellow'> Draw </p>")
+                        }
+                    </td>
+                    <td>
+                        @item.NumRounds
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
 </div>
-
-
-@* LIST HISTORICAL *@
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Rival
-            </th>
-            <th>
-                Result
-            </th>
-            <th>
-                Rounds
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in ViewBag.playedU1)
-        {
-            <tr>
-                <td>
-                    @item.Id
-                </td>
-                <td>
-                    @foreach (var item2 in ViewBag.UsersList)
-                    {
-                        if (item2.Id == item.User2Id)
-                        {
-                            @Html.Raw(item2.Nickname)
-                        }
-
-                    }
-                </td>
-                <td>
-                    @if (item.Winner == "1")
-                    {
-                        @Html.Raw("Victoria")
-                    }
-                    else if (item.Winner == "2")
-                    {
-                        @Html.Raw("Derrota")
-                    }
-                    else
-                    {
-                        @Html.Raw("Empate")
-                    }
-                </td>
-                <td>
-                    @item.NumRounds
-                </td>
-            </tr>
-        }
-        @foreach (var item in ViewBag.playedU2)
-        {
-            <tr>
-                <td>
-                    @item.Id
-                </td>
-                <td>
-                    @foreach (var item2 in ViewBag.UsersList)
-                    {
-                        if (item2.Id == item.User1Id)
-                        {
-                            @Html.Raw(item2.Nickname)
-                        }
-
-                    }
-                </td>
-                <td>
-                    @if (item.Winner == "2")
-                    {
-                        @Html.Raw("Victoria")
-                    }
-                    else if (item.Winner == "1")
-                    {
-                        @Html.Raw("Derrota")
-                    }
-                    else
-                    {
-                        @Html.Raw("Empate")
-                    }
-                </td>
-                <td>
-                    @item.NumRounds
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
