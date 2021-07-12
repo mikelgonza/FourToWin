@@ -263,7 +263,7 @@ function changeCount() {
 }
 
 function victory(winner) {
-    document.getElementById("Scene").style.filter = "blur(7px)";
+    document.getElementById("GameScene").style.filter = "blur(7px)";
     document.getElementById("VictoryPopUp").style.display = "block";
     if (winner == "p1") {
         document.getElementById("WinnerMsg").style.color = "red"
