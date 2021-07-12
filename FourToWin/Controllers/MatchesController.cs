@@ -34,6 +34,8 @@ namespace FourToWin.Controllers
 
             if (ModelState.IsValid)
             {
+                match.DateTime = DateTime.Now;
+
                 _context.Add(match);
                 await _context.SaveChangesAsync();
             }
@@ -41,7 +43,7 @@ namespace FourToWin.Controllers
             return View(match);
         }
 
-        public async Task<IActionResult> Statistics()
+        public async Task<IActionResult> Stats()
         {
             string id = _userManager.GetUserId(User);
 

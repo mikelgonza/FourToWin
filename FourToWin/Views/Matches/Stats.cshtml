@@ -2,7 +2,7 @@
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
 @{
-    ViewData["Title"] = "Statistics";
+    ViewData["Title"] = "Stats";
 
     AppUser user = await UserManager.GetUserAsync(User);
 }
@@ -53,37 +53,37 @@
 
     @* LIST HISTORICAL *@
 
-    <table class="table">
-        <thead>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Date Time
+            </th>
+            <th>
+                Rival
+            </th>
+            <th>
+                Result
+            </th>
+            <th>
+                Rounds
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.playedU1)
+        {
             <tr>
-                <th>
-                    Id
-                </th>
-                <th>
-                    Rival
-                </th>
-                <th>
-                    Result
-                </th>
-                <th>
-                    Rounds
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in ViewBag.playedU1)
-            {
-                <tr>
-                    <td>
-                        @item.Id
-                    </td>
-                    <td>
-                        @foreach (var item2 in ViewBag.UsersList)
+                <td>
+                    @item.DateTime
+                </td>
+                <td>
+                    @foreach (var item2 in ViewBag.UsersList)
+                    {
+                        if (item2.Id == item.User2Id)
                         {
-                            if (item2.Id == item.User2Id)
-                            {
-                                @Html.Raw(item2.Nickname)
-                            }
+                            @Html.Raw(item2.Nickname)
+                        }
 
                         }
                     </td>

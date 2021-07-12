@@ -4,9 +4,12 @@ var connection = new signalR.HubConnectionBuilder()
 
 var lobby;
 var userPlayer;
-var user1Id, user1Nickname;
-var user2Id, user2Nickname;
+var user1Id, user1Image;
+var user1Nickname = 1;
+var user2Id, user2Image;
+var user2Nickname = 2;
 var matchWinner;
+var columnPosition = -1;
 
 
 // GAME
@@ -14,7 +17,7 @@ var player = "p1";
 
 var playerSpan = document.getElementById("CurPlayer")
 if (document.getElementById("CurPlayer")) {
-    playerSpan.innerHTML = "&nbsp1"
+    playerSpan.innerHTML = "&nbsp" + user1Nickname;
     playerSpan.style.color = "red"
 }
 
@@ -144,13 +147,13 @@ function changeTurn() {
     }
     if (player == "p1") {
         player = "p2"
-        playerSpan.innerHTML = "&nbsp2"
+        playerSpan.innerHTML = "&nbsp" + user2Nickname
         playerSpan.style.color = "blue"
         countdown()
     }
     else {
         player = "p1"
-        playerSpan.innerHTML = "&nbsp1"
+        playerSpan.innerHTML = "&nbsp" + user1Nickname
         playerSpan.style.color = "red"
         round += 1
         roundDiv.innerHTML = round
@@ -203,12 +206,12 @@ function victory(winner) {
     if (winner == "p1") {
         document.getElementById("WinnerMsg").style.color = "red"
         document.getElementById("VictoryPopUp").style.borderColor = "red"
-        document.getElementById("WinnerMsg").innerHTML = "Player 1 WINS!"
+        document.getElementById("WinnerMsg").innerHTML = `${user1Nickname} WINS!`
         matchWinner = "1";
     } else if (winner == "p2") {
         document.getElementById("WinnerMsg").style.color = "blue"
         document.getElementById("VictoryPopUp").style.borderColor = "blue"
-        document.getElementById("WinnerMsg").innerHTML = "Player 2 WINS!"
+        document.getElementById("WinnerMsg").innerHTML = `${user2Nickname} WINS!`
         matchWinner = "2";
     }
     else if (winner == "none") {
@@ -263,11 +266,11 @@ connection.start().then(function () {
     console.log("SignalR Connected successfully");
 
     if (lobbyAction === "create") {
-        connection.invoke("CreateGame", userId, userNickname).catch(err => console.error(err.toString()));
+        connection.invoke("CreateGame", userId, userNickname, userImage).catch(err => console.error(err.toString()));
     }
 
     if (lobbyAction === "quick") {
-        connection.invoke("QuickGame", userId, userNickname).catch(err => console.error(err.toString()));
+        connection.invoke("QuickGame", userId, userNickname, userImage).catch(err => console.error(err.toString()));
     }
 
 }).catch(function (err) {
@@ -279,24 +282,30 @@ if (lobbyAction === "join") {
 
         lobby = document.getElementById('groupInput').value;
 
-        connection.invoke("JoinGame", lobby, userId, userNickname).catch(err => console.error(err.toString()));
+        connection.invoke("JoinGame", lobby, userId, userNickname, userImage).catch(err => console.error(err.toString()));
 
         event.preventDefault();
     });
 }
 
-connection.on("GetUser1", function (userId, nickname) {
+connection.on("GetUser1", function (userId, nickname, userImage) {
     user1Id = userId;
     user1Nickname = nickname;
+    user1Image = userImage;
     console.log("User1Id: " + user1Id)
     console.log("User1Nickname: " + user1Nickname)
+
+    document.getElementById("CurPlayer").innerHTML = "&nbsp" + user1Nickname;
 });
 
-connection.on("GetUser2", function (userId, nickname) {
+connection.on("GetUser2", function (userId, nickname, userImage) {
     user2Id = userId;
     user2Nickname = nickname;
+    user2Image = userImage;
     console.log("User2Id: " + user2Id)
     console.log("User2Nickname: " + user2Nickname)
+
+    document.getElementById("CurPlayer").innerHTML = "&nbsp" + user1Nickname;
 });
 
 connection.on("GetPlayerNum", function (playerNum) {
@@ -365,6 +374,14 @@ function addEventListeners() {
     columns[0].addEventListener("click", function () {
         if (player == userPlayer)
             connection.invoke("SendColumn", 0, lobby).catch(err => console.error(err.toString()));
+    })
+
+    document.addEventListener("keyup", function (event) {
+        if (player == userPlayer && event.keyCode === 32) {
+            connection.invoke("SendColumn", columnPosition, lobby).catch(err => console.error(err.toString()));
+            RestoreColumn(columnPosition);
+            columnPosition = -1;
+        }
     })
 
     columns[0].addEventListener("mouseenter", function () {
@@ -472,6 +489,42 @@ function addEventListeners() {
         if (player == userPlayer)
             RestoreColumn(6)
     })
+
+    document.addEventListener("keyup", MoveToRight);
+
+    document.addEventListener("keyup", MoveToLeft);
+}
+
+function MoveToLeft(event) {
+    if (player == userPlayer && event.keyCode === 37) {
+
+        RestoreColumn(columnPosition)
+
+        if (columnPosition > 6) {
+            columnPosition = 6;
+        }
+        else if (columnPosition != 0) {
+            columnPosition--;
+        }
+
+        IluminateColumn(columnPosition);
+    }
+}
+
+function MoveToRight(event) {
+    if (player == userPlayer && event.keyCode === 39) {
+
+        RestoreColumn(columnPosition)
+
+        if (columnPosition < 0) {
+            columnPosition = 0;
+        }
+        else if (columnPosition != 6) {
+            columnPosition++;
+        }
+
+        IluminateColumn(columnPosition);
+    }
 }
 
 function InputAutoKey(inputId, buttonId, key) {

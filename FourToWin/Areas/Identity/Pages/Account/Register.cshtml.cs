@@ -14,6 +14,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using System.Threading;
 
 namespace FourToWin.Areas.Identity.Pages.Account
 {
@@ -24,17 +28,20 @@ namespace FourToWin.Areas.Identity.Pages.Account
         private readonly UserManager<AppUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IWebHostEnvironment _environment;
 
         public RegisterModel(
             UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IWebHostEnvironment environment)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _environment = environment;
         }
 
         [BindProperty]
@@ -46,6 +53,8 @@ namespace FourToWin.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+            public string UserImage { get; set; }
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -74,16 +83,41 @@ namespace FourToWin.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(IFormFile imageFile, string returnUrl = null)
         {
+            string fileName;
+            const string DEFAULT_AVATAR = "default-profile.png";
+
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
+                if (imageFile != null)
+                {
+                    // If img folder not exist, create it
+                    string path = Path.Combine(_environment.WebRootPath, "img");
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+
+                    // get the file name and upload to img folder
+                    fileName = Path.GetFileName(imageFile.FileName);
+                    using FileStream stream = new(Path.Combine(path, fileName), FileMode.Create);
+                    imageFile.CopyTo(stream);
+                }
+                else
+                {
+                    // if postedFile is null, save the default image
+                    fileName = DEFAULT_AVATAR;
+                }
+
                 var user = new AppUser { 
                     UserName = Input.Email,
                     Nickname = Input.Nickname,
-                    Email = Input.Email };
+                    Email = Input.Email,
+                    UserImage = fileName
+                };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
