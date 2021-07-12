@@ -8,30 +8,40 @@ namespace FourToWin.Hubs
 {
     public class GameHub : Hub
     {
-        public static List<string> lobbies = new List<string>();
-        public static List<string> customLobbies = new List<string>();
+        private static List<string> lobbies = new List<string>();
+        private static List<string> customLobbies = new List<string>();
 
-        public async void CreateGame(string userId, string userNickname)
+        private static string player1Id, player1Nickname, player1Image;
+        private static string player2Id, player2Nickname, player2Image;
+
+        public async void CreateGame(string userId, string userNickname, string userImage)
         {
+            player1Id = userId;
+            player1Nickname = userNickname;
+            player1Image = userImage;
             string lobbyId = GenerateLobbyId();
             string player = "p1";
             customLobbies.Add(lobbyId);
             await AddToGroup(lobbyId);
             await Clients.Caller.SendAsync("GetPlayerNum", player);
             await Clients.Caller.SendAsync("GetLobbyId", lobbyId);
-            await Clients.All.SendAsync("GetUser1", userId, userNickname);
+            await Clients.Caller.SendAsync("GetUser1", player1Id, player1Nickname, player1Image);
         }
 
-        public async void JoinGame(string lobbyId, string userId, string userNickname)
+        public async void JoinGame(string lobbyId, string userId, string userNickname, string userImage)
         {
             if (customLobbies.Contains(lobbyId))
             {
+                player2Id = userId;
+                player2Nickname = userNickname;
+                player2Image = userImage;
                 customLobbies.Remove(lobbyId);
                 string player = "p2";
                 await AddToGroup(lobbyId);
                 await Clients.Caller.SendAsync("GetPlayerNum", player);
                 await Clients.Caller.SendAsync("GetLobbyId", lobbyId);
-                await Clients.All.SendAsync("GetUser2", userId, userNickname);
+                await Clients.Caller.SendAsync("GetUser1", player1Id, player1Nickname, player1Image);
+                await Clients.All.SendAsync("GetUser2", player2Id, player2Nickname, player2Image);
                 await Clients.Group(lobbyId).SendAsync("Ready");
             }
             else
@@ -40,7 +50,7 @@ namespace FourToWin.Hubs
             }
         }
 
-        public async void QuickGame(string userId, string userNickname)
+        public async void QuickGame(string userId, string userNickname, string userImage)
         {
             string lobbyId;
             string player;
