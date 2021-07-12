@@ -43,6 +43,20 @@ columns[4].addEventListener("mouseleave", function () { RestoreColumn(4) })
 columns[5].addEventListener("mouseleave", function () { RestoreColumn(5) })
 columns[6].addEventListener("mouseleave", function () { RestoreColumn(6) })
 
+var columnPosition = -1;
+
+document.addEventListener("keyup", function (event) {
+    if (event.keyCode === 32) {
+        var squares = columns[columnPosition].querySelectorAll(".sq")
+        play(squares /*numColumn*/);
+        RestoreColumn(columnPosition);
+        columnPosition = -1;
+    }
+})
+
+document.addEventListener("keyup", MoveToRight);
+document.addEventListener("keyup", MoveToLeft);
+
 var winner
 
 countdown()
@@ -117,6 +131,38 @@ function RestoreColumn(numColumn) {
             square.classList.remove("provisional"+player)
         }
     });
+}
+
+function MoveToLeft(event) {
+    if (event.keyCode === 37) {
+
+        RestoreColumn(columnPosition)
+
+        if (columnPosition > 6) {
+            columnPosition = 6;
+        }
+        else if (columnPosition != 0) {
+            columnPosition--;
+        }
+
+        IluminateColumn(columnPosition);
+    }
+}
+
+function MoveToRight(event) {
+    if (event.keyCode === 39) {
+
+        RestoreColumn(columnPosition)
+
+        if (columnPosition < 0) {
+            columnPosition = 0;
+        }
+        else if (columnPosition != 6) {
+            columnPosition++;
+        }
+
+        IluminateColumn(columnPosition);
+    }
 }
 
 function checkVictory() {

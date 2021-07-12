@@ -7,6 +7,7 @@ var userPlayer;
 var user1Id, user1Nickname;
 var user2Id, user2Nickname;
 var matchWinner;
+var columnPosition = -1;
 
 
 // GAME
@@ -367,6 +368,14 @@ function addEventListeners() {
             connection.invoke("SendColumn", 0, lobby).catch(err => console.error(err.toString()));
     })
 
+    document.addEventListener("keyup", function (event) {
+        if (player == userPlayer && event.keyCode === 32) {
+            connection.invoke("SendColumn", columnPosition, lobby).catch(err => console.error(err.toString()));
+            RestoreColumn(columnPosition);
+            columnPosition = -1;
+        }
+    })
+
     columns[0].addEventListener("mouseenter", function () {
         if (player == userPlayer)
             IluminateColumn(0)
@@ -472,6 +481,42 @@ function addEventListeners() {
         if (player == userPlayer)
             RestoreColumn(6)
     })
+
+    document.addEventListener("keyup", MoveToRight);
+
+    document.addEventListener("keyup", MoveToLeft);
+}
+
+function MoveToLeft(event) {
+    if (player == userPlayer && event.keyCode === 37) {
+
+        RestoreColumn(columnPosition)
+
+        if (columnPosition > 6) {
+            columnPosition = 6;
+        }
+        else if (columnPosition != 0) {
+            columnPosition--;
+        }
+
+        IluminateColumn(columnPosition);
+    }
+}
+
+function MoveToRight(event) {
+    if (player == userPlayer && event.keyCode === 39) {
+
+        RestoreColumn(columnPosition)
+
+        if (columnPosition < 0) {
+            columnPosition = 0;
+        }
+        else if (columnPosition != 6) {
+            columnPosition++;
+        }
+
+        IluminateColumn(columnPosition);
+    }
 }
 
 function InputAutoKey(inputId, buttonId, key) {
