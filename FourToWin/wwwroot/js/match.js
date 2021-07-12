@@ -207,15 +207,18 @@ function victory(winner) {
         document.getElementById("WinnerMsg").style.color = "red"
         document.getElementById("VictoryPopUp").style.borderColor = "red"
         document.getElementById("WinnerMsg").innerHTML = `${user1Nickname} WINS!`
+        document.getElementById("WinnerImg").src = `/img/${user1Image}`
         matchWinner = "1";
     } else if (winner == "p2") {
         document.getElementById("WinnerMsg").style.color = "blue"
         document.getElementById("VictoryPopUp").style.borderColor = "blue"
         document.getElementById("WinnerMsg").innerHTML = `${user2Nickname} WINS!`
+        document.getElementById("WinnerImg").src = `/img/${user2Image}`
         matchWinner = "2";
     }
     else if (winner == "none") {
         document.getElementById("WinnerMsg").innerHTML = "It's a DRAW!"
+        document.getElementById("WinnerImg").src = `/img/default-profile.png`
         matchWinner = "x";
     }
 

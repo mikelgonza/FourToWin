@@ -203,6 +203,25 @@ body {
         margin-bottom: 2rem;
     }
 
+#WinnerImgContent {
+    position: relative;
+}
+
+#WinnerCrown {
+    position:absolute;
+    top:-25px;
+    width: 50px;
+    transform: rotate(340deg)
+
+}
+
+#WinnerImg {
+    width: 100px;
+    border-radius: 50%;
+}
+
+
+
 .btnRematch {
     background: none;
     border: none;
