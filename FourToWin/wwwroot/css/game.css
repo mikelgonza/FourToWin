@@ -9,6 +9,176 @@ body {
     font-style: italic;
 }
 
+#Layout{
+    background-color: black;
+    box-shadow:none;
+    border-bottom:none !important;
+    background-color:transparent;
+}
+
+.text-dark{
+    color:white !important;
+}
+
+.navbar-toggler-icon {
+    background-color: deeppink;
+}
+
+/************************************************         MENU        ****************************************************/
+
+#MenuTitle {
+    text-align: center;
+    font-style: italic;
+    font-size: 5rem;
+    font-weight: 600;
+    color: #fb00ff;
+    text-shadow: 0.15rem 0.2rem 0.3rem #fec9f6, 0.2rem 0.2rem 1rem #fdbef3, 0 0 2rem, 0 0 4rem #000000, 0 0 2rem #fb00ff, 0 0 6rem #fb00ff, 0 0 5rem;
+    margin: 1rem auto 4rem auto;
+}
+
+.TitleTo {
+    font-size: 2rem;
+    text-shadow: 0.1rem 0.15rem 0.2rem #fec9f6, 0.15rem 0.15rem 0.8rem #fdbef3, 0 0 1.5rem, 0 0 3rem #000000, 0 0 1rem #fb00ff, 0 0 5rem #fb00ff, 0 0 4rem;
+}
+
+.LayoutTo{
+
+}
+
+
+#Menu {
+    margin:4rem auto 3rem auto;
+    display: flex;
+    flex-flow: column;
+    align-content: space-between;
+    background: none;
+    height: fit-content;
+    width:fit-content;
+    padding: 2rem 4rem 2rem 4rem;
+    text-align: center;
+    box-sizing: content-box;
+    border-radius: 10%;
+}
+
+.MenuBlue {
+    border: 0.3rem solid #006ad1;
+    box-shadow: 0 0 0.1rem #fff, inset 0 0 0.1rem #fff, 0 0 0.08rem darkturquoise, 0 0 0.8rem darkturquoise, inset 0 0 0.2rem darkturquoise;
+    animation: flicker2 4s infinite alternate;
+}
+
+@keyframes flicker2 {
+
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        box-shadow: 0 0 .17rem #fff, inset 0 0 .17rem #fff, 0 0 0.6rem aqua, 0 0 2.5rem aqua, inset 0 0 1rem aqua
+    }
+
+    20%, 24%, 55% {
+        box-shadow: none;
+    }
+}
+
+#Menu h3 {
+    font-size: 3rem;
+}
+
+#MenuLocal {
+    margin: 1rem 0 1rem 0;
+    color: darkmagenta;
+}
+
+    #MenuLocal:hover {
+        color: deeppink;
+        text-shadow: 0.1rem 0.1rem 0.3rem #ff8cda, 0.2rem 0.2rem 1rem #ff8cda, 0 0 2rem, 0 0 4rem deeppink, 0 0 6rem deeppink, 0 0 8rem deeppink, 0 0 10rem;
+		cursor: pointer;
+    }
+
+#MenuOnline {
+    margin: 1rem 0 1rem 0;
+    color: #1a9e0c;
+}
+
+    #MenuOnline:hover {
+        color: #2BE019;
+        text-shadow: 0.1rem 0.1rem 0.3rem #8aff77, 0.2rem 0.2rem 1rem #8aff77, 0 0 2rem, 0 0 4rem #2be019, 0 0 6rem #2be019, 0 0 8rem #2be019, 0 0 10rem;
+        cursor: pointer;
+    }
+
+#MenuStats {
+    margin: 1rem 0 1rem 0;
+    color: #bea100;
+}
+
+    #MenuStats:hover {
+        color: yellow;
+        text-shadow: 0.1rem 0.1rem 0.3rem #fffb00, 0.2rem 0.2rem 0.8rem #fffb00, 0 0 2rem, 0 0 4rem gold, 0 0 6rem gold, 0 0 8rem gold, 0 0 10rem;
+        cursor: pointer;
+    }
+
+#OnlineMenu {
+    display: none;
+}
+
+.MenuGreen {
+    border: 0.4rem solid #33d823;
+    box-shadow: 0 0 0.1rem #fff, inset 0 0 0.1rem #fff, 0 0 0.08rem #2BE019, 0 0 0.8rem #2BE019, inset 0 0 0.2rem #2BE019;
+    animation: flicker3 4s infinite alternate;
+}
+
+@keyframes flicker3 {
+
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        box-shadow: 0 0 .17rem #fff, inset 0 0 .17rem #fff, 0 0 0.6rem #2BE019, 0 0 2.5rem #2BE019, inset 0 0 1rem #2BE019
+    }
+
+    20%, 24%, 55% {
+        box-shadow: none;
+    }
+}
+
+#MenuQuick {
+    color: #008083;
+}
+
+    #MenuQuick:hover {
+        color: #00d6db;
+        text-shadow: 0.1rem 0.1rem 0.3rem #91fcff, 0.2rem 0.2rem 0.8rem #91fcff, 0 0 2rem, 0 0 4rem #37faff, 0 0 6rem #37faff, 0 0 8rem #37faff, 0 0 10rem;
+        cursor: pointer;
+    }
+
+#MenuCreate {
+    color: #b26200;
+}
+
+    #MenuCreate:hover {
+        color: #ff9000;
+        text-shadow: 0.1rem 0.1rem 0.3rem #ffce90, 0.2rem 0.2rem 0.8rem #ffce90, 0 0 2rem, 0 0 4rem #ffaf4c, 0 0 6rem #ffaf4c, 0 0 8rem #ffaf4c, 0 0 10rem;
+        cursor: pointer;
+    }
+
+#MenuJoin {
+    color: #7f0060;
+}
+
+    #MenuJoin:hover {
+        color: #e100aa;
+        text-shadow: 0.1rem 0.1rem 0.3rem #ff8ce3, 0.2rem 0.2rem 0.8rem #ff8ce3, 0 0 2rem, 0 0 4rem #ff30cc, 0 0 6rem #ff30cc, 0 0 8rem #ff30cc, 0 0 10rem;
+        cursor: pointer;
+    }
+
+#BackToMenu {
+    margin: 2rem 0 1rem 0;
+    color: #dd0000;
+}
+
+    #BackToMenu:hover {
+        color: #ff2121;
+        text-shadow: 0.1rem 0.1rem 0.3rem #ff9a9a, 0.2rem 0.2rem 1rem #ff9a9a, 0 0 2rem, 0 0 4rem #ff6969, 0 0 6rem #ff6969, 0 0 8rem #ff6969, 0 0 10rem;
+        cursor: pointer;
+    }
+
+
+/************************************************         GAME           *************************************************/
+
 #GameScene {
     width: 100%;
     margin-right: 0rem;
@@ -22,18 +192,254 @@ body {
         display: block;
         height: 100%;
         position: absolute;
-        background-image: url(../img/FondoGame.jpg);
+        background-image: url(../img/FondoStats.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         filter: contrast(150%) brightness(80%) saturate(70%);
         z-index: -1;
         left: 0;
-        top: 0;
+        top: 4rem;
         opacity: 0.4;
     }
 
-#lobbyid {
+.GameSceneOnlineWaiting{
+    filter: blur(8px) brightness(50%) saturate(60%)
+}
+
+
+.CreatePopUp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: fit-content;
+    width: fit-content;
+    padding: 2rem 3rem 2rem 3rem;
+    background-color: #1a1a1a;
+    text-align: center;
     color: white;
+    border-radius: 10%;
+    border: 0.3rem solid gold;
+    z-index: 3;
+}
+
+.LoaderHeader {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-content: space-between;
+    margin-bottom: 1rem;
+}
+
+#lobbyid {
+    color: gold;
+    font-weight:600;
+}
+
+.LoaderPlayer {
+    color: red;
+    font-weight: 600;
+}
+
+/**********************************************     LOADER     *********************************************/
+
+#Loader {
+    display: flex;
+    width: fit-content;
+    justify-content: space-around;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.LoaderPiece1{
+    height:2rem;
+    width:2rem;
+    border-radius:50%;
+    margin:1rem 0.5rem 1rem 0.5rem;
+    animation: loader1 4s infinite;
+}
+
+@keyframes loader1 {
+
+    0% {
+        background-color: none;
+        border: none;
+        box-shadow: none;
+    }
+
+    10% {
+        background-color: black;
+        border: solid 0.1rem darkgrey;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem #FB00FF, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem #FB00FF
+    }
+
+    30% {
+        background-color: darkslateblue;
+        border: solid 0.1rem blue;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem blue, 0 0 0.6rem blue, inset 0 0 0.2rem blue;
+    }
+
+    50%{
+        background-color: indianred;
+        border: solid 0.1rem red;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem red, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem red
+    }
+
+    70% {
+        background-color:gold;
+        border: solid 0.1rem gold;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem gold, 0 0 0.6rem gold, inset 0 0 0.2rem gold
+    }
+
+}
+
+
+.LoaderPiece2 {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    margin: 1rem 0.5rem 1rem 0.5rem;
+    animation: loader2 4s infinite;
+}
+
+@keyframes loader2 {
+
+    0% {
+        background-color: none;
+        border: none;
+        box-shadow: none;
+    }
+
+    20% {
+        background-color: black;
+        border: solid 0.1rem darkgrey;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem #FB00FF, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem #FB00FF
+    }
+
+    40% {
+        background-color: darkslateblue;
+        border: solid 0.1rem blue;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem blue, 0 0 0.6rem blue, inset 0 0 0.2rem blue;
+    }
+
+    60% {
+        background-color: indianred;
+        border: solid 0.1rem red;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem red, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem red
+    }
+
+    80% {
+        background-color: gold;
+        border: solid 0.1rem gold;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem gold, 0 0 0.6rem gold, inset 0 0 0.2rem gold
+    }
+
+}
+
+.LoaderPiece3 {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    margin: 1rem 0.5rem 1rem 0.5rem;
+    animation: loader3 4s infinite;
+}
+
+@keyframes loader3 {
+
+    0% {
+        background-color: none;
+        border: none;
+        box-shadow: none;
+    }
+
+    30% {
+        background-color: black;
+        border: solid 0.1rem darkgrey;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem #FB00FF, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem #FB00FF
+    }
+
+    50% {
+        background-color: darkslateblue;
+        border: solid 0.1rem blue;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem blue, 0 0 0.6rem blue, inset 0 0 0.2rem blue;
+    }
+
+    70%{
+        background-color: indianred;
+        border: solid 0.1rem red;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem red, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem red
+    }
+
+    90% {
+        background-color: gold;
+        border: solid 0.1rem gold;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem gold, 0 0 0.6rem gold, inset 0 0 0.2rem gold
+    }
+}
+
+.LoaderPiece4 {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    margin: 1rem 0.5rem 1rem 0.5rem;
+    animation: loader4 4s infinite;
+}
+
+@keyframes loader4 {
+
+    0% {
+        background-color:none;
+        border: none;
+        box-shadow: none;
+    }
+
+    40% {
+        background-color: black;
+        border: solid 0.1rem darkgrey;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem #FB00FF, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem #FB00FF
+    }
+
+    55% {
+        background-color: darkslateblue;
+        border: solid 0.1rem blue;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem blue, 0 0 0.6rem blue, inset 0 0 0.2rem blue;
+    }
+
+    80% {
+        background-color: indianred;
+        border: solid 0.1rem red;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem red, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem red
+    }
+
+    95% {
+        background-color: gold;
+        border: solid 0.1rem gold;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem gold, 0 0 0.6rem gold, inset 0 0 0.2rem gold
+    }
+}
+
+
+
+#status {
+    margin: 3rem 0rem 2rem 1rem;
+    color: white;
+}
+
+
+.JoinPopUp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: fit-content;
+    width: fit-content;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    text-align: center;
+    color: white;
+    border-radius: 10%;
+    border: 0.5rem solid green;
+    z-index: 3;
 }
 
 #GameTitle {
@@ -65,13 +471,21 @@ body {
     text-align: center;
 }
 
+.GameExit {
+    width: 7rem;
+    filter: contrast(150%) opacity(70%) brightness(140%);
+    position: absolute;
+    left: 2rem;
+    top: 18.6rem;
+}
+
 .board {
     height: auto;
     width: fit-content;
     padding: 2rem;
     display: flex;
     justify-content: center;
-    margin: 4rem auto 2rem auto;
+    margin: 3rem auto 2rem auto;
     background-color: black;
     box-shadow: 10px 10px 5px #9E00A0;
     border: 0.3rem solid #FB00FF;
@@ -85,8 +499,8 @@ body {
     }
 
 .sq {
-    height: 48px;
-    width: 48px;
+    height: 3rem;
+    width: 3rem;
     border: 0.1rem solid #FB00FF;
     border-radius: 50%;
     margin: 0.7rem 0.4rem 0.7rem 0.4rem;
@@ -262,138 +676,6 @@ body {
             box-shadow: 0 0 .20rem #fff, inset 0 0 .20rem #fff, 0 0 0.16rem #ff1111, 0 0 1.2rem #ff1111, inset 0 0 0.4rem #ff1111;
         }
 
-#Menu {
-    position: fixed;
-    display: flex;
-    flex-flow: column;
-    align-content: space-between;
-    top: 50%;
-    left: 50%;
-    background: none;
-    transform: translate(-50%, -50%);
-    height: fit-content;
-    max-width: 500px;
-    padding: 3rem 4rem 3rem 4rem;
-    text-align: center;
-    box-sizing: content-box;
-    border-radius: 10%;
-}
-
-.MenuBlue {
-    border: 0.4rem solid #006ad1;
-    box-shadow: 0 0 0.1rem #fff, inset 0 0 0.1rem #fff, 0 0 0.08rem darkturquoise, 0 0 0.8rem darkturquoise, inset 0 0 0.2rem darkturquoise;
-    animation: flicker2 4s infinite alternate;
-}
-
-@keyframes flicker2 {
-
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        box-shadow: 0 0 .17rem #fff, inset 0 0 .17rem #fff, 0 0 0.6rem aqua, 0 0 2.5rem aqua, inset 0 0 1rem aqua
-    }
-
-    20%, 24%, 55% {
-        box-shadow: none;
-    }
-}
-
-#Menu h3 {
-    font-size: 3rem;
-}
-
-#MenuLocal {
-    margin: 1rem 0 1rem 0;
-    color: darkmagenta;
-}
-
-    #MenuLocal:hover {
-        color: deeppink;
-        text-shadow: 0.1rem 0.1rem 0.3rem #ff8cda, 0.2rem 0.2rem 1rem #ff8cda, 0 0 2rem, 0 0 4rem deeppink, 0 0 6rem deeppink, 0 0 8rem deeppink, 0 0 10rem;
-        cursor: pointer;
-    }
-
-#MenuOnline {
-    margin: 1rem 0 1rem 0;
-    color: #1a9e0c;
-}
-
-    #MenuOnline:hover {
-        color: #2BE019;
-        text-shadow: 0.1rem 0.1rem 0.3rem #8aff77, 0.2rem 0.2rem 1rem #8aff77, 0 0 2rem, 0 0 4rem #2be019, 0 0 6rem #2be019, 0 0 8rem #2be019, 0 0 10rem;
-        cursor: pointer;
-    }
-
-#MenuStats {
-    margin: 1rem 0 1rem 0;
-    color: #bea100;
-}
-
-    #MenuStats:hover {
-        color: yellow;
-        text-shadow: 0.1rem 0.1rem 0.3rem #fffb00, 0.2rem 0.2rem 0.8rem #fffb00, 0 0 2rem, 0 0 4rem gold, 0 0 6rem gold, 0 0 8rem gold, 0 0 10rem;
-        cursor: pointer;
-    }
-
-#OnlineMenu {
-    display: none;
-}
-
-.MenuGreen {
-    border: 0.4rem solid #33d823;
-    box-shadow: 0 0 0.1rem #fff, inset 0 0 0.1rem #fff, 0 0 0.08rem #2BE019, 0 0 0.8rem #2BE019, inset 0 0 0.2rem #2BE019;
-    animation: flicker3 4s infinite alternate;
-}
-
-@keyframes flicker3 {
-
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        box-shadow: 0 0 .17rem #fff, inset 0 0 .17rem #fff, 0 0 0.6rem #2BE019, 0 0 2.5rem #2BE019, inset 0 0 1rem #2BE019
-    }
-
-    20%, 24%, 55% {
-        box-shadow: none;
-    }
-}
-
-#MenuQuick {
-    color: #008083;
-}
-
-    #MenuQuick:hover {
-        color: #00d6db;
-        text-shadow: 0.1rem 0.1rem 0.3rem #91fcff, 0.2rem 0.2rem 0.8rem #91fcff, 0 0 2rem, 0 0 4rem #37faff, 0 0 6rem #37faff, 0 0 8rem #37faff, 0 0 10rem;
-        cursor: pointer;
-    }
-
-#MenuCreate {
-    color: #b26200;
-}
-
-    #MenuCreate:hover {
-        color: #ff9000;
-        text-shadow: 0.1rem 0.1rem 0.3rem #ffce90, 0.2rem 0.2rem 0.8rem #ffce90, 0 0 2rem, 0 0 4rem #ffaf4c, 0 0 6rem #ffaf4c, 0 0 8rem #ffaf4c, 0 0 10rem;
-        cursor: pointer;
-    }
-
-#MenuJoin {
-    color: #7f0060;
-}
-
-    #MenuJoin:hover {
-        color: #e100aa;
-        text-shadow: 0.1rem 0.1rem 0.3rem #ff8ce3, 0.2rem 0.2rem 0.8rem #ff8ce3, 0 0 2rem, 0 0 4rem #ff30cc, 0 0 6rem #ff30cc, 0 0 8rem #ff30cc, 0 0 10rem;
-        cursor: pointer;
-    }
-
-#BackToMenu {
-    margin: 2rem 0 1rem 0;
-    color: #dd0000;
-}
-
-    #BackToMenu:hover {
-        color: #ff2121;
-        text-shadow: 0.1rem 0.1rem 0.3rem #ff9a9a, 0.2rem 0.2rem 1rem #ff9a9a, 0 0 2rem, 0 0 4rem #ff6969, 0 0 6rem #ff6969, 0 0 8rem #ff6969, 0 0 10rem;
-    }
-
 .glow-p1 {
     animation: glowRed 0.9s ease-in-out;
 }
@@ -452,6 +734,15 @@ body {
     font-size: 8rem;
     text-shadow: 0.1rem 0.1rem 0.3rem #ffe6b7, 0.2rem 0.2rem 1rem #ffe6b7, 0 0 #f1dc6d, 0 0 4rem #e8d465, 0 0 6rem gold, 0 0 8rem gold, 0 0 10rem;
     width: fit-content;
+}
+
+.StatsExit {
+    width: 7rem;
+    filter: contrast(200%) opacity(50%) brightness(170%);
+    float: right;
+    position:absolute;
+    top:6rem;
+    right:3rem;
 }
 
 #StatsName {
@@ -615,3 +906,4 @@ body {
 thead{
     border-color:none;
 }
+
