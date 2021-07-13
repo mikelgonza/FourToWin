@@ -53,4 +53,19 @@
 	    window.location.href = '@Url.Action("Stats", "Matches")';
     })
 
+    var createDiv = document.getElementById("MenuCreate")
+    createDiv.addEventListener("click", function () {
+        window.location.href = '@Url.Action("Match", "Matches", new { lobbyAction = "create" })';
+    })
+
+    var joinDiv = document.getElementById("MenuJoin")
+    joinDiv.addEventListener("click", function () {
+        window.location.href = '@Url.Action("Match", "Matches", new { lobbyAction = "join" })';
+    })
+
+    var quickDiv = document.getElementById("MenuQuick")
+    quickDiv.addEventListener("click", function () {
+        window.location.href = '@Url.Action("Match", "Matches", new { lobbyAction = "quick" })';
+    })
+
 </script>

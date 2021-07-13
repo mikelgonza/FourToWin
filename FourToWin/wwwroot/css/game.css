@@ -308,6 +308,7 @@ body {
     #MenuLocal:hover {
         color: deeppink;
         text-shadow: 0.1rem 0.1rem 0.3rem #ff8cda, 0.2rem 0.2rem 1rem #ff8cda, 0 0 2rem, 0 0 4rem deeppink, 0 0 6rem deeppink, 0 0 8rem deeppink, 0 0 10rem;
+        cursor: pointer;
     }
 
 #MenuOnline {
@@ -318,6 +319,7 @@ body {
     #MenuOnline:hover {
         color: #2BE019;
         text-shadow: 0.1rem 0.1rem 0.3rem #8aff77, 0.2rem 0.2rem 1rem #8aff77, 0 0 2rem, 0 0 4rem #2be019, 0 0 6rem #2be019, 0 0 8rem #2be019, 0 0 10rem;
+        cursor: pointer;
     }
 
 #MenuStats {
@@ -328,6 +330,7 @@ body {
     #MenuStats:hover {
         color: yellow;
         text-shadow: 0.1rem 0.1rem 0.3rem #fffb00, 0.2rem 0.2rem 0.8rem #fffb00, 0 0 2rem, 0 0 4rem gold, 0 0 6rem gold, 0 0 8rem gold, 0 0 10rem;
+        cursor: pointer;
     }
 
 #OnlineMenu {
@@ -358,6 +361,7 @@ body {
     #MenuQuick:hover {
         color: #00d6db;
         text-shadow: 0.1rem 0.1rem 0.3rem #91fcff, 0.2rem 0.2rem 0.8rem #91fcff, 0 0 2rem, 0 0 4rem #37faff, 0 0 6rem #37faff, 0 0 8rem #37faff, 0 0 10rem;
+        cursor: pointer;
     }
 
 #MenuCreate {
@@ -367,6 +371,7 @@ body {
     #MenuCreate:hover {
         color: #ff9000;
         text-shadow: 0.1rem 0.1rem 0.3rem #ffce90, 0.2rem 0.2rem 0.8rem #ffce90, 0 0 2rem, 0 0 4rem #ffaf4c, 0 0 6rem #ffaf4c, 0 0 8rem #ffaf4c, 0 0 10rem;
+        cursor: pointer;
     }
 
 #MenuJoin {
@@ -376,6 +381,7 @@ body {
     #MenuJoin:hover {
         color: #e100aa;
         text-shadow: 0.1rem 0.1rem 0.3rem #ff8ce3, 0.2rem 0.2rem 0.8rem #ff8ce3, 0 0 2rem, 0 0 4rem #ff30cc, 0 0 6rem #ff30cc, 0 0 8rem #ff30cc, 0 0 10rem;
+        cursor: pointer;
     }
 
 #BackToMenu {
