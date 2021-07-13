@@ -23,12 +23,16 @@
 
 <script>
 
+    var sound = new Audio();
+    sound.src = "/snd/fichas-poker-2-.mp3";
+
     var MainMenu = document.getElementById("MainMenu")
     var OnlineMenu = document.getElementById("OnlineMenu")
     var Menu = document.getElementById("Menu")
 
     var onlineDiv = document.getElementById("MenuOnline")
     onlineDiv.addEventListener("click", function () {
+        sound.play();
         MainMenu.style.display = "none"
         OnlineMenu.style.display = "block"
         if (Menu.classList.contains("MenuBlue")) {
