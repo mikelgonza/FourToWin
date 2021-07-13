@@ -63,7 +63,7 @@ namespace FourToWin.Hubs
                 await AddToGroup(lobbyId);
                 await Clients.Caller.SendAsync("GetPlayerNum", player);
                 await Clients.Caller.SendAsync("GetLobbyId", lobbyId);
-                await Clients.All.SendAsync("GetUser1", userId, userNickname);
+                await Clients.Caller.SendAsync("GetUser1", player1Id, player1Nickname, player1Image);
             }
             else
             {
@@ -73,7 +73,8 @@ namespace FourToWin.Hubs
                 await AddToGroup(lobbyId);
                 await Clients.Caller.SendAsync("GetPlayerNum", player);
                 await Clients.Caller.SendAsync("GetLobbyId", lobbyId);
-                await Clients.All.SendAsync("GetUser2", userId, userNickname);
+                await Clients.Caller.SendAsync("GetUser1", player1Id, player1Nickname, player1Image);
+                await Clients.All.SendAsync("GetUser2", player2Id, player2Nickname, player2Image);
                 await Clients.Group(lobbyId).SendAsync("Ready");
             }
         }
