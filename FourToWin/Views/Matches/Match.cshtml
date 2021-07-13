@@ -137,8 +137,11 @@ else if (Model == "quick")
 
 </div>
 
-<div id="wrapper">
-
+<div id="chat-content" >
+    <div id="toggle-btn">
+        <img id="chat-noti" src="~/img/chat-noti.png" />
+        <img id="chat-image" src="~/img/chat.png" />
+    </div>
     <div id="chatbox">
         <div class="fix"></div>
     </div>
@@ -167,6 +170,23 @@ else if (Model == "quick")
     var userNickname = "@user.Nickname";
     var userId = "@user.Id";
     var userImage = "@user.UserImage";
+
+    document.getElementById('toggle-btn').addEventListener('click', function () {
+        document.getElementById('chat-content').classList.toggle('active');
+        document.getElementById('toggle-btn').classList.toggle('active');
+
+        document.getElementById('chat-image').style.display = 'block';
+        document.getElementById('chat-noti').style.display = 'none';
+
+        if (isChatOpen)
+            isChatOpen = false;
+        else
+            isChatOpen = true;
+
+        console.log("chat open:" + isChatOpen)
+    })
+
+
 
     function SendToDatabase() {
 

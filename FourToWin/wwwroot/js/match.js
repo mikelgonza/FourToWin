@@ -10,6 +10,7 @@ var user2Id, user2Image;
 var user2Nickname = 2;
 var matchWinner;
 var columnPosition = -1;
+var isChatOpen = false;
 
 
 // GAME
@@ -356,10 +357,14 @@ connection.on("ReceiveMessage", function (message, user) {
         p.innerHTML = `<b>${user}:</b><br>${message}`
     }
 
+    if (!isChatOpen) {
+        document.getElementById('chat-image').style.display = 'none';
+        document.getElementById('chat-noti').style.display = 'block';
+    }
+
     // autoscroll
     chat.scrollTop = chat.scrollHeight;
 
-    // Enter to send message
 });
 
 document.getElementById("submitmsg").addEventListener("click", function (event) {
