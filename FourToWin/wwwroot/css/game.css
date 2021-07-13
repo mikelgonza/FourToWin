@@ -54,7 +54,7 @@ body {
     background: none;
     height: fit-content;
     width:fit-content;
-    padding: 3rem 4rem 3rem 4rem;
+    padding: 2rem 4rem 2rem 4rem;
     text-align: center;
     box-sizing: content-box;
     border-radius: 10%;
@@ -195,8 +195,244 @@ body {
         opacity: 0.4;
     }
 
-#lobbyid {
+.GameSceneOnlineWaiting{
+    filter: blur(8px) brightness(50%) saturate(60%)
+}
+
+
+.CreatePopUp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: fit-content;
+    width: fit-content;
+    padding: 2rem 3rem 2rem 3rem;
+    background-color: #1a1a1a;
+    text-align: center;
     color: white;
+    border-radius: 10%;
+    border: 0.3rem solid gold;
+    z-index: 3;
+}
+
+.LoaderHeader {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-content: space-between;
+    margin-bottom: 1rem;
+}
+
+#lobbyid {
+    color: gold;
+    font-weight:600;
+}
+
+.LoaderPlayer {
+    color: red;
+    font-weight: 600;
+}
+
+/**********************************************     LOADER     *********************************************/
+
+#Loader {
+    display: flex;
+    width: fit-content;
+    justify-content: space-around;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.LoaderPiece1{
+    height:2rem;
+    width:2rem;
+    border-radius:50%;
+    margin:1rem 0.5rem 1rem 0.5rem;
+    animation: loader1 4s infinite;
+}
+
+@keyframes loader1 {
+
+    0% {
+        background-color: none;
+        border: none;
+        box-shadow: none;
+    }
+
+    10% {
+        background-color: black;
+        border: solid 0.1rem darkgrey;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem #FB00FF, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem #FB00FF
+    }
+
+    30% {
+        background-color: darkslateblue;
+        border: solid 0.1rem blue;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem blue, 0 0 0.6rem blue, inset 0 0 0.2rem blue;
+    }
+
+    50%{
+        background-color: indianred;
+        border: solid 0.1rem red;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem red, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem red
+    }
+
+    70% {
+        background-color:gold;
+        border: solid 0.1rem gold;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem gold, 0 0 0.6rem gold, inset 0 0 0.2rem gold
+    }
+
+}
+
+
+.LoaderPiece2 {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    margin: 1rem 0.5rem 1rem 0.5rem;
+    animation: loader2 4s infinite;
+}
+
+@keyframes loader2 {
+
+    0% {
+        background-color: none;
+        border: none;
+        box-shadow: none;
+    }
+
+    20% {
+        background-color: black;
+        border: solid 0.1rem darkgrey;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem #FB00FF, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem #FB00FF
+    }
+
+    40% {
+        background-color: darkslateblue;
+        border: solid 0.1rem blue;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem blue, 0 0 0.6rem blue, inset 0 0 0.2rem blue;
+    }
+
+    60% {
+        background-color: indianred;
+        border: solid 0.1rem red;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem red, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem red
+    }
+
+    80% {
+        background-color: gold;
+        border: solid 0.1rem gold;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem gold, 0 0 0.6rem gold, inset 0 0 0.2rem gold
+    }
+
+}
+
+.LoaderPiece3 {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    margin: 1rem 0.5rem 1rem 0.5rem;
+    animation: loader3 4s infinite;
+}
+
+@keyframes loader3 {
+
+    0% {
+        background-color: none;
+        border: none;
+        box-shadow: none;
+    }
+
+    30% {
+        background-color: black;
+        border: solid 0.1rem darkgrey;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem #FB00FF, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem #FB00FF
+    }
+
+    50% {
+        background-color: darkslateblue;
+        border: solid 0.1rem blue;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem blue, 0 0 0.6rem blue, inset 0 0 0.2rem blue;
+    }
+
+    70%{
+        background-color: indianred;
+        border: solid 0.1rem red;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem red, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem red
+    }
+
+    90% {
+        background-color: gold;
+        border: solid 0.1rem gold;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem gold, 0 0 0.6rem gold, inset 0 0 0.2rem gold
+    }
+}
+
+.LoaderPiece4 {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    margin: 1rem 0.5rem 1rem 0.5rem;
+    animation: loader4 4s infinite;
+}
+
+@keyframes loader4 {
+
+    0% {
+        background-color:none;
+        border: none;
+        box-shadow: none;
+    }
+
+    40% {
+        background-color: black;
+        border: solid 0.1rem darkgrey;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem #FB00FF, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem #FB00FF
+    }
+
+    55% {
+        background-color: darkslateblue;
+        border: solid 0.1rem blue;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem blue, 0 0 0.6rem blue, inset 0 0 0.2rem blue;
+    }
+
+    80% {
+        background-color: indianred;
+        border: solid 0.1rem red;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem red, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem red
+    }
+
+    95% {
+        background-color: gold;
+        border: solid 0.1rem gold;
+        box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem gold, 0 0 0.6rem gold, inset 0 0 0.2rem gold
+    }
+}
+
+
+
+#status {
+    margin: 3rem 0rem 2rem 1rem;
+    color: white;
+}
+
+
+.JoinPopUp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: fit-content;
+    width: fit-content;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    text-align: center;
+    color: white;
+    border-radius: 10%;
+    border: 0.5rem solid green;
+    z-index: 3;
 }
 
 #GameTitle {

@@ -11,22 +11,30 @@
 
 @if (Model == "create")
 {
-    <h1>Create Match</h1>
 
-    <div class="container">
+    <div class="CreatePopUp">
         <div class="row">&nbsp;</div>
         <div>
-            <p>LobbyId: <span id="lobbyid"></span></p>
-            <p>Player: <span id="userPlayer"></span></p>
-            <p>Estado: <span id="status"></span></p>
+            <div class="LoaderHeader">
+                <p>Send this Lobby ID to your rival!</p>
+                <p><span id="lobbyid"></span></p>
+            </div>
+            <div>
+                <div id="Loader">
+                    <div class="LoaderPiece1"></div>
+                    <div class="LoaderPiece2"></div>
+                    <div class="LoaderPiece3"></div>
+                    <div class="LoaderPiece4"></div>
+                </div>
+                <span id="status"></span>
+            </div>
         </div>
     </div>
 }
 else if (Model == "join")
 {
-    <h1>Join Match</h1>
 
-    <div class="container">
+    <div class="JoinPopUp">
         <div class="row">&nbsp;</div>
         <div class="row">
             <input type="text" id="groupInput" />
@@ -55,7 +63,7 @@ else if (Model == "quick")
     </div>
 }
 
-<div id="Scene">
+<div id="GameScene" class="GameSceneOnlineWaiting">
     <br />
     <h1 id="GameTitle">4 to Win</h1>
     <hr />
