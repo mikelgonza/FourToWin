@@ -12,78 +12,92 @@
     <hr />
     <br />
 
-    <h4 class="StatsPlayer">Player <span id="StatsName">@user.Nickname</span></h4>
+    <div class="StatsHeader">
+        <div class="StatsPlayer">
+            <img class="StatsPlayerImg" src="~/img/@user.UserImage" alt="User Image" />
+            <h4 class="StatsPlayerName"> <span id="StatsName">@user.Nickname</span></h4>
+        </div>
 
-    <div>
-        <hr />
-        <dl class="row StatsResume">
-            <dt class="col-sm-2">
-                Games:
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.total
-            </dd>
-            <dt class="col-sm-2">
-                Wins:
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.won
-            </dd>
-            <dt class="col-sm-2">
-                Defeats:
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.lost
-            </dd>
-            <dt class="col-sm-2">
-                Draws:
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.draw
-            </dd>
-            <dt class="col-sm-2">
-                Best play:
-            </dt>
-            <dd class="col-sm-10">
-                @ViewBag.record
-            </dd>
-        </dl>
+        <div class="StatsTotals">
+            <div class="TotalGames">
+                <div class="StatsNumberGames">
+                    @ViewBag.total
+                </div>
+                <div >
+                    Games
+                </div>
+            </div>
+            <div class="BestPlay">
+                <div class="StatsNumberRecord">
+                    @ViewBag.record
+                </div>
+                <div>
+                    Record(Moves)
+                </div>
+            </div>
+        </div>
+        <div class="StatsTotals">
+            <div class="TotalWins">
+                <div class="StatsNumberWins">
+                    @ViewBag.won
+                </div>
+                <div>
+                    Wins
+                </div>
+            </div>
+            <div class="TotalDefeats">
+                <div class="StatsNumberDefeats">
+                    @ViewBag.lost
+                </div>
+                <div>
+                    Defeats
+                </div>
+            </div>
+            <div class="TotalDraws">
+                <div class="StatsNumberDraws">
+                    @ViewBag.draw
+                </div>
+                <div>
+                    Draws
+                </div>
+            </div>
+        </div>
     </div>
 
 
     @* LIST HISTORICAL *@
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Date Time
-            </th>
-            <th>
-                Rival
-            </th>
-            <th>
-                Result
-            </th>
-            <th>
-                Rounds
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in ViewBag.playedU1)
-        {
+    <table class="table StatsTable">
+        <thead>
             <tr>
-                <td>
-                    @item.DateTime
-                </td>
-                <td>
-                    @foreach (var item2 in ViewBag.UsersList)
-                    {
-                        if (item2.Id == item.User2Id)
+                <th>
+                    Date Time
+                </th>
+                <th>
+                    Rival
+                </th>
+                <th>
+                    Result
+                </th>
+                <th>
+                    Rounds
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.playedU1)
+            {
+                <tr>
+                    <td>
+                        @item.DateTime
+                    </td>
+                    <td>
+                        @foreach (var item2 in ViewBag.UsersList)
                         {
-                            @Html.Raw(item2.Nickname)
-                        }
+                            if (item2.Id == item.User2Id)
+                            {
+                                @Html.Raw(item2.Nickname)
+                            }
 
                         }
                     </td>

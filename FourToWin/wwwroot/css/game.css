@@ -10,9 +10,9 @@ body {
 }
 
 #GameScene {
-    width:100%;
-    margin-right:0rem;
-    margin-left:0rem;
+    width: 100%;
+    margin-right: 0rem;
+    margin-left: 0rem;
 }
 
     #GameScene::before {
@@ -25,16 +25,16 @@ body {
         background-image: url(../img/FondoGame.jpg);
         background-repeat: no-repeat;
         background-size: cover;
-        filter: contrast(150%) brightness(80%) saturate(70%) hue-rotate(79deg);
+        filter: contrast(150%) brightness(80%) saturate(70%);
         z-index: -1;
         left: 0;
         top: 0;
         opacity: 0.4;
     }
 
-    #lobbyid {
-        color: white;
-    }
+#lobbyid {
+    color: white;
+}
 
 #GameTitle {
     text-align: center;
@@ -42,16 +42,13 @@ body {
     font-style: italic;
     font-size: 5rem;
     color: aqua;
-    text-shadow: 0.1rem 0.1rem 0.3rem #fff, 
-        0.2rem 0.2rem 1rem #fff,
-        0 0 2rem, 0 0 4rem aqua, 
-        0 0 6rem aqua, 0 0 8rem aqua, 0 0 10rem;
+    text-shadow: 0.1rem 0.1rem 0.3rem #fff, 0.2rem 0.2rem 1rem #fff, 0 0 2rem, 0 0 4rem aqua, 0 0 6rem aqua, 0 0 8rem aqua, 0 0 10rem;
 }
 
-#GameInfo{
-    display:flex;
-    justify-content:space-around;
-    color:white;
+#GameInfo {
+    display: flex;
+    justify-content: space-around;
+    color: white;
 }
 
 #CurPlayer {
@@ -82,10 +79,10 @@ body {
     animation: flicker 4s infinite alternate;
 }
 
-.board .col {
-    padding:0px;
-    margin:0px;
-}
+    .board .col {
+        padding: 0px;
+        margin: 0px;
+    }
 
 .sq {
     height: 48px;
@@ -94,23 +91,18 @@ body {
     border-radius: 50%;
     margin: 0.7rem 0.4rem 0.7rem 0.4rem;
     background-color: #2C2C2C;
-    box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff,
-        0 0 0.08rem #FB00FF,
-        0 0 0.6rem #FB00FF, inset 0 0 0.2rem #FB00FF
+    box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem #FB00FF, 0 0 0.6rem #FB00FF, inset 0 0 0.2rem #FB00FF
 }
 
 @keyframes flicker {
 
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        box-shadow: 0 0 .17rem #fff, 
-            inset 0 0 .17rem #fff, 
-            0 0 0.6rem #FB00FF,  
-            0 0 2.5rem #FB00FF, 
-            inset 0 0 1rem #FB00FF
+        box-shadow: 0 0 .17rem #fff, inset 0 0 .17rem #fff, 0 0 0.6rem #FB00FF, 0 0 2.5rem #FB00FF, inset 0 0 1rem #FB00FF
     }
+
     20%, 24%, 55% {
         box-shadow: none;
-    }    
+    }
 }
 
 .p1 {
@@ -151,7 +143,7 @@ body {
 
 .winnerSq {
     background-color: goldenrod;
-    border-color:gold;
+    border-color: gold;
     box-shadow: 0 0 .20rem #fff, inset 0 0 .20rem #fff, 0 0 0.16rem gold, 0 0 1.2rem gold, inset 0 0 0.4rem gold
 }
 
@@ -174,7 +166,7 @@ body {
 }
 
     #VictoryPopUp h4 {
-        font-weight:800;
+        font-weight: 800;
         font-style: italic;
         margin-bottom: 2rem;
     }
@@ -257,19 +249,18 @@ body {
     .btnClose a {
         border: 0.3rem solid transparent;
         padding: 12px 16px;
-
         cursor: pointer;
         width: 80%;
         text-decoration: none;
         color: red;
     }
 
-    .btnClose a:hover {
-        text-decoration: none;
-        border: 0.3rem solid #ff1111;
-        border-radius: 5%;
-        box-shadow: 0 0 .20rem #fff, inset 0 0 .20rem #fff, 0 0 0.16rem #ff1111, 0 0 1.2rem #ff1111, inset 0 0 0.4rem #ff1111;
-    }
+        .btnClose a:hover {
+            text-decoration: none;
+            border: 0.3rem solid #ff1111;
+            border-radius: 5%;
+            box-shadow: 0 0 .20rem #fff, inset 0 0 .20rem #fff, 0 0 0.16rem #ff1111, 0 0 1.2rem #ff1111, inset 0 0 0.4rem #ff1111;
+        }
 
 #Menu {
     position: fixed;
@@ -285,7 +276,7 @@ body {
     padding: 3rem 4rem 3rem 4rem;
     text-align: center;
     box-sizing: content-box;
-    border-radius: 10%; 
+    border-radius: 10%;
 }
 
 .MenuBlue {
@@ -305,9 +296,9 @@ body {
     }
 }
 
-    #Menu h3 {
-        font-size: 3rem;
-    }
+#Menu h3 {
+    font-size: 3rem;
+}
 
 #MenuLocal {
     margin: 1rem 0 1rem 0;
@@ -448,23 +439,25 @@ body {
 
 /******************************    STATISTICS    ********************************/
 #StatsTitle {
+    margin: 1rem auto 3rem auto;
     text-align: center;
     color: #ffcb39;
     font-style: italic;
-    font-size: 5rem;
+    font-size: 8rem;
     text-shadow: 0.1rem 0.1rem 0.3rem #ffe6b7, 0.2rem 0.2rem 1rem #ffe6b7, 0 0 #f1dc6d, 0 0 4rem #e8d465, 0 0 6rem gold, 0 0 8rem gold, 0 0 10rem;
+    width: fit-content;
 }
 
-#StatsName{
-    color:green;
+#StatsName {
+    color:#12f9d7;
+    font-weight: 700;
 }
 
-#StatsScene{
-    color:white;
-
+#StatsScene {
+    color: white;
 }
 
-#StatsScene::before{
+    #StatsScene::before {
         content: "";
         width: 100%;
         min-height: 100vh;
@@ -474,8 +467,145 @@ body {
         background-image: url(../img/FondoStats5.png);
         background-repeat: no-repeat;
         background-size: cover;
-        filter:contrast(150%) brightness(80%) saturate(70%);
+        filter:contrast(150%) brightness(80%) saturate(50%) hue-rotate(88deg);
         z-index: -1;
         left: 0;
         top: 0;
+    }
+
+.StatsHeader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 6rem;
+}
+
+.StatsPlayer {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-self: center;
+    width: 50%;
+    align-items: center;
+}
+
+.StatsPlayerImg {
+    max-width: 12rem;
+    margin: 0rem 0rem 2rem 0rem;
+    border: 0.2rem solid #12f9d7;
+    border-radius: 12%;
+    box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem aqua, 0 0 0.6rem #12f9d7, inset 0 0 0.2rem #12f9d7;
+}
+
+.StatsTotals {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: start;
+    align-self: center;
+    width: 30%;
+}
+
+.TotalGames {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    align-items: baseline;
+    background-color: black;
+    border: 0.1rem solid blue;
+    border-radius: 1rem 1rem 1rem 1rem;
+    padding: 0rem 1rem 0rem 1rem;
+    box-shadow: 0 0 0.1rem #bebcff, inset 0 0 0.1rem #bebcff, 0 0 0.08rem #2727ff, 0 0 0.6rem #1b1bff, inset 0 0 0.2rem #2626ff;
+}
+
+.TotalWins {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    align-items: baseline;
+    background-color: black;
+    border: 0.1rem solid green;
+    border-radius: 1rem 1rem 1rem 1rem;
+    padding: 0rem 1rem 0rem 1rem;
+    box-shadow: 0 0 0.1rem #c4fdbe, inset 0 0 0.1rem #c4fdbe, 0 0 0.08rem #63f863, 0 0 0.6rem #3ce509, inset 0 0 0.2rem #3ce509;
+}
+
+.TotalDefeats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    align-items: baseline;
+    background-color: black;
+    border: 0.1rem solid #e60808;
+    border-radius: 1rem 1rem 1rem 1rem;
+    padding: 0rem 1rem 0rem 1rem;
+    box-shadow: 0 0 0.1rem #ffb4b4, inset 0 0 0.1rem #ffbfbf, 0 0 0.08rem #dd4747, 0 0 0.6rem #ff2d2d, inset 0 0 0.2rem #ff2d2d;
+}
+
+.TotalDraws {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    align-items: baseline;
+    background-color: black;
+    border: 0.1rem solid goldenrod;
+    border-radius: 1rem 1rem 1rem 1rem;
+    padding: 0rem 1rem 0rem 1rem;
+    box-shadow: 0 0 0.05rem #f9e6ae, inset 0 0 0.05rem #f9e6ae, 0 0 0.08rem gold, 0 0 0.6rem gold, inset 0 0 0.2rem gold;
+}
+
+.BestPlay {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    align-items: baseline;
+    background-color: black;
+    border: 0.1rem solid deeppink;
+    border-radius: 1rem 1rem 1rem 1rem;
+    padding: 0rem 1rem 0rem 1rem;
+    box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem deeppink, 0 0 0.6rem deeppink, inset 0 0 0.2rem deeppink;
+}
+
+.StatsNumberGames{
+    margin-right:1rem;
+    color:blue;
+    font-size:xx-large;
+}
+
+.StatsNumberWins {
+    margin-right: 1rem;
+    color: green;
+    font-size: xx-large;
+}
+
+.StatsNumberDefeats {
+    margin-right: 1rem;
+    color: red;
+    font-size: xx-large;
+}
+
+.StatsNumberDraws {
+    margin-right: 1rem;
+    color: yellow;
+    font-size: xx-large;
+}
+
+.StatsNumberRecord {
+    margin-right: 1rem;
+    color: deeppink;
+    font-size: xx-large;
+}
+
+.StatsTable {
+    background-color: black;
+    color: white;
+    border: 0.1rem solid deeppink;
+    border-radius: 1rem 1rem 1rem 1rem;
+    box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.08rem deeppink, 0 0 0.6rem deeppink, inset 0 0 0.2rem deeppink;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+thead{
+    border-color:none;
 }
