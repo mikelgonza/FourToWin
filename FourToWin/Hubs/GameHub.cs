@@ -57,6 +57,9 @@ namespace FourToWin.Hubs
 
             if (lobbies.Count == 0)
             {
+                player1Id = userId;
+                player1Nickname = userNickname;
+                player1Image = userImage;
                 player = "p1";
                 lobbyId = GenerateLobbyId();
                 lobbies.Add(lobbyId);
@@ -67,6 +70,9 @@ namespace FourToWin.Hubs
             }
             else
             {
+                player2Id = userId;
+                player2Nickname = userNickname;
+                player2Image = userImage;
                 player = "p2";
                 lobbyId = lobbies[0];
                 lobbies.Remove(lobbyId);
