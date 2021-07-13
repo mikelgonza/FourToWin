@@ -145,20 +145,51 @@ div.login-form-icon {
 }
 
 /*** CHAT BOX ***/
-#wrapper {
-    position: absolute;
-    bottom: 100px;
-    right: 20px;
+#chat-content {
+    position: fixed;
+    bottom: 0px;
+    right: -410px;
     width: 400px;
     height: 430px;
     border: 1px solid gold;
-    border-radius: 15px;
+    border-radius: 15px 0 0 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.5rem gold, 0 0 0.5rem gold, inset 0 0 0.7rem gold
+    box-shadow: 0 0 .10rem #fff, inset 0 0 .10rem #fff, 0 0 0.5rem gold, 0 0 0.5rem gold, inset 0 0 0.7rem gold;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
 }
+
+#chat-content.active {
+    right: -5px;
+}
+
+    #chat-content #toggle-btn {
+        position: absolute;
+        right: 410px;
+        top: 20px;
+        cursor: pointer;
+        transition: all .5s;
+    }
+
+    #chat-content #toggle-btn.active {
+        right: 320px;
+        top: -60px;
+    }
+
+#chat-image {
+    width: 60px;
+}
+
+#chat-noti {
+    display: none;
+    width: 60px;
+}
+
 
 #chatbox {
     text-align: left;
@@ -218,9 +249,6 @@ div.login-form-icon {
     font-style: italic;
     padding: 0 10px;
 }
-
-
-
 
 #submitmsg {
     width: 35px;

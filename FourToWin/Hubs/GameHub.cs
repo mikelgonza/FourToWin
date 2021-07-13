@@ -57,23 +57,30 @@ namespace FourToWin.Hubs
 
             if (lobbies.Count == 0)
             {
+                player1Id = userId;
+                player1Nickname = userNickname;
+                player1Image = userImage;
                 player = "p1";
                 lobbyId = GenerateLobbyId();
                 lobbies.Add(lobbyId);
                 await AddToGroup(lobbyId);
                 await Clients.Caller.SendAsync("GetPlayerNum", player);
                 await Clients.Caller.SendAsync("GetLobbyId", lobbyId);
-                await Clients.All.SendAsync("GetUser1", userId, userNickname);
+                await Clients.Caller.SendAsync("GetUser1", player1Id, player1Nickname, player1Image);
             }
             else
             {
+                player2Id = userId;
+                player2Nickname = userNickname;
+                player2Image = userImage;
                 player = "p2";
                 lobbyId = lobbies[0];
                 lobbies.Remove(lobbyId);
                 await AddToGroup(lobbyId);
                 await Clients.Caller.SendAsync("GetPlayerNum", player);
                 await Clients.Caller.SendAsync("GetLobbyId", lobbyId);
-                await Clients.All.SendAsync("GetUser2", userId, userNickname);
+                await Clients.Caller.SendAsync("GetUser1", player1Id, player1Nickname, player1Image);
+                await Clients.All.SendAsync("GetUser2", player2Id, player2Nickname, player2Image);
                 await Clients.Group(lobbyId).SendAsync("Ready");
             }
         }

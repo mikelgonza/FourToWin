@@ -77,8 +77,8 @@ namespace FourToWin.Controllers
             ViewData["total"] = totalU1.Count + totalU2.Count;
 
             // Record of movements
-            int nU1 = 21;
-            int nU2 = 21;
+            int nU1 = 22;
+            int nU2 = 22;
             int n;
 
             foreach (var item in wonU1)
@@ -95,6 +95,8 @@ namespace FourToWin.Controllers
                 n = nU1;
             else
                 n = nU2;
+
+            if (n == 22) n = 0;
 
             ViewData["record"] = n;
 
