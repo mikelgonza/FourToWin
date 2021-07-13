@@ -7,7 +7,8 @@
     AppUser user = await UserManager.GetUserAsync(User);
 }
 <div id="StatsScene">
-    <br />
+    <br /> 
+    <img class="StatsExit" src="~/img/Exit sign2.jpg" alt="Exit" />
     <h1 id="StatsTitle">Stats</h1>
     <hr />
     <br />
@@ -159,3 +160,9 @@
     </table>
 
 </div>
+
+<script>
+    document.querySelector(".StatsExit").addEventListener("click", function () {
+        window.location.href = "@Url.Action("Index", "Home")"
+    })
+</script>

@@ -22,13 +22,13 @@ body {
         display: block;
         height: 100%;
         position: absolute;
-        background-image: url(../img/FondoGame.jpg);
+        background-image: url(../img/FondoStats.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         filter: contrast(150%) brightness(80%) saturate(70%);
         z-index: -1;
         left: 0;
-        top: 0;
+        top: 4rem;
         opacity: 0.4;
     }
 
@@ -65,13 +65,21 @@ body {
     text-align: center;
 }
 
+.GameExit {
+    width: 7rem;
+    filter: contrast(150%) opacity(70%) brightness(140%);
+    position: absolute;
+    left: 2rem;
+    top: 19rem;
+}
+
 .board {
     height: auto;
     width: fit-content;
     padding: 2rem;
     display: flex;
     justify-content: center;
-    margin: 4rem auto 2rem auto;
+    margin: 3rem auto 2rem auto;
     background-color: black;
     box-shadow: 10px 10px 5px #9E00A0;
     border: 0.3rem solid #FB00FF;
@@ -85,8 +93,8 @@ body {
     }
 
 .sq {
-    height: 48px;
-    width: 48px;
+    height: 3rem;
+    width: 3rem;
     border: 0.1rem solid #FB00FF;
     border-radius: 50%;
     margin: 0.7rem 0.4rem 0.7rem 0.4rem;
@@ -429,6 +437,15 @@ body {
     width: fit-content;
 }
 
+.StatsExit {
+    width: 7rem;
+    filter: contrast(200%) opacity(50%) brightness(170%);
+    float: right;
+    position:absolute;
+    top:6rem;
+    right:3rem;
+}
+
 #StatsName {
     color:#12f9d7;
     font-weight: 700;
@@ -590,3 +607,4 @@ body {
 thead{
     border-color:none;
 }
+
