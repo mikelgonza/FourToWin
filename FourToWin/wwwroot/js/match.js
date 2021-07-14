@@ -12,6 +12,9 @@ var matchWinner;
 var columnPosition = -1;
 var isChatOpen = false;
 
+var notification = new Audio();
+notification.src = "/snd/notification.mp3";
+
 
 // GAME
 var player = "p1";
@@ -371,6 +374,8 @@ connection.on("ReceiveMessage", function (message, user) {
     if (!isChatOpen) {
         document.getElementById('chat-image').style.display = 'none';
         document.getElementById('chat-noti').style.display = 'block';
+
+        notification.play();
     }
 
     // autoscroll
