@@ -202,7 +202,7 @@ function changeCount() {
 }
 
 function victory(winner) {
-    document.getElementById("Scene").style.filter = "blur(7px)";
+    document.getElementById("GameScene").style.filter = "blur(7px)";
     document.getElementById("VictoryPopUp").style.display = "block";
     if (winner == "p1") {
         document.getElementById("WinnerMsg").style.color = "red"
@@ -335,6 +335,17 @@ connection.on("ReceiveColumn", function (column) {
 
 connection.on("Ready", function () {
     document.getElementById("status").textContent = "Ready";
+
+    if (document.querySelector('.CreatePopUp')) {
+        document.querySelector('.CreatePopUp').style.display = 'none';
+    }
+
+    if (document.querySelector('.JoinPopUp')) {
+        document.querySelector('.JoinPopUp').style.display = 'none';
+    }
+
+    document.querySelector('#GameScene').style.filter = 'blur(0px)';
+
 
     // Start game
     countdown();
