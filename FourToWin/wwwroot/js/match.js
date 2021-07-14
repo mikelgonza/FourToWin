@@ -11,6 +11,7 @@ var user2Nickname = 2;
 var matchWinner;
 var columnPosition = -1;
 var isChatOpen = false;
+var userColor;
 
 var notification = new Audio();
 notification.src = "/snd/notification.mp3";
@@ -320,7 +321,19 @@ connection.on("GetUser2", function (userId, nickname, userImage) {
 connection.on("GetPlayerNum", function (playerNum) {
     userPlayer = playerNum;
 
-    document.getElementById("userPlayer").textContent = userPlayer;
+    let colorDiv = document.getElementById("userColor");
+
+    if (playerNum === "p1") {
+        userColor = "Red";
+        colorDiv.style = "color: red";
+    }
+    else {
+        userColor = "Blue";
+        colorDiv.style = "color: blue";
+    }
+
+    colorDiv.textContent = userColor;
+    document.querySelector('.user-color-cont').style = "visibility: visible";
 });
 
 connection.on("GetLobbyId", function (lobbyId) {
@@ -337,22 +350,26 @@ connection.on("ReceiveColumn", function (column) {
 });
 
 connection.on("Ready", function () {
-    document.getElementById("status").textContent = "Ready";
 
-    if (document.querySelector('.CreatePopUp')) {
-        document.querySelector('.CreatePopUp').style.display = 'none';
-    }
+    setTimeout(function () {
+        if (document.querySelector('.CreatePopUp')) {
+            document.querySelector('.CreatePopUp').style.display = 'none';
+        }
 
-    if (document.querySelector('.JoinPopUp')) {
-        document.querySelector('.JoinPopUp').style.display = 'none';
-    }
+        if (document.querySelector('.JoinPopUp')) {
+            document.querySelector('.JoinPopUp').style.display = 'none';
+        }
 
-    document.querySelector('#GameScene').style.filter = 'blur(0px)';
+        document.querySelector('#GameScene').style.filter = 'blur(0px)';
 
 
-    // Start game
-    countdown();
-    addEventListeners();
+        // Start game
+        countdown();
+        addEventListeners();
+    }, 2000)
+
+
+    
 });
 
 InputAutoKey("usermsg", "submitmsg", 13);

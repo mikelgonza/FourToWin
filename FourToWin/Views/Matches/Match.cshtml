@@ -18,7 +18,7 @@
             <div class="LoaderHeader">
                 <p>Send this Lobby ID to your rival!</p>
                 <p><span id="lobbyid"></span></p>
-                <p>Player: <span id="userPlayer"></span></p>
+                <p class="user-color-cont">Color: <span id="userColor" class="font-weight-bold"></span></p>
             </div>
             <div>
                 <div id="Loader">
@@ -27,17 +27,18 @@
                     <div class="LoaderPiece3"></div>
                     <div class="LoaderPiece4"></div>
                 </div>
-                <span id="status"></span>
+                <span>Waiting...</span>
             </div>
         </div>
     </div>
 }
 else if (Model == "join")
 {
-    <div class="JoinPopUp">
-        <input type="text" id="groupInput" placeholder="Lobby ID"/>
-        <input type="button" id="joinButton" class="JoinPopUpButton" value="Join Match" />
-    </div>
+<div class="JoinPopUp">
+    <input type="text" id="groupInput" placeholder="Lobby ID" />
+    <p class="user-color-cont">Color: <span id="userColor" class="font-weight-bold"></span></p>
+    <input type="button" id="joinButton" class="JoinPopUpButton" value="Join Match" />
+</div>
 }
 else if (Model == "quick")
 {
