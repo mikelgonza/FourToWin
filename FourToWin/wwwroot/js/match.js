@@ -290,6 +290,8 @@ if (lobbyAction === "join") {
 
         event.preventDefault();
     });
+
+    InputAutoKey("groupInput", "joinButton", 13)
 }
 
 connection.on("GetUser1", function (userId, nickname, userImage) {

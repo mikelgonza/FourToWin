@@ -33,20 +33,9 @@
 }
 else if (Model == "join")
 {
-
     <div class="JoinPopUp">
-        <div class="row">&nbsp;</div>
-        <div class="row">
-            <input type="text" id="groupInput" />
-            <input type="button" id="joinButton" value="Join Match" />
-        </div>
-        <div class="row">&nbsp;</div>
-        <div>
-            <p>LobbyId: <span id="lobbyid"></span></p>
-            <p>Player: <span id="userPlayer"></span></p>
-            <p>Estado: <span id="status"></span></p>
-
-        </div>
+        <input type="text" id="groupInput" placeholder="Lobby ID"/>
+        <input type="button" id="joinButton" class="JoinPopUpButton" value="Join Match" />
     </div>
 }
 else if (Model == "quick")
@@ -145,7 +134,7 @@ else if (Model == "quick")
 
 </div>
 
-<div id="chat-content" >
+<div id="chat-content">
     <div id="toggle-btn">
         <img id="chat-noti" src="~/img/chat-noti.png" />
         <img id="chat-image" src="~/img/chat.png" />
