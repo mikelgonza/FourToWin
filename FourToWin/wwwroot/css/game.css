@@ -238,7 +238,7 @@ body {
     height: fit-content;
     width: fit-content;
     padding: 2rem 3rem 2rem 3rem;
-    background-color: #1a1a1a;
+    background-color: #161616;
     text-align: center;
     color: white;
     border-radius: 1rem 1rem 1rem 1rem;
@@ -254,7 +254,7 @@ body {
     height: fit-content;
     width: fit-content;
     padding: 2rem 3rem 2rem 3rem;
-    background-color: #1a1a1a;
+    background-color: #161616;
     text-align: center;
     color: white;
     border-radius: 1rem 1rem 1rem 1rem;
@@ -488,7 +488,7 @@ body {
     font-size: revert;
     margin-top: 1rem;
     width: fit-content;
-    background-color: #1a1a1a;
+    background-color: #161616;
     color: white;
     margin-left: auto;
     margin-right: auto;
@@ -505,17 +505,17 @@ body {
     font-size: revert;
     margin-top: 1rem;
     width: fit-content;
-    background-color: #1a1a1a;
-    color: #dc3545;
+    background-color: #161616;
+    color: white;
     margin-left: auto;
     margin-right: auto;
     margin-top: 1rem;
-    border: 0.1rem solid forestgreen;
+    border: 0.1rem solid red;
     border-radius: 0.2rem 0.2rem 0.2rem 0.2rem;
 }
 
     .CancelPopUpButton:hover {
-        color: #4bf54b;
+        color: red;
     }
 
 .JoinButtonsCont {
@@ -572,7 +572,7 @@ body {
     filter: contrast(150%) opacity(70%) brightness(140%);
     position: absolute;
     left: 2rem;
-    top: 18.6rem;
+    top: 22.5rem;
     cursor:pointer;
     z-index:3;
 }
@@ -703,11 +703,11 @@ body {
     height: fit-content;
     max-width: 300px;
     padding: 2rem;
-    background-color: #1a1a1a;
+    background-color: #161616;
     text-align: center;
     box-sizing: content-box;
     font-weight: 400;
-    z-index:3;
+    z-index: 3;
 }
 
     #ExitPopUp h3 {

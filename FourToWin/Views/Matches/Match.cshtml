@@ -78,88 +78,94 @@ else if (Model == "quick")
     </div>
 }
 
-    <div class="GameSceneOnlineWaiting">
+<div class="GameSceneOnlineWaiting">
 
-        <br />
-        <h1 id="GameTitle">4 to Win</h1>
-        <hr />
-        <br />
+    <br />
+    <h1 id="GameTitle">4 to Win</h1>
+    <hr />
+    <br />
 
-        <div id="GameInfo">
-            <h4>Player  <span id="CurPlayer"></span></h4>
-            <h5>Round &nbsp <span id="Round"></span></h5>
+    <div id="GameInfo">
+        <h4>Player  <span id="CurPlayer"></span></h4>
+        <h5>Round &nbsp <span id="Round"></span></h5>
+    </div>
+
+    <h3 id="Countdown"></h3>
+
+    <div class="board">
+
+        <div class="col" id="column1">
+            <div class="sq col0"></div>
+            <div class="sq col0"></div>
+            <div class="sq col0"></div>
+            <div class="sq col0"></div>
+            <div class="sq col0"></div>
+            <div class="sq col0"></div>
         </div>
 
-        <h3 id="Countdown"></h3>
+        <div class="col" id="column2">
+            <div class="sq col1"></div>
+            <div class="sq col1"></div>
+            <div class="sq col1"></div>
+            <div class="sq col1"></div>
+            <div class="sq col1"></div>
+            <div class="sq col1"></div>
+        </div>
 
-        <div class="board">
+        <div class="col" id="column3">
+            <div class="sq col2"></div>
+            <div class="sq col2"></div>
+            <div class="sq col2"></div>
+            <div class="sq col2"></div>
+            <div class="sq col2"></div>
+            <div class="sq col2"></div>
+        </div>
 
-            <div class="col" id="column1">
-                <div class="sq col0"></div>
-                <div class="sq col0"></div>
-                <div class="sq col0"></div>
-                <div class="sq col0"></div>
-                <div class="sq col0"></div>
-                <div class="sq col0"></div>
-            </div>
+        <div class="col" id="column4">
+            <div class="sq col3"></div>
+            <div class="sq col3"></div>
+            <div class="sq col3"></div>
+            <div class="sq col3"></div>
+            <div class="sq col3"></div>
+            <div class="sq col3"></div>
+        </div>
 
-            <div class="col" id="column2">
-                <div class="sq col1"></div>
-                <div class="sq col1"></div>
-                <div class="sq col1"></div>
-                <div class="sq col1"></div>
-                <div class="sq col1"></div>
-                <div class="sq col1"></div>
-            </div>
+        <div class="col" id="column5">
+            <div class="sq col4"></div>
+            <div class="sq col4"></div>
+            <div class="sq col4"></div>
+            <div class="sq col4"></div>
+            <div class="sq col4"></div>
+            <div class="sq col4"></div>
+        </div>
 
-            <div class="col" id="column3">
-                <div class="sq col2"></div>
-                <div class="sq col2"></div>
-                <div class="sq col2"></div>
-                <div class="sq col2"></div>
-                <div class="sq col2"></div>
-                <div class="sq col2"></div>
-            </div>
+        <div class="col" id="column6">
+            <div class="sq col5"></div>
+            <div class="sq col5"></div>
+            <div class="sq col5"></div>
+            <div class="sq col5"></div>
+            <div class="sq col5"></div>
+            <div class="sq col5"></div>
+        </div>
 
-            <div class="col" id="column4">
-                <div class="sq col3"></div>
-                <div class="sq col3"></div>
-                <div class="sq col3"></div>
-                <div class="sq col3"></div>
-                <div class="sq col3"></div>
-                <div class="sq col3"></div>
-            </div>
-
-            <div class="col" id="column5">
-                <div class="sq col4"></div>
-                <div class="sq col4"></div>
-                <div class="sq col4"></div>
-                <div class="sq col4"></div>
-                <div class="sq col4"></div>
-                <div class="sq col4"></div>
-            </div>
-
-            <div class="col" id="column6">
-                <div class="sq col5"></div>
-                <div class="sq col5"></div>
-                <div class="sq col5"></div>
-                <div class="sq col5"></div>
-                <div class="sq col5"></div>
-                <div class="sq col5"></div>
-            </div>
-
-            <div class="col" id="column7">
-                <div class="sq col6"></div>
-                <div class="sq col6"></div>
-                <div class="sq col6"></div>
-                <div class="sq col6"></div>
-                <div class="sq col6"></div>
-                <div class="sq col6"></div>
-            </div>
-
+        <div class="col" id="column7">
+            <div class="sq col6"></div>
+            <div class="sq col6"></div>
+            <div class="sq col6"></div>
+            <div class="sq col6"></div>
+            <div class="sq col6"></div>
+            <div class="sq col6"></div>
         </div>
 
     </div>
+
+    <audio id="songOnline" src="~/audio/SythwaveSong.mp3"></audio>
+
+    <audio id="soundPlayOnline" src="~/audio/soundPlay.mp3"></audio>
+
+    <audio id="soundWinOnline" src="~/audio/soundWin.mp3"></audio>
+
+</div>
 
     <div id="chat-content">
         <div id="toggle-btn">

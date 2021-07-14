@@ -1,5 +1,10 @@
 var player = "p1";
 
+document.getElementById("song").loop = true;
+document.getElementById("song").play()
+var soundPlay = document.getElementById("soundPlay")
+var soundWin = document.getElementById("soundWin")
+
 
 var playerSpan = document.getElementById("CurPlayer")
 if (document.getElementById("CurPlayer")) {
@@ -188,9 +193,12 @@ function checkVictory() {
             setTimeout(function () { square4.classList.add("glowWinner") }, 450)
             winner = player
             setTimeout(function () { victory(winner) }, 1500)
+            soundWin.play()
             return
         }
     }
+
+    soundPlay.play()
 
     var playedSquares = 0
     allSquares.forEach(sq => {

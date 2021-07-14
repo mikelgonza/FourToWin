@@ -20,6 +20,9 @@ notification.src = "/snd/notification.mp3";
 // GAME
 var player = "p1";
 
+var soundPlayOnline = document.getElementById("soundPlayOnline")
+var soundWinOnline = document.getElementById("soundWinOnline")
+
 var playerSpan = document.getElementById("CurPlayer")
 if (document.getElementById("CurPlayer")) {
     playerSpan.innerHTML = "&nbsp" + user1Nickname;
@@ -131,9 +134,12 @@ function checkVictory() {
             setTimeout(function () { square4.classList.add("glowWinner") }, 450)
             winner = player
             setTimeout(function () { victory(winner) }, 1500)
+            soundWinOnline.play()
             return
         }
     }
+
+    soundPlayOnline.play()
 
     var playedSquares = 0
     allSquares.forEach(sq => {
@@ -206,7 +212,7 @@ function changeCount() {
 }
 
 function victory(winner) {
-    document.getElementById("GameScene").style.filter = "blur(7px)";
+    document.querySelector(".GameSceneOnlineWaiting").style.filter = "blur(7px)";
     document.getElementById("VictoryPopUp").style.display = "block";
     if (winner == "p1") {
         document.getElementById("WinnerMsg").style.color = "red"
@@ -366,10 +372,12 @@ connection.on("Ready", function () {
             document.querySelector('.QuickPopUp').style.display = 'none';
         }
 
-        document.querySelector('#GameScene').style.filter = 'blur(0px)';
+        document.querySelector('.GameSceneOnlineWaiting').style.filter = 'blur(0px)';
 
 
         // Start game
+        document.getElementById("songOnline").loop = true;
+        document.getElementById("songOnline").play()
         countdown();
         addEventListeners();
     }, 2000)
