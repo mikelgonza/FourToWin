@@ -879,7 +879,8 @@ body {
 
 
 
-/******************************    STATISTICS    ********************************/
+/********************************************          STATISTICS        *********************************************************/
+
 #StatsTitle {
     margin: 1rem auto 3rem auto;
     text-align: center;
@@ -1062,3 +1063,8 @@ thead{
     border-color:none;
 }
 
+@media (max-width:800px){
+    .StatsHeader {
+        flex-flow:column;
+    }
+}
