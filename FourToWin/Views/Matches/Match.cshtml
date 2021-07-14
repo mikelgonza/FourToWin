@@ -9,155 +9,172 @@
     AppUser user = await UserManager.GetUserAsync(User);
 }
 
-@if (Model == "create")
-{
 
-    <div class="CreatePopUp">
-        <div class="row">&nbsp;</div>
-        <div>
-            <div class="LoaderHeader">
-                <p>Send this Lobby ID to your rival!</p>
-                <p><span id="lobbyid"></span></p>
-                <p>Player: <span id="userPlayer"></span></p>
-            </div>
+
+<div id="GameSceneOnline">
+
+    <img class="GameExitOnline" src="~/img/Exit sign2.jpg" alt="Exit" />
+
+    @if (Model == "create")
+    {
+
+        <div class="CreatePopUp">
+            <div class="row">&nbsp;</div>
             <div>
-                <div id="Loader">
-                    <div class="LoaderPiece1"></div>
-                    <div class="LoaderPiece2"></div>
-                    <div class="LoaderPiece3"></div>
-                    <div class="LoaderPiece4"></div>
+                <div class="LoaderHeader">
+                    <p>Send this Lobby ID to your rival!</p>
+                    <p><span id="lobbyid"></span></p>
+                    <p>Player: <span id="userPlayer"></span></p>
                 </div>
-                <span id="status"></span>
+                <div>
+                    <div id="Loader">
+                        <div class="LoaderPiece1"></div>
+                        <div class="LoaderPiece2"></div>
+                        <div class="LoaderPiece3"></div>
+                        <div class="LoaderPiece4"></div>
+                    </div>
+                    <span id="status"></span>
+                </div>
             </div>
         </div>
-    </div>
-}
-else if (Model == "join")
-{
-    <div class="JoinPopUp">
-        <input type="text" id="groupInput" placeholder="Lobby ID"/>
-        <input type="button" id="joinButton" class="JoinPopUpButton" value="Join Match" />
-    </div>
-}
-else if (Model == "quick")
-{
-    <h1>Quick Game</h1>
-
-    <div class="container">
-        <div class="row">&nbsp;</div>
-        <div>
-            <p>LobbyId: <span id="lobbyid"></span></p>
-            <p>Player: <span id="userPlayer"></span></p>
-            <p>Estado: <span id="status"></span></p>
+    }
+    else if (Model == "join")
+    {
+        <div class="JoinPopUp">
+            <input type="text" id="groupInput" placeholder="Lobby ID" />
+            <input type="button" id="joinButton" class="JoinPopUpButton" value="Join Match" />
         </div>
-    </div>
-}
+    }
+    else if (Model == "quick")
+    {
+        <h1>Quick Game</h1>
 
-<div id="GameScene" class="GameSceneOnlineWaiting">
-    <br />
-    <h1 id="GameTitle">4 to Win</h1>
-    <hr />
-    <br />
+        <div class="container">
+            <div class="row">&nbsp;</div>
+            <div>
+                <p>LobbyId: <span id="lobbyid"></span></p>
+                <p>Player: <span id="userPlayer"></span></p>
+                <p>Estado: <span id="status"></span></p>
+            </div>
+        </div>
+    }
 
-    <div id="GameInfo">
-        <h4>Player  <span id="CurPlayer"></span></h4>
-        <h5>Round &nbsp <span id="Round"></span></h5>
-    </div>
+    <div class="GameSceneOnlineWaiting">
 
-    <h3 id="Countdown"></h3>
+        <br />
+        <h1 id="GameTitle">4 to Win</h1>
+        <hr />
+        <br />
 
-    <div class="board">
-
-        <div class="col" id="column1">
-            <div class="sq col0"></div>
-            <div class="sq col0"></div>
-            <div class="sq col0"></div>
-            <div class="sq col0"></div>
-            <div class="sq col0"></div>
-            <div class="sq col0"></div>
+        <div id="GameInfo">
+            <h4>Player  <span id="CurPlayer"></span></h4>
+            <h5>Round &nbsp <span id="Round"></span></h5>
         </div>
 
-        <div class="col" id="column2">
-            <div class="sq col1"></div>
-            <div class="sq col1"></div>
-            <div class="sq col1"></div>
-            <div class="sq col1"></div>
-            <div class="sq col1"></div>
-            <div class="sq col1"></div>
-        </div>
+        <h3 id="Countdown"></h3>
 
-        <div class="col" id="column3">
-            <div class="sq col2"></div>
-            <div class="sq col2"></div>
-            <div class="sq col2"></div>
-            <div class="sq col2"></div>
-            <div class="sq col2"></div>
-            <div class="sq col2"></div>
-        </div>
+        <div class="board">
 
-        <div class="col" id="column4">
-            <div class="sq col3"></div>
-            <div class="sq col3"></div>
-            <div class="sq col3"></div>
-            <div class="sq col3"></div>
-            <div class="sq col3"></div>
-            <div class="sq col3"></div>
-        </div>
+            <div class="col" id="column1">
+                <div class="sq col0"></div>
+                <div class="sq col0"></div>
+                <div class="sq col0"></div>
+                <div class="sq col0"></div>
+                <div class="sq col0"></div>
+                <div class="sq col0"></div>
+            </div>
 
-        <div class="col" id="column5">
-            <div class="sq col4"></div>
-            <div class="sq col4"></div>
-            <div class="sq col4"></div>
-            <div class="sq col4"></div>
-            <div class="sq col4"></div>
-            <div class="sq col4"></div>
-        </div>
+            <div class="col" id="column2">
+                <div class="sq col1"></div>
+                <div class="sq col1"></div>
+                <div class="sq col1"></div>
+                <div class="sq col1"></div>
+                <div class="sq col1"></div>
+                <div class="sq col1"></div>
+            </div>
 
-        <div class="col" id="column6">
-            <div class="sq col5"></div>
-            <div class="sq col5"></div>
-            <div class="sq col5"></div>
-            <div class="sq col5"></div>
-            <div class="sq col5"></div>
-            <div class="sq col5"></div>
-        </div>
+            <div class="col" id="column3">
+                <div class="sq col2"></div>
+                <div class="sq col2"></div>
+                <div class="sq col2"></div>
+                <div class="sq col2"></div>
+                <div class="sq col2"></div>
+                <div class="sq col2"></div>
+            </div>
 
-        <div class="col" id="column7">
-            <div class="sq col6"></div>
-            <div class="sq col6"></div>
-            <div class="sq col6"></div>
-            <div class="sq col6"></div>
-            <div class="sq col6"></div>
-            <div class="sq col6"></div>
+            <div class="col" id="column4">
+                <div class="sq col3"></div>
+                <div class="sq col3"></div>
+                <div class="sq col3"></div>
+                <div class="sq col3"></div>
+                <div class="sq col3"></div>
+                <div class="sq col3"></div>
+            </div>
+
+            <div class="col" id="column5">
+                <div class="sq col4"></div>
+                <div class="sq col4"></div>
+                <div class="sq col4"></div>
+                <div class="sq col4"></div>
+                <div class="sq col4"></div>
+                <div class="sq col4"></div>
+            </div>
+
+            <div class="col" id="column6">
+                <div class="sq col5"></div>
+                <div class="sq col5"></div>
+                <div class="sq col5"></div>
+                <div class="sq col5"></div>
+                <div class="sq col5"></div>
+                <div class="sq col5"></div>
+            </div>
+
+            <div class="col" id="column7">
+                <div class="sq col6"></div>
+                <div class="sq col6"></div>
+                <div class="sq col6"></div>
+                <div class="sq col6"></div>
+                <div class="sq col6"></div>
+                <div class="sq col6"></div>
+            </div>
+
         </div>
 
     </div>
 
-</div>
+    <div id="chat-content">
+        <div id="toggle-btn">
+            <img id="chat-noti" src="~/img/chat-noti.png" />
+            <img id="chat-image" src="~/img/chat.png" />
+        </div>
+        <div id="chatbox">
+            <div class="fix"></div>
+        </div>
+        <div id="sendbox">
+            <input type="text" id="usermsg" size="63" />
+            <input type="image" id="submitmsg" alt="Send" src="~/img/send_button.png">
+        </div>
 
-<div id="chat-content">
-    <div id="toggle-btn">
-        <img id="chat-noti" src="~/img/chat-noti.png" />
-        <img id="chat-image" src="~/img/chat.png" />
-    </div>
-    <div id="chatbox">
-        <div class="fix"></div>
-    </div>
-    <div id="sendbox">
-        <input type="text" id="usermsg" size="63" />
-        <input type="image" id="submitmsg" alt="Send" src="~/img/send_button.png">
     </div>
 
-</div>
-
-<div id="VictoryPopUp">
-    <h4 id="WinnerMsg"></h4>
-    <div id="WinnerImgContent">
-        <img id="WinnerCrown" src="~/img/crown.png" />
-        <img id="WinnerImg" />
+    <div id="VictoryPopUp">
+        <h4 id="WinnerMsg"></h4>
+        <div id="WinnerImgContent">
+            <img id="WinnerCrown" src="~/img/crown.png" />
+            <img id="WinnerImg" />
+        </div>
+        <button class="btnRematch"><a asp-controller="Home" asp-action="Game">Rematch</a></button>
+        <button class="btnClose"><a asp-controller="Home" asp-action="Index">Close</a></button>
     </div>
-    <button class="btnRematch"><a asp-controller="Home" asp-action="Game">Rematch</a></button>
-    <button class="btnClose"><a asp-controller="Home" asp-action="Index">Close</a></button>
+
+    <div id="ExitPopUp">
+        <h3 id="ExitLeaveMsg">Do you want to leave?</h3>
+        <h3 id="ExitScaredMsg">Scared?</h3>
+
+        <button class="btnLeave">Yes</button>
+        <button class="btnStay">No</button>
+    </div>
+
 </div>
 
 
@@ -202,6 +219,27 @@ else if (Model == "quick")
             ajaxasync: true,
         });
     }
+
+    var ExitOnline = document.querySelector(".GameExitOnline")
+    var Exit = document.getElementById("ExitPopUp")
+
+    ExitOnline.addEventListener("click", function () {
+        Exit.style.display = "block"
+    })
+
+    var btnLeave = document.querySelector(".btnLeave")
+    var btnStay = document.querySelector(".btnStay")
+
+    btnLeave.addEventListener("click", function () {
+        window.location.href = "@Url.Action("Index", "Home")"
+    })
+
+    btnStay.addEventListener("click", function () {
+        Exit.style.display ="none"
+    })
+
+
+
 </script>
 
 <script src="~/js/signalr/dist/browser/signalr.js"></script>

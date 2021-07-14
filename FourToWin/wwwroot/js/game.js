@@ -1,5 +1,6 @@
 var player = "p1";
 
+
 var playerSpan = document.getElementById("CurPlayer")
 if (document.getElementById("CurPlayer")) {
     playerSpan.innerHTML = "&nbsp1"

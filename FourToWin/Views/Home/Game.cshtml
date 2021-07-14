@@ -2,9 +2,9 @@
     ViewData["Title"] = "Game";
 }
 
-<div id="GameScene">
+<div id="GameScene" >
     <br />
-    <h1 id="GameTitle">4 to Win</h1>
+    <h1 id="MenuTitle">4<span class="TitleTo">to</span>Win</h1>
     <hr />
     <br />
 
@@ -85,8 +85,18 @@
 
 <div id="VictoryPopUp">
     <h4 id="WinnerMsg"></h4>
-    <button class="btnRematch" ><a asp-controller="Home" asp-action="Game">Rematch</a></button>
+    <button class="btnRematch"><a asp-controller="Home" asp-action="Game">Rematch</a></button>
     <button class="btnClose"><a asp-controller="Home" asp-action="Index">Close</a></button>
 </div>
+
+<script>
+    var Exit = document.querySelector(".GameExit")
+    if (document.querySelector(".GameExit")) {
+        Exit.addEventListener("click", function () {
+            window.location.href = "@Url.Action("Index", "Home")";
+        })
+
+    }
+</script>
 
 <script src="~/js/game.js"></script>

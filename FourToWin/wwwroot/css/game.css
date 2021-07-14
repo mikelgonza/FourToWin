@@ -202,6 +202,29 @@ body {
         opacity: 0.4;
     }
 
+#GameSceneOnline {
+    width: 100%;
+    margin-right: 0rem;
+    margin-left: 0rem;
+}
+
+    #GameSceneOnline::before {
+        content: "";
+        width: 100%;
+        min-height: 100vh;
+        display: block;
+        height: 100%;
+        position: absolute;
+        background-image: url(../img/FondoStats.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        filter: contrast(150%) brightness(80%) saturate(70%);
+        z-index: -1;
+        left: 0;
+        top: 4rem;
+        opacity: 0.4;
+    }
+
 .GameSceneOnlineWaiting{
     filter: blur(8px) brightness(50%) saturate(60%)
 }
@@ -471,6 +494,21 @@ body {
     text-shadow: 0.1rem 0.1rem 0.3rem #fff, 0.2rem 0.2rem 1rem #fff, 0 0 2rem, 0 0 4rem aqua, 0 0 6rem aqua, 0 0 8rem aqua, 0 0 10rem;
 }
 
+#MenuTitle {
+    text-align: center;
+    font-style: italic;
+    font-size: 5rem;
+    font-weight: 600;
+    color: #fb00ff;
+    text-shadow: 0.15rem 0.2rem 0.3rem #fec9f6, 0.2rem 0.2rem 1rem #fdbef3, 0 0 2rem, 0 0 4rem #000000, 0 0 2rem #fb00ff, 0 0 6rem #fb00ff, 0 0 5rem;
+    margin: 1rem auto 4rem auto;
+}
+
+.TitleToGame {
+    font-size: 2rem;
+    text-shadow: 0.1rem 0.15rem 0.2rem #fec9f6, 0.15rem 0.15rem 0.8rem #fdbef3, 0 0 1.5rem, 0 0 3rem #000000, 0 0 1rem #fb00ff, 0 0 5rem #fb00ff, 0 0 4rem;
+}
+
 #GameInfo {
     display: flex;
     justify-content: space-around;
@@ -497,6 +535,18 @@ body {
     position: absolute;
     left: 2rem;
     top: 18.6rem;
+    cursor:pointer;
+    z-index:3;
+}
+
+.GameExitOnline {
+    width: 7rem;
+    filter: contrast(150%) opacity(70%) brightness(140%);
+    position: absolute;
+    left: 2rem;
+    top: 18.6rem;
+    cursor: pointer;
+    z-index: 3;
 }
 
 .board {
@@ -604,6 +654,52 @@ body {
         font-style: italic;
         margin-bottom: 2rem;
     }
+
+#ExitPopUp {
+    display: none;
+    position: fixed;
+    top: 15%;
+    left: 5%;
+    border: 0.3rem solid red;
+    border-radius: 10%;
+    height: fit-content;
+    max-width: 300px;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    text-align: center;
+    box-sizing: content-box;
+    font-weight: 400;
+    z-index:3;
+}
+
+    #ExitPopUp h3 {
+        font-size: initial;
+        color: white;
+        font-style: italic;
+        margin-bottom: 1rem;
+    }
+
+.btnLeave{
+    border:0.1rem solid green;
+    border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+    background-color:black;
+    color:white;
+}
+
+.btnLeave:hover {
+    color:green;
+}
+
+.btnStay {
+    border: 0.1rem solid red;
+    border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+    background-color: black;
+    color:white;
+}
+
+.btnStay:hover {
+    color: red;
+}
 
 #JoinError {
     display: none;
