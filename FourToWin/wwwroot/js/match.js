@@ -286,8 +286,10 @@ connection.start().then(function () {
 });
 
 if (lobbyAction === "join") {
-    document.getElementById("joinButton").addEventListener("click", function (event) {
+    document.getElementById("Loader").style = "visibility: hidden"
 
+    document.getElementById("joinButton").addEventListener("click", function (event) {
+        document.getElementById("Loader").style = "visibility: visible"
         lobby = document.getElementById('groupInput').value;
 
         connection.invoke("JoinGame", lobby, userId, userNickname, userImage).catch(err => console.error(err.toString()));
@@ -360,6 +362,10 @@ connection.on("Ready", function () {
             document.querySelector('.JoinPopUp').style.display = 'none';
         }
 
+        if (document.querySelector('.QuickPopUp')) {
+            document.querySelector('.QuickPopUp').style.display = 'none';
+        }
+
         document.querySelector('#GameScene').style.filter = 'blur(0px)';
 
 
@@ -416,6 +422,17 @@ if (document.getElementById("CancelJoin")) {
     document.getElementById("CancelJoin").addEventListener('click', function () {
 
         document.querySelector('.JoinPopUp').style.display = 'none';
+        LinkToHome();
+    })
+}
+
+if (document.getElementById("CancelQuick")) {
+    document.getElementById("CancelQuick").addEventListener('click', function () {
+
+        if (lobby !== "")
+            connection.invoke("RemoveGroup", lobby).catch(err => console.error(err.toString()));
+
+        document.querySelector('.QuickPopUp').style.display = 'none';
         LinkToHome();
     })
 }

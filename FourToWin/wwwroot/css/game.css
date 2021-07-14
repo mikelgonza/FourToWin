@@ -223,6 +223,22 @@ body {
     z-index: 3;
 }
 
+.QuickPopUp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: fit-content;
+    width: fit-content;
+    padding: 2rem 3rem 2rem 3rem;
+    background-color: #1a1a1a;
+    text-align: center;
+    color: white;
+    border-radius: 1rem 1rem 1rem 1rem;
+    border: 0.3rem solid gold;
+    z-index: 3;
+}
+
 .LoaderHeader {
     display: flex;
     flex-flow: column;
@@ -698,7 +714,7 @@ body {
     background: none;
     border: none;
     box-sizing: border-box;
-    margin-top: 1rem;
+    margin-top: 2rem;
     margin-bottom: 1rem;
 }
 

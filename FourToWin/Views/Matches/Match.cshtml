@@ -37,6 +37,14 @@ else if (Model == "join")
 <div class="JoinPopUp">
     <input type="text" id="groupInput" placeholder="Lobby ID" />
     <p class="user-color-cont">Color: <span id="userColor" class="font-weight-bold"></span></p>
+    <div>
+        <div id="Loader">
+            <div class="LoaderPiece1"></div>
+            <div class="LoaderPiece2"></div>
+            <div class="LoaderPiece3"></div>
+            <div class="LoaderPiece4"></div>
+        </div>
+    </div>
     <div class="JoinButtonsCont">
         <input type="button" id="joinButton" class="JoinPopUpButton" value="Join Match" />
         <input type="button" id="CancelJoin" class="CancelPopUpButton" value="Cancel" />
@@ -45,14 +53,21 @@ else if (Model == "join")
 }
 else if (Model == "quick")
 {
-    <h1>Quick Game</h1>
-
-    <div class="container">
+    <div class="QuickPopUp">
         <div class="row">&nbsp;</div>
         <div>
-            <p>LobbyId: <span id="lobbyid"></span></p>
-            <p>Player: <span id="userPlayer"></span></p>
-            <p>Estado: <span id="status"></span></p>
+            <div class="LoaderHeader">
+                <p class="user-color-cont">Color: <span id="userColor" class="font-weight-bold"></span></p>
+            </div>
+            <div>
+                <div id="Loader">
+                    <div class="LoaderPiece1"></div>
+                    <div class="LoaderPiece2"></div>
+                    <div class="LoaderPiece3"></div>
+                    <div class="LoaderPiece4"></div>
+                </div>
+            </div>
+            <input type="button" id="CancelQuick" class="CancelPopUpButton" value="Cancel" />
         </div>
     </div>
 }
@@ -160,7 +175,6 @@ else if (Model == "quick")
         <img id="WinnerCrown" src="~/img/crown.png" />
         <img id="WinnerImg" />
     </div>
-    <button class="btnRematch"><a asp-controller="Home" asp-action="Game">Rematch</a></button>
     <button class="btnClose"><a asp-controller="Home" asp-action="Index">Close</a></button>
 </div>
 
