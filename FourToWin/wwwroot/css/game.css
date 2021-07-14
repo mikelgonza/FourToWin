@@ -461,6 +461,28 @@ body {
         color: #4bf54b;
     }
 
+.CancelPopUpButton {
+    padding: 0.5rem;
+    font-size: revert;
+    margin-top: 1rem;
+    width: fit-content;
+    background-color: #1a1a1a;
+    color: #dc3545;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    border: 0.1rem solid forestgreen;
+    border-radius: 0.2rem 0.2rem 0.2rem 0.2rem;
+}
+
+    .CancelPopUpButton:hover {
+        color: #4bf54b;
+    }
+
+.JoinButtonsCont {
+    display:flex;
+}
+
 
 #GameTitle {
     text-align: center;

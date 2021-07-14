@@ -402,6 +402,24 @@ connection.on("ReceiveMessage", function (message, user) {
 
 });
 
+if (document.getElementById("CancelCreate")) {
+    document.getElementById("CancelCreate").addEventListener('click', function () {
+
+        connection.invoke("RemoveGroup", lobby).catch(err => console.error(err.toString()));
+
+        document.querySelector('.CreatePopUp').style.display = 'none';
+        LinkToHome();
+    })
+}
+
+if (document.getElementById("CancelJoin")) {
+    document.getElementById("CancelJoin").addEventListener('click', function () {
+
+        document.querySelector('.JoinPopUp').style.display = 'none';
+        LinkToHome();
+    })
+}
+
 document.getElementById("submitmsg").addEventListener("click", function (event) {
 
     let message = document.getElementById("usermsg").value;

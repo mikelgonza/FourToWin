@@ -27,8 +27,8 @@
                     <div class="LoaderPiece3"></div>
                     <div class="LoaderPiece4"></div>
                 </div>
-                <span>Waiting...</span>
             </div>
+            <input type="button" id="CancelCreate" class="CancelPopUpButton" value="Cancel" />
         </div>
     </div>
 }
@@ -37,7 +37,10 @@ else if (Model == "join")
 <div class="JoinPopUp">
     <input type="text" id="groupInput" placeholder="Lobby ID" />
     <p class="user-color-cont">Color: <span id="userColor" class="font-weight-bold"></span></p>
-    <input type="button" id="joinButton" class="JoinPopUpButton" value="Join Match" />
+    <div class="JoinButtonsCont">
+        <input type="button" id="joinButton" class="JoinPopUpButton" value="Join Match" />
+        <input type="button" id="CancelJoin" class="CancelPopUpButton" value="Cancel" />
+    </div>
 </div>
 }
 else if (Model == "quick")
@@ -187,7 +190,9 @@ else if (Model == "quick")
         console.log("chat open:" + isChatOpen)
     })
 
-
+    function LinkToHome() {
+        window.location.href = '@Url.Action("Index", "Home")';
+    }
 
     function SendToDatabase() {
 

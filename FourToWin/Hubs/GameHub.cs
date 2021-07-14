@@ -86,6 +86,19 @@ namespace FourToWin.Hubs
             }
         }
 
+        public void RemoveGroup(string lobbyId)
+        {
+            if (customLobbies.ContainsKey(lobbyId))
+            {
+                customLobbies.Remove(lobbyId);
+            }
+
+            if (lobbies.ContainsKey(lobbyId))
+            {
+                lobbies.Remove(lobbyId);
+            }
+        }
+
         public async void QuickGame(string userId, string userNickname, string userImage)
         {
             int randomPlayer = GenerateRandomPlayer();
