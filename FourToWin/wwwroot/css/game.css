@@ -218,7 +218,7 @@ body {
     background-color: #1a1a1a;
     text-align: center;
     color: white;
-    border-radius: 10%;
+    border-radius: 1rem 1rem 1rem 1rem;
     border: 0.3rem solid gold;
     z-index: 3;
 }
@@ -419,7 +419,6 @@ body {
 }
 
 
-
 #status {
     margin: 3rem 0rem 2rem 1rem;
     color: white;
@@ -427,6 +426,9 @@ body {
 
 
 .JoinPopUp {
+    display: flex;
+    flex-flow: column;
+    align-content: space-around;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -434,13 +436,31 @@ body {
     height: fit-content;
     width: fit-content;
     padding: 2rem;
-    background-color: #1a1a1a;
+    background-color: black;
     text-align: center;
     color: white;
-    border-radius: 10%;
-    border: 0.5rem solid green;
+    border-radius: 1rem 1rem 1rem 1rem;
+    border: 0.4rem solid green;
     z-index: 3;
 }
+
+.JoinPopUpButton {
+    padding: 0.5rem;
+    font-size: revert;
+    margin-top: 1rem;
+    width: fit-content;
+    background-color: #1a1a1a;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0.1rem solid forestgreen;
+    border-radius: 0.2rem 0.2rem 0.2rem 0.2rem;
+}
+
+    .JoinPopUpButton:hover {
+        color: #4bf54b;
+    }
+
 
 #GameTitle {
     text-align: center;
@@ -743,6 +763,7 @@ body {
     position:absolute;
     top:6rem;
     right:3rem;
+    cursor:pointer;
 }
 
 #StatsName {
