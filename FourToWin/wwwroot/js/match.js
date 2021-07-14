@@ -11,6 +11,10 @@ var user2Nickname = 2;
 var matchWinner;
 var columnPosition = -1;
 var isChatOpen = false;
+var userColor;
+
+var notification = new Audio();
+notification.src = "/snd/notification.mp3";
 
 
 // GAME
@@ -282,8 +286,10 @@ connection.start().then(function () {
 });
 
 if (lobbyAction === "join") {
-    document.getElementById("joinButton").addEventListener("click", function (event) {
+    document.getElementById("Loader").style = "visibility: hidden"
 
+    document.getElementById("joinButton").addEventListener("click", function (event) {
+        document.getElementById("Loader").style = "visibility: visible"
         lobby = document.getElementById('groupInput').value;
 
         connection.invoke("JoinGame", lobby, userId, userNickname, userImage).catch(err => console.error(err.toString()));
@@ -317,7 +323,19 @@ connection.on("GetUser2", function (userId, nickname, userImage) {
 connection.on("GetPlayerNum", function (playerNum) {
     userPlayer = playerNum;
 
-    document.getElementById("userPlayer").textContent = userPlayer;
+    let colorDiv = document.getElementById("userColor");
+
+    if (playerNum === "p1") {
+        userColor = "Red";
+        colorDiv.style = "color: red";
+    }
+    else {
+        userColor = "Blue";
+        colorDiv.style = "color: blue";
+    }
+
+    colorDiv.textContent = userColor;
+    document.querySelector('.user-color-cont').style = "visibility: visible";
 });
 
 connection.on("GetLobbyId", function (lobbyId) {
@@ -334,22 +352,30 @@ connection.on("ReceiveColumn", function (column) {
 });
 
 connection.on("Ready", function () {
-    document.getElementById("status").textContent = "Ready";
 
-    if (document.querySelector('.CreatePopUp')) {
-        document.querySelector('.CreatePopUp').style.display = 'none';
-    }
+    setTimeout(function () {
+        if (document.querySelector('.CreatePopUp')) {
+            document.querySelector('.CreatePopUp').style.display = 'none';
+        }
 
-    if (document.querySelector('.JoinPopUp')) {
-        document.querySelector('.JoinPopUp').style.display = 'none';
-    }
+        if (document.querySelector('.JoinPopUp')) {
+            document.querySelector('.JoinPopUp').style.display = 'none';
+        }
 
-    document.querySelector('#GameScene').style.filter = 'blur(0px)';
+        if (document.querySelector('.QuickPopUp')) {
+            document.querySelector('.QuickPopUp').style.display = 'none';
+        }
+
+        document.querySelector('#GameScene').style.filter = 'blur(0px)';
 
 
-    // Start game
-    countdown();
-    addEventListeners();
+        // Start game
+        countdown();
+        addEventListeners();
+    }, 2000)
+
+
+    
 });
 
 InputAutoKey("usermsg", "submitmsg", 13);
@@ -373,12 +399,43 @@ connection.on("ReceiveMessage", function (message, user) {
     if (!isChatOpen) {
         document.getElementById('chat-image').style.display = 'none';
         document.getElementById('chat-noti').style.display = 'block';
+
+        notification.play();
     }
 
     // autoscroll
     chat.scrollTop = chat.scrollHeight;
 
 });
+
+if (document.getElementById("CancelCreate")) {
+    document.getElementById("CancelCreate").addEventListener('click', function () {
+
+        connection.invoke("RemoveGroup", lobby).catch(err => console.error(err.toString()));
+
+        document.querySelector('.CreatePopUp').style.display = 'none';
+        LinkToHome();
+    })
+}
+
+if (document.getElementById("CancelJoin")) {
+    document.getElementById("CancelJoin").addEventListener('click', function () {
+
+        document.querySelector('.JoinPopUp').style.display = 'none';
+        LinkToHome();
+    })
+}
+
+if (document.getElementById("CancelQuick")) {
+    document.getElementById("CancelQuick").addEventListener('click', function () {
+
+        if (lobby !== "")
+            connection.invoke("RemoveGroup", lobby).catch(err => console.error(err.toString()));
+
+        document.querySelector('.QuickPopUp').style.display = 'none';
+        LinkToHome();
+    })
+}
 
 document.getElementById("submitmsg").addEventListener("click", function (event) {
 

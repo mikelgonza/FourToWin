@@ -18,46 +18,65 @@
     @if (Model == "create")
     {
 
-        <div class="CreatePopUp">
-            <div class="row">&nbsp;</div>
+    <div class="CreatePopUp">
+        <div class="row">&nbsp;</div>
+        <div>
+            <div class="LoaderHeader">
+                <p>Send this Lobby ID to your rival!</p>
+                <p><span id="lobbyid"></span></p>
+                <p class="user-color-cont">Color: <span id="userColor" class="font-weight-bold"></span></p>
+            </div>
             <div>
-                <div class="LoaderHeader">
-                    <p>Send this Lobby ID to your rival!</p>
-                    <p><span id="lobbyid"></span></p>
-                    <p>Player: <span id="userPlayer"></span></p>
-                </div>
-                <div>
-                    <div id="Loader">
-                        <div class="LoaderPiece1"></div>
-                        <div class="LoaderPiece2"></div>
-                        <div class="LoaderPiece3"></div>
-                        <div class="LoaderPiece4"></div>
-                    </div>
-                    <span id="status"></span>
+                <div id="Loader">
+                    <div class="LoaderPiece1"></div>
+                    <div class="LoaderPiece2"></div>
+                    <div class="LoaderPiece3"></div>
+                    <div class="LoaderPiece4"></div>
                 </div>
             </div>
+            <input type="button" id="CancelCreate" class="CancelPopUpButton" value="Cancel" />
         </div>
-    }
-    else if (Model == "join")
-    {
-        <div class="JoinPopUp">
-            <input type="text" id="groupInput" placeholder="Lobby ID" />
-            <input type="button" id="joinButton" class="JoinPopUpButton" value="Join Match" />
+    </div>
+}
+else if (Model == "join")
+{
+<div class="JoinPopUp">
+    <input type="text" id="groupInput" placeholder="Lobby ID" />
+    <p class="user-color-cont">Color: <span id="userColor" class="font-weight-bold"></span></p>
+    <div>
+        <div id="Loader">
+            <div class="LoaderPiece1"></div>
+            <div class="LoaderPiece2"></div>
+            <div class="LoaderPiece3"></div>
+            <div class="LoaderPiece4"></div>
         </div>
-    }
-    else if (Model == "quick")
-    {
-        <h1>Quick Game</h1>
-
-        <div class="container">
-            <div class="row">&nbsp;</div>
-            <div>
-                <p>LobbyId: <span id="lobbyid"></span></p>
-                <p>Player: <span id="userPlayer"></span></p>
-                <p>Estado: <span id="status"></span></p>
+    </div>
+    <div class="JoinButtonsCont">
+        <input type="button" id="joinButton" class="JoinPopUpButton" value="Join Match" />
+        <input type="button" id="CancelJoin" class="CancelPopUpButton" value="Cancel" />
+    </div>
+</div>
+}
+else if (Model == "quick")
+{
+    <div class="QuickPopUp">
+        <div class="row">&nbsp;</div>
+        <div>
+            <div class="LoaderHeader">
+                <p class="user-color-cont">Color: <span id="userColor" class="font-weight-bold"></span></p>
             </div>
+            <div>
+                <div id="Loader">
+                    <div class="LoaderPiece1"></div>
+                    <div class="LoaderPiece2"></div>
+                    <div class="LoaderPiece3"></div>
+                    <div class="LoaderPiece4"></div>
+                </div>
+            </div>
+            <input type="button" id="CancelQuick" class="CancelPopUpButton" value="Cancel" />
         </div>
-    }
+    </div>
+}
 
     <div class="GameSceneOnlineWaiting">
 
@@ -157,15 +176,14 @@
 
     </div>
 
-    <div id="VictoryPopUp">
-        <h4 id="WinnerMsg"></h4>
-        <div id="WinnerImgContent">
-            <img id="WinnerCrown" src="~/img/crown.png" />
-            <img id="WinnerImg" />
-        </div>
-        <button class="btnRematch"><a asp-controller="Home" asp-action="Game">Rematch</a></button>
-        <button class="btnClose"><a asp-controller="Home" asp-action="Index">Close</a></button>
+<div id="VictoryPopUp">
+    <h4 id="WinnerMsg"></h4>
+    <div id="WinnerImgContent">
+        <img id="WinnerCrown" src="~/img/crown.png" />
+        <img id="WinnerImg" />
     </div>
+    <button class="btnClose"><a asp-controller="Home" asp-action="Index">Close</a></button>
+</div>
 
     <div id="ExitPopUp">
         <h3 id="ExitLeaveMsg">Do you want to leave?</h3>
@@ -203,7 +221,9 @@
         console.log("chat open:" + isChatOpen)
     })
 
-
+    function LinkToHome() {
+        window.location.href = '@Url.Action("Index", "Home")';
+    }
 
     function SendToDatabase() {
 

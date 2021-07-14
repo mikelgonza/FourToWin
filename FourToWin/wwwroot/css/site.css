@@ -330,6 +330,11 @@ div.div_file {
     padding: 2px
 }
 
+.user-color-cont {
+    margin-top: 0.5rem;
+    visibility: hidden;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
