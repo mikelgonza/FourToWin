@@ -1,9 +1,12 @@
 var player = "p1";
 
+document.getElementById("song").volume = 0.1;
 document.getElementById("song").loop = true;
 document.getElementById("song").play()
 var soundPlay = document.getElementById("soundPlay")
+soundPlay.volume = 0.1;
 var soundWin = document.getElementById("soundWin")
+soundWin.volume = 0.1;
 
 
 var playerSpan = document.getElementById("CurPlayer")
