@@ -1063,9 +1063,19 @@ thead{
     border-color:none;
 }
 
+.numRounds{
+    color:orange;
+}
+
 @media (max-width:800px){
     .StatsHeader {
         flex-flow:column;
+    }
+    .StatsPlayer {
+        margin-bottom: 2rem;
+    }
+    .StatsTotals {
+        display: contents;
     }
 }
 @media (max-width: 768px) {
