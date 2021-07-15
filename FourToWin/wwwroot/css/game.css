@@ -966,3 +966,13 @@ thead{
     border-color:none;
 }
 
+@media (max-width: 768px) {
+    .board {
+        padding: 0.5rem;
+    }
+
+    .sq {
+        height: 2rem;
+        width: 2rem;
+    }
+}

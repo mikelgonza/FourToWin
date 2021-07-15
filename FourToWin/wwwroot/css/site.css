@@ -147,10 +147,10 @@ div.login-form-icon {
 /*** CHAT BOX ***/
 #chat-content {
     position: fixed;
-    bottom: 0px;
-    right: -410px;
-    width: 400px;
-    height: 430px;
+    bottom: 0.5rem;
+    right: -26vw;
+    width: 25vw;
+    height: 50vh;
     border: 1px solid gold;
     border-radius: 15px 0 0 15px;
     display: flex;
@@ -170,15 +170,15 @@ div.login-form-icon {
 
     #chat-content #toggle-btn {
         position: absolute;
-        right: 410px;
-        top: 20px;
+        right: 27vw;
+        top: 1rem;
         cursor: pointer;
         transition: all .5s;
     }
 
     #chat-content #toggle-btn.active {
-        right: 320px;
-        top: -60px;
+        right: 20vw;
+        top: -3.5rem;
     }
 
 #chat-image {
@@ -341,4 +341,26 @@ div.div_file {
     width: 100%;
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
+}
+
+@media (max-width: 768px) {
+    #chat-content {
+        bottom: 0.5rem;
+        right: -98vw;
+        width: 97vw;
+        height: 50vh;
+    }
+
+        #chat-content #toggle-btn {
+            position: absolute;
+            right: 27rem;
+            top: -4.5rem;
+            cursor: pointer;
+            transition: all .5s;
+        }
+
+            #chat-content #toggle-btn.active {
+                right: 22rem;
+                top: -4.5rem;
+            }
 }
