@@ -21,7 +21,9 @@ notification.src = "/snd/notification.mp3";
 var player = "p1";
 
 var soundPlayOnline = document.getElementById("soundPlayOnline")
+soundPlayOnline.volume = 0.1;
 var soundWinOnline = document.getElementById("soundWinOnline")
+soundWinOnline.volume = 0.1;
 
 var playerSpan = document.getElementById("CurPlayer")
 if (document.getElementById("CurPlayer")) {
@@ -376,6 +378,7 @@ connection.on("Ready", function () {
 
 
         // Start game
+        document.getElementById("songOnline").volume = 0.1;
         document.getElementById("songOnline").loop = true;
         document.getElementById("songOnline").play()
         countdown();

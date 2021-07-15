@@ -217,6 +217,7 @@ div.login-form-icon {
 
 .chatp1 {
     background-color: red;
+    border: 2px solid #b20808;
     color: white;
     padding: 10px;
     border-radius: 10px 10px 0 10px;
@@ -227,7 +228,7 @@ div.login-form-icon {
 }
 
 .chatp2 {
-    background-color: #889ccf;
+    background-color: #6610f2;
     border: 2px solid #5878ca;
     color: white;
     padding: 10px;
