@@ -536,7 +536,7 @@ body {
     text-align: center;
     font-style: italic;
     font-size: 5rem;
-    font-weight: 600;
+    font-weight: normal;
     color: #fb00ff;
     text-shadow: 0.15rem 0.2rem 0.3rem #fec9f6, 0.2rem 0.2rem 1rem #fdbef3, 0 0 2rem, 0 0 4rem #000000, 0 0 2rem #fb00ff, 0 0 6rem #fb00ff, 0 0 5rem;
     margin: 1rem auto 4rem auto;
