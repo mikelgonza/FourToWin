@@ -1079,6 +1079,12 @@ thead{
     }
 }
 @media (max-width: 768px) {
+
+    .GameExit {
+        left: 1rem;
+        top: 18.5rem;
+    }
+
     .board {
         padding: 0.5rem;
     }
